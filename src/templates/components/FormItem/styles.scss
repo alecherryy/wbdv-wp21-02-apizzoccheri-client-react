@@ -1,0 +1,66 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Form Item
+
+.form-item {
+  display: inline-flex;
+  flex-direction: column;
+
+  ::placeholder {
+    color: $lilac;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    font-weight: 700;
+    opacity: 1;
+  }
+}
+
+// global form input styles
+%form-item-styles {
+  appearance: none;
+  background-color: transparent;
+  border: solid 1px $blue;
+  box-shadow: 0;
+  color: $blue;
+  font-size: $base-font-size;
+  height: rem(44px);
+  padding: 0 $spacing-2;
+
+  &:focus {
+    border-color: $magenta;
+    outline: none;
+  }
+
+  @include bp-tablet {
+    height: rem(54px);
+  }
+}
+
+.form-item__input {
+  @extend %form-item-styles;
+}
+
+.form-item__input--text {
+  &[type='text'] {
+    appearance: none;
+  }
+}
+
+.form-item__input--email {
+  &[type='email'] {
+    appearance: none;
+  }
+}
+
+.form-item__input--password {
+  &[type='password'] {
+    appearance: none;
+  }
+}
+
+.form-item__input--date {
+  &[type='date'] {
+    appearance: none;
+  }
+}

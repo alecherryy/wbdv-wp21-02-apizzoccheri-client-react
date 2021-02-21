@@ -1,0 +1,54 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Form
+
+.form {
+  margin: $spacing-5 0;
+
+  @include bp-tablet {
+    display: flex;
+    margin: $spacing-3 0;
+  }
+}
+
+.form__title {
+  flex-basis: 33.33%;
+  margin-right: $spacing-3;
+}
+
+.form__form {
+  @include bp-tablet {
+    align-items: center;
+    display: flex;
+    flex-basis: 66.66%;
+  }
+
+  .form-item {
+    width: calc(100% - #{rem(64px)});
+  }
+}
+
+.form__btn {
+  @include button-clear;
+  @include image-replace(rem(44px), rem(44px));
+  @include svg-background(icon-add);
+
+  background-color: $magenta;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: rem(20px);
+  border-radius: 100%;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+  }
+
+  @include bp-tablet {
+    @include image-replace(rem(54px), rem(54px));
+
+    background-size: rem(25px);
+    margin-left: $spacing-2;
+  }
+}
