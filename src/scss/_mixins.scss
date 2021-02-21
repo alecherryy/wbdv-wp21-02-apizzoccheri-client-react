@@ -1,0 +1,66 @@
+// @file
+// Mixins
+
+// remove browser default styles
+@mixin button-clear() {
+  &[type='button'] {
+    appearance: none;
+  }
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// hide text, but make accessible
+@mixin replace-image($width, $height) {
+  color: transparent;
+  display: inline-block;
+  font: 0/0 a;
+  height: $height;
+  position: relative;
+  text-shadow: none;
+  width: $width;
+}
+
+// SVG background
+@mixin svg-background($file-src) {
+  background-image: url('../../images/' + $file-src + '.svg');
+}
+
+// remove list default styles
+@mixin list-clean {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// display inline list
+@mixin list-inline {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  li {
+    padding-left: 0;
+  }
+
+  > li {
+    display: inline;
+  }
+}
