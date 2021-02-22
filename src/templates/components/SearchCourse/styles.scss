@@ -1,0 +1,72 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Search form
+
+.search-form {
+  margin: $spacing-5 0;
+
+  @include bp-tablet {
+    display: flex;
+    margin: $spacing-3 0;
+  }
+}
+
+.search-form__title {
+  flex-basis: 33.33%;
+  margin-right: $spacing-3;
+}
+
+.search-form__form {
+  @include bp-tablet {
+    align-items: center;
+    display: flex;
+    flex-basis: 66.66%;
+  }
+
+  ::placeholder {
+    color: $gray-2;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    font-weight: 700;
+    opacity: 1;
+  }
+}
+
+// global form input styles
+.search-form__input {
+  &[type='text'] {
+    appearance: none;
+  }
+
+  appearance: none;
+  background-color: transparent;
+  border: solid 1px $blue;
+  box-shadow: 0;
+  color: $blue;
+  font-size: $base-font-size;
+  height: rem(44px);
+  padding: 0 $spacing-2;
+  width: calc(100% - #{rem(64px)});
+
+  &:focus {
+    border-color: $magenta;
+    outline: none;
+  }
+
+  @include bp-tablet {
+    height: rem(54px);
+    width: calc(100% - #{rem(74px)});
+  }
+}
+
+.search-form__btn {
+  @include button-icon(rem(54px), icon-search-white);
+
+  background-color: $lilac;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+  }
+}

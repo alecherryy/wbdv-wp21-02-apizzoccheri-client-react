@@ -20,7 +20,7 @@
 }
 
 // hide text, but make accessible
-@mixin replace-image($width, $height) {
+@mixin image-replace($width, $height) {
   color: transparent;
   display: inline-block;
   font: 0/0 a;
@@ -31,8 +31,9 @@
 }
 
 // SVG background
-@mixin svg-background($file-src) {
-  background-image: url('../../images/' + $file-src + '.svg');
+@mixin svg-background($image-name, $image-location: '../images/') {
+  $url: $image-location + $image-name + '.svg';
+  background-image: url($url);
 }
 
 // remove list default styles
@@ -63,4 +64,17 @@
   > li {
     display: inline;
   }
+}
+
+// style buttons with icons
+@mixin button-icon($size, $image-name) {
+  @include button-clear;
+  @include image-replace($size, $size);
+  @include svg-background($image-name);
+
+  background-color: $lilac;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: calc(#{$size} - 10px);
+  border-radius: 100%;
 }

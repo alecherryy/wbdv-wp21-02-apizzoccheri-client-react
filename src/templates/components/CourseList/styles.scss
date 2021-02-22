@@ -1,0 +1,147 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Course list
+
+.course-list__top {
+    padding-left: $spacing-6;
+    position: relative;
+}
+
+.course-list__menu {
+    @include button-icon(rem(44px), icon-menu);
+
+    background-color: transparent;
+    left: 0;
+    position: absolute;
+    top: calc((100% - #{rem(44px)}) / 2);
+
+    @include bp-tablet {
+        @include button-icon(rem(54px), icon-menu);
+
+        background-color: transparent;
+        top: calc((100% - #{rem(54px)}) / 2);
+        position: absolute;
+    }
+}
+
+.course-list__view {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $spacing-5;
+}
+
+.course-list__btn {
+    @include button-clear;
+
+    background-position: center left 20px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    border: solid 2px $magenta;
+    color: $blue;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    font-weight: 700;
+    padding: $spacing-1 $spacing-3 $spacing-1 $spacing-5;
+    text-align: center;
+
+    &:hover {
+        background-color: $pink;
+    }
+
+    &:disabled {
+        background-color: $magenta;
+        color: $white;
+    }
+}
+
+.course-list__btn--table {
+    @include svg-background(icon-table);
+}
+
+.course-list__btn--grid {
+    @include svg-background(icon-grid);
+}
+
+.course-list__sort {
+    @include button-icon(rem(44px), icon-sort);
+
+    background-color: transparent;
+    margin-right: $spacing-2;
+}
+
+.course-list__folder {
+    @include button-icon(rem(44px), icon-folder);
+
+    background-color: transparent;
+    margin-right: $spacing-2;
+}
+
+.course-list__content {
+    margin: $spacing-5 0;
+}
+
+.course-list__table {
+    border: solid 1px $pink;
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+        height: rem(54px);
+        padding: 0 $spacing-2;
+        text-align: center;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: $gray-1;
+        }
+    }
+
+    @include bp-max-tablet {
+        td,
+        th {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    @include bp-max-desktop {
+        td,
+        th {
+            &:nth-child(3) {
+                display: none;
+            }
+        }
+    }
+}
+
+.course-list__head {
+    background-color: $pink;
+}
+
+.course-list__add {
+    @include button-icon(rem(54px), icon-add);
+
+    background-color: $magenta;
+    background-size: rem(24px);
+    bottom: 2rem;
+    right: 2rem;
+    position: fixed !important;
+
+    &:hover,
+    &:focus {
+        background-color: $blue;
+    }
+
+    @include bp-tablet {
+        margin-left: $spacing-2;
+    }
+}

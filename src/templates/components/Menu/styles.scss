@@ -1,0 +1,22 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Menu
+
+.menu {
+    @include list-inline;
+
+    padding: $spacing-3 0;
+    margin: 0 0 $spacing-5;
+    text-align: right;
+    width: 100%;
+}
+
+.menu__link {
+    text-decoration: none;
+}
+
+.menu__link {
+    padding: $spacing-1;
+    text-decoration: none;
+}

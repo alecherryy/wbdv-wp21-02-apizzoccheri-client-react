@@ -1,0 +1,80 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Add form
+
+.add-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-form__title {
+  flex-basis: 100%;
+  padding-right: $spacing-1;
+}
+
+.add-form__form {
+  align-items: center;
+  display: flex;
+  width: 100%;
+
+  ::placeholder {
+    color: $gray-2;
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    font-weight: 700;
+    opacity: 1;
+  }
+}
+
+// global form input styles
+.add-form__input {
+  &[type='text'] {
+    appearance: none;
+  }
+
+  appearance: none;
+  background-color: transparent;
+  border: solid 1px $blue;
+  box-shadow: 0;
+  color: $blue;
+  font-size: $base-font-size;
+  height: rem(54px);
+  padding: 0 $spacing-2;
+  width: calc(100% - #{rem(64px)});
+
+  &:focus {
+    border-color: $magenta;
+    outline: none;
+  }
+
+  @include bp-tablet {
+    width: calc(100% - #{rem(54px)});
+  }
+}
+
+.add-form__btn {
+  @include button-icon(rem(54px), icon-add);
+
+  background-color: $lilac;
+  background-size: rem(24px);
+  margin-left: $spacing-1;
+
+  &:hover,
+  &:focus {
+    background-color: $blue;
+  }
+}
+
+.add-form--large {
+
+  @include bp-tablet-lg {
+    .add-form__title {
+      flex-basis: 33.33%;
+    }
+
+    .add-form__form {
+      flex-basis: 66.66%;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Course table
+
+.course-table__table {
+    border: solid 1px $pink;
+    border-collapse: collapse;
+    width: 100%;
+
+    th,
+    td {
+        height: rem(54px);
+        padding: 0 $spacing-2;
+        text-align: center;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: $gray-1;
+        }
+    }
+
+    @include bp-max-tablet {
+        td,
+        th {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    @include bp-max-desktop {
+        td,
+        th {
+            &:nth-child(3) {
+                display: none;
+            }
+        }
+    }
+}
+
+.course-table__head {
+    background-color: $pink;
+}
