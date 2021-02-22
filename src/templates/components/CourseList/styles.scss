@@ -26,9 +26,8 @@
     font-family: $base-font-family;
     font-size: $base-font-size;
     font-weight: 700;
-    padding: $spacing-1 0;
+    padding: $spacing-1 $spacing-3 $spacing-1 $spacing-5;
     text-align: center;
-    width: rem(140px);
 
     &:hover {
         background-color: $pink;

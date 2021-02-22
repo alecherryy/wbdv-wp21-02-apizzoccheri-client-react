@@ -55,10 +55,11 @@ class GridCard extends React.Component {
                 }
                 {
                     this.state.editing === false &&
-                    // <Link to={`/edit/${this.state.course._id}`}>
-                    //     {this.state.course.title}
-                    // </Link>
-                    <h4>{this.state.course.title}</h4>
+                    <h4 className="grid-card__title">
+                        <Link to='/course-editor'>
+                            {this.state.course.title}
+                        </Link>
+                    </h4>
                 }
                 <p><b>Owener: </b>{this.props.course.owner}</p>
                 <p><b>Last modified: </b>{this.props.course.last_modified}</p>

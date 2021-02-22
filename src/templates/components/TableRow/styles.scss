@@ -10,6 +10,17 @@
   }
 }
 
+.table-row__title {
+  font-size: $base-font-size;
+  margin: 0;
+
+  a {
+    &:hover {
+      color: $magenta;
+    }
+  }
+}
+
 .table-row__btn {
   @include button-clear;
   @include image-replace(rem(30px), rem(30px));

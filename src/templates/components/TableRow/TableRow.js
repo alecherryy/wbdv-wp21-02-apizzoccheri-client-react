@@ -56,10 +56,11 @@ class TableRow extends React.Component {
                 }
                 {
                     this.state.editing === false &&
-                    // <Link to={`/edit/${this.state.course._id}`}>
-                    //     {this.state.course.title}
-                    // </Link>
-                    <span>{this.state.course.title}</span>
+                    <h4 className="table-row__title">
+                        <Link to='/course-editor'>
+                            {this.state.course.title}
+                        </Link>
+                    </h4>
                 }
                 </td>
                 <td>{this.props.course.owner}</td>

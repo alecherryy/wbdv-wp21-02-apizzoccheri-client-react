@@ -21,6 +21,16 @@
   }
 }
 
+.grid-card__title {
+  font-size: $base-font-size;
+
+  a {
+    &:hover {
+      color: $magenta;
+    }
+  }
+}
+
 .grid-card__input {
   border: 0;
   border: solid 1px $lilac;
