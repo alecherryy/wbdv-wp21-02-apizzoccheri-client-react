@@ -1,53 +1,9 @@
 @import '/src/scss/variables.scss';
 
 // @file
-// Course list
+// Course table
 
-.course-list__view {
-    @include list-inline;
-
-    display: block;
-    margin-top: $spacing-5;
-    text-align: right;
-}
-
-.course-list__btn {
-    @include button-clear;
-
-    background-position: center left 20px;
-    background-size: 20px;
-    background-repeat: no-repeat;
-    border: solid 2px $magenta;
-    color: $blue;
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    font-weight: 700;
-    padding: $spacing-1 $spacing-3 $spacing-1 $spacing-5;
-    text-align: center;
-
-    &:hover {
-        background-color: $pink;
-    }
-
-    &:disabled {
-        background-color: $magenta;
-        color: $white;
-    }
-}
-
-.course-list__btn--table {
-    @include svg-background(icon-table);
-}
-
-.course-list__btn--grid {
-    @include svg-background(icon-grid);
-}
-
-.course-list__content {
-    margin: $spacing-5 0;
-}
-
-.course-list__table {
+.course-table__table {
     border: solid 1px $pink;
     border-collapse: collapse;
     width: 100%;
@@ -88,33 +44,6 @@
     }
 }
 
-.course-list__head {
+.course-table__head {
     background-color: $pink;
-}
-
-.course-list__search {
-    @include button-clear;
-    @include image-replace(rem(44px), rem(44px));
-    @include svg-background(icon-add);
-
-    background-color: $magenta;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: rem(20px);
-    border-radius: 100%;
-    bottom: 2rem;
-    right: 2rem;
-    position: fixed !important;
-
-    &:hover,
-    &:focus {
-        background-color: $blue;
-    }
-
-    @include bp-tablet {
-        @include image-replace(rem(54px), rem(54px));
-
-        background-size: rem(25px);
-        margin-left: $spacing-2;
-    }
 }

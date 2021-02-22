@@ -1,6 +1,5 @@
-import './styles.scss';
-
 import React from 'react';
+
 import { Grid } from '../../layouts/Grid/Grid';
 import GridCard from '../GridCard/GridCard';
 

@@ -5,15 +5,9 @@ import courseService from '../../../services/CourseService';
 import { Link } from 'react-router-dom';
 
 /**
- * Component for table row element.
+ * Component for TableRow.
  *
  * @component
- * @param {string} title of the table row.
- * @param {string} lastModified date of the component.
- * @return {object} (
- *   <TableRow title={title}
- *      lastModified={lastModified}/>
- * )
  */
 class TableRow extends React.Component {
     state = {

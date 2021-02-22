@@ -8,9 +8,10 @@ import { CourseTable } from '../CourseTable/CourseTable';
 import { CourseGrid } from '../CourseGrid/CourseGrid';
 
 /**
- * Component for course list.
+ * Component for CourseList
+ *
+ * @component
  */
-
 class CourseList extends React.Component {
     state = {
         courses: [],

@@ -4,8 +4,6 @@
 // Course list
 
 .course-list__view {
-    @include list-inline;
-
     display: block;
     margin-top: $spacing-5;
     text-align: right;

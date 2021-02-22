@@ -1,18 +1,18 @@
 import './styles.scss';
 
 import React from 'react';
-import { Grid } from '../../layouts/Grid/Grid';
-import GridCard from '../GridCard/GridCard';
+
 import TableRow from '../TableRow/TableRow';
 
 /**
- * Component for course table element.
+ * Component for CourseTable
+ *
+ * @component
  */
-
 export const CourseTable = ( {courses, deleteCourse} ) => {
     return (
-        <table className="course-list__table">
-            <thead className="course-list__head">
+        <table className="course-table__table">
+            <thead className="course-table__head">
                 <tr>
                     <th>Title</th>
                     <th>Owner</th>
@@ -20,7 +20,7 @@ export const CourseTable = ( {courses, deleteCourse} ) => {
                     <th></th>
                 </tr>
             </thead>
-            <tbody className="course-list__body">
+            <tbody className="course-table__body">
             { courses.map(course =>
                 <TableRow
                     key={course._id}

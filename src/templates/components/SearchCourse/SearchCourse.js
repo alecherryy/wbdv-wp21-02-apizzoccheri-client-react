@@ -1,10 +1,9 @@
 import './styles.scss';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /**
- * Component for search course
+ * Component for SearchCourse
  *
  * @component
  */
