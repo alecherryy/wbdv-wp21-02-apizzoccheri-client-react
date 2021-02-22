@@ -4,8 +4,9 @@
 // Course Table
 
 .course-table {
-    border: solid 1px $gray-1;
+    border: solid 1px $pink;
     border-collapse: collapse;
+    margin: $spacing-5 0 0;
     width: 100%;
 
     th,

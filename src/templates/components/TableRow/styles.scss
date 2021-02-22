@@ -3,6 +3,13 @@
 // @file
 // Table row
 
+.table-row {
+  &[data-is-editing='true'] {
+    background-color: $lilac !important;
+    color: $white;
+  }
+}
+
 .table-row__btn {
   @include button-clear;
   @include image-replace(rem(30px), rem(30px));
@@ -13,6 +20,22 @@
 
   @include bp-tablet {
     background-size: rem(25px);
+  }
+}
+
+.table-row__input {
+  border: 0;
+  border: solid 1px $lilac;
+  box-shadow: none;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  height: rem(52px);
+  margin-left: -19px;
+  padding-left: $spacing-2;
+  width: 100%;
+
+  &:focus {
+    outline: none;
   }
 }
 

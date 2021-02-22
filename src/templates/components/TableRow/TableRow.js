@@ -45,11 +45,12 @@ class TableRow extends React.Component {
     render() {
 
         return (
-            <tr className="table-row">
+            <tr className="table-row" data-is-editing={this.state.editing}>
                 <td>
                 {
                     this.state.editing === true &&
                     <input
+                    className="table-row__input"
                     onChange={this.updateTitle}
                     value={this.state.course.title}/>
                 }
