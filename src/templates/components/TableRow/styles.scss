@@ -34,6 +34,8 @@
 
 .table-row__btn--edit {
   @include svg-background(icon-edit);
+
+  background-color: transparent;
 }
 
 .table-row__btn--delete {

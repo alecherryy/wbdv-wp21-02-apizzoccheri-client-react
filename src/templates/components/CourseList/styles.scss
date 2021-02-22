@@ -90,16 +90,10 @@
     background-color: $pink;
 }
 
-.course-list__search {
-    @include button-clear;
-    @include image-replace(rem(44px), rem(44px));
-    @include svg-background(icon-add);
+.course-list__add {
+    @include button-icon(rem(54px), icon-add);
 
     background-color: $magenta;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: rem(20px);
-    border-radius: 100%;
     bottom: 2rem;
     right: 2rem;
     position: fixed !important;
@@ -110,9 +104,6 @@
     }
 
     @include bp-tablet {
-        @include image-replace(rem(54px), rem(54px));
-
-        background-size: rem(25px);
         margin-left: $spacing-2;
     }
 }

@@ -61,25 +61,12 @@
 }
 
 .search-form__btn {
-  @include button-clear;
-  @include image-replace(rem(44px), rem(44px));
-  @include svg-background(icon-search-white);
+  @include button-icon(rem(54px), icon-search-white);
 
   background-color: $lilac;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: rem(20px);
-  border-radius: 100%;
 
   &:hover,
   &:focus {
     background-color: $blue;
-  }
-
-  @include bp-tablet {
-    @include image-replace(rem(54px), rem(54px));
-
-    background-size: rem(25px);
-    margin-left: $spacing-2;
   }
 }

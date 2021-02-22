@@ -93,7 +93,7 @@ class CourseList extends React.Component {
                         <CourseGrid courses={this.state.courses} deleteCourse={this.deleteCourse} />
                     }
                 </div>
-                <button className="course-list__search" onClick={this.createCourse}>Add new course</button>
+                <button className="course-list__add" onClick={this.createCourse}>Add new course</button>
             </Constrain>
         )
     }

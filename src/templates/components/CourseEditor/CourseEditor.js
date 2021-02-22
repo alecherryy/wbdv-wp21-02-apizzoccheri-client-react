@@ -19,19 +19,19 @@ export const CourseEditor = () => {
                     <h4>Modules</h4>
                     <ul className="list-modules">
                         <li className="list-modules__item">
-                        Module 1 <button className="btn btn-edit">Edit</button>
+                        Module 1 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
                         </li>
                         <li className="list-modules__item is-selected">
-                        Module 2 <button className="btn btn-edit">Edit</button>
+                        Module 2 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
                         </li>
                         <li className="list-modules__item">
-                        Module 3 <button className="btn btn-edit">Edit</button>
+                        Module 3 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
                         </li>
                         <li className="list-modules__item">
-                        Module 4 <button className="btn btn-edit">Edit</button>
+                        Module 4 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
                         </li>
                         <li className="list-modules__item">
-                        Module 5 <button className="btn btn-edit">Edit</button>
+                        Module 5 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
                         </li>
                         <li className="list-modules__item">
                             <AddCourse  />
@@ -41,32 +41,32 @@ export const CourseEditor = () => {
                 <div className="sidebar__main">
                     <ul className="nav-editor">
                         <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">Module Section<button className="btn btn-edit ml-2">Edit</button></a>
+                        <a className="nav-editor__link" href="#">Module Section<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                         <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">Module Section<button className="btn btn-edit ml-2">Edit</button></a>
+                        <a className="nav-editor__link" href="#">Module Section<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                         <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">Selected Section<button className="btn btn-edit ml-2">Edit</button></a>
+                        <a className="nav-editor__link" href="#">Selected Section<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                         <li className="nav-editor__item">
                         <a className="nav-editor__link" href="#">
-                            Add section <button className="btn btn-add" type="submit">Add</button>
+                            Add section <button className="list-modules__btn list-modules__list-modules__btn--add" type="submit">Add</button>
                         </a>
                         </li>
                     </ul>
                     <ul className="nav-editor">
                         <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="btn btn-edit ml-2">Edit</button></a>
+                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                         <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="btn btn-edit ml-2">Edit</button></a>
+                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                         <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="btn btn-edit ml-2">Edit</button></a>
+                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                         <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="btn btn-edit ml-2">Edit</button></a>
+                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
                         </li>
                     </ul>
                 </div>

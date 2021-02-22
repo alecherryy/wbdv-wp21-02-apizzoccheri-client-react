@@ -55,20 +55,13 @@
 }
 
 .grid-card__btn {
-  @include button-clear;
-  @include image-replace(rem(30px), rem(30px));
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: rem(20px);
-
-  @include bp-tablet {
-    background-size: rem(25px);
-  }
+  @include button-icon(rem(30px), icon-add);
 }
 
 .grid-card__btn--edit {
   @include svg-background(icon-edit);
+
+  background-color: transparent;
 }
 
 .grid-card__btn--delete {

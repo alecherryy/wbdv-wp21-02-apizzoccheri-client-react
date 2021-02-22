@@ -65,3 +65,16 @@
     display: inline;
   }
 }
+
+// style buttons with icons
+@mixin button-icon($size, $image-name) {
+  @include button-clear;
+  @include image-replace($size, $size);
+  @include svg-background($image-name);
+
+  background-color: $lilac;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: rem(#{$size - 1});
+  border-radius: 100%;
+}

@@ -22,23 +22,19 @@
     }
 }
 
-.btn {
-    @include button-clear;
-    @include image-replace(rem(25px), rem(25px));
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: rem(20px);
+.list-modules__btn {
+    @include button-icon(rem(25px), icon-add);
     margin-left: $spacing-1;
 }
 
-.btn-edit {
+.list-modules__list-modules__btn--edit {
     @include svg-background(icon-edit);
+
+    background-color: transparent;
 }
 
-.btn-add {
-    @include image-replace(rem(30px), rem(30px));
-    @include svg-background(icon-add);
+.list-modules__list-modules__btn--add {
+    @include button-icon(rem(27px), icon-add);
 
     background-color: $magenta;
     background-size: rem(17px);
