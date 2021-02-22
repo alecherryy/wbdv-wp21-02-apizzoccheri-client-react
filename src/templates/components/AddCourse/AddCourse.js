@@ -3,7 +3,7 @@ import './styles.scss';
 import React from 'react';
 
 /**
- * Component for add course
+ * Component for AddCourse
  *
  * @component
  */
@@ -14,7 +14,7 @@ export const AddCourse = ({ modifierClasses, title, createCourse }) => {
         >
             { title && <h3 className="add-form__title">{title}</h3>}
             <form className="add-form__form">
-                <input id="courseTitle" className="add-form__input" placeholder="Add a new course" type="text" />
+                <input className="add-form__input" placeholder="Add a new course" type="text" />
                 <input type="submit"
                     className="add-form__btn"
                     onClick={createCourse}

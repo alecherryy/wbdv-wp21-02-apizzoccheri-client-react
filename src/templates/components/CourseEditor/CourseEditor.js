@@ -5,6 +5,11 @@ import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
 import { AddCourse } from "../../components/AddCourse/AddCourse";
 
+/**
+ * Component for CourseEditor
+ *
+ * @component
+ */
 export const CourseEditor = () => {
     return(
         <Constrain>
@@ -66,7 +71,6 @@ export const CourseEditor = () => {
                     </ul>
                 </div>
             </Sidebar>
-
         </Constrain>
     )
 }

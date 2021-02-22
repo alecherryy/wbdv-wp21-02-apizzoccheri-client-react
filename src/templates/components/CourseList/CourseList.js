@@ -4,12 +4,11 @@ import React from 'react';
 import courseService from "../../../services/CourseService";
 import { Constrain } from '../../layouts/Constrain/Constrain';
 import { AddCourse } from '../AddCourse/AddCourse';
-import { Grid } from '../../layouts/Grid/Grid';
-import GridCard from '../GridCard/GridCard';
-import TableRow from '../TableRow/TableRow';
+import { CourseTable } from '../CourseTable/CourseTable';
+import { CourseGrid } from '../CourseGrid/CourseGrid';
 
 /**
- * Component for CourseTable element.
+ * Component for course list.
  */
 
 class CourseList extends React.Component {
@@ -18,6 +17,7 @@ class CourseList extends React.Component {
         display: 'table'
     }
 
+    // Render courses
     componentDidMount() {
         courseService.findAllCourses()
         .then(courses => this.setState({
@@ -25,18 +25,20 @@ class CourseList extends React.Component {
         }))
     }
 
+    // Add a new course to the list of courses
     createCourse = (e) => {
         e.preventDefault();
 
         const date = new Date();
-        const addCourseForm = document.getElementById('courseTitle');
+        const newTitle = e.target.previousSibling.value;
         const newCourse = {
-            title: addCourseForm.value ? addCourseForm.value : 'New Course',
+            title: newTitle ? newTitle : 'New Course',
             owner: 'Me',
             last_modified: date.toLocaleDateString()
         }
 
-        addCourseForm.parentNode.reset();
+        // reset form
+        e.target.parentNode.reset();
 
         courseService.createCourse(newCourse)
         courseService.findAllCourses().then(courses => this.setState({
@@ -53,6 +55,7 @@ class CourseList extends React.Component {
     //     })))
     // }
 
+    // Delete a course from the list of courses
     deleteCourse = (course) => {
         courseService.deleteCourse(course._id)
         courseService.findAllCourses().then(courses => this.setState({
@@ -60,18 +63,11 @@ class CourseList extends React.Component {
         }))
     }
 
-    switchToTable = () => {
-        if (this.state.display === 'grid' ) {
+    // Toggle display mode - Grid or Table
+    switchView = (e) => {
+        if (this.state.display !== e.target.dataset.view ) {
             this.setState({
-                display: 'table'
-            })
-        }
-    }
-
-    switchToGrid = () => {
-        if (this.state.display === 'table' ) {
-            this.setState({
-                display: 'grid'
+                display: e.target.dataset.view
             })
         }
     }
@@ -86,28 +82,14 @@ class CourseList extends React.Component {
                         title="Add a new course"
                         createCourse={this.createCourse}
                     />
-                    <ul className="course-list__view">
-                        <li><button
-                                className="course-list__btn course-list__btn--table"
-                                disabled={this.state.display === 'table'}
-                                onClick={this.switchToTable}
-                            >Table</button>
-                        </li>
-                        <li>
-                            <button
-                                className="course-list__btn course-list__btn--grid"
-                                disabled={this.state.display === 'grid'}
-                                onClick={this.switchToGrid}
-                            >Grid</button>
-                        </li>
-                    </ul>
+                    <DisplayControls display={this.state.display} switchView={this.switchView} />
                 </Constrain>
                 <div className="course-list__content">
                     { this.state.display === 'table' &&
-                        <TableDisplay courses={this.state.courses} deleteCourse={this.deleteCourse} />
+                        <CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse} />
                     }
                     { this.state.display === 'grid' &&
-                        <GridDisplay courses={this.state.courses} deleteCourse={this.deleteCourse} />
+                        <CourseGrid courses={this.state.courses} deleteCourse={this.deleteCourse} />
                     }
                 </div>
                 <button className="course-list__search" onClick={this.createCourse}>Add new course</button>
@@ -116,42 +98,22 @@ class CourseList extends React.Component {
     }
 }
 
-const TableDisplay = ( {courses, deleteCourse} ) => {
+const DisplayControls = ({ display, switchView }) => {
     return (
-        <table className="course-list__table">
-            <thead className="course-list__head">
-                <tr>
-                    <th>Title</th>
-                    <th>Owner</th>
-                    <th>Last Modified</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody className="course-list__body">
-            { courses.map(course =>
-                <TableRow
-                    key={course._id}
-                    deleteCourse={deleteCourse}
-                    course={course} />
-                )
-            }
-            </tbody>
-        </table>
+        <div className="course-list__view">
+            <button
+                className="course-list__btn course-list__btn--table"
+                data-view='table'
+                disabled={display === 'table'}
+                onClick={switchView}
+            >Table</button>
+            <button
+                className="course-list__btn course-list__btn--grid"
+                data-view='grid'
+                disabled={display === 'grid'}
+                onClick={switchView}
+            >Grid</button>
+        </div>
     )
 }
-
-const GridDisplay = ( {courses, deleteCourse} ) => {
-    return (
-        <Grid noOfCols='4'>
-            { courses.map(course =>
-                <GridCard
-                    key={course._id}
-                    deleteCourse={deleteCourse}
-                    course={course} />
-                )
-            }
-        </Grid>
-    )
-}
-
 export default CourseList
