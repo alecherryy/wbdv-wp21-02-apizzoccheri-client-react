@@ -1,7 +1,7 @@
 import './styles.scss';
 
 import React from 'react';
-import courseService from "../../../services/CourseService";
+import courseService from "../../services/CourseService";
 import { Constrain } from '../../layouts/Constrain/Constrain';
 import { AddCourse } from '../AddCourse/AddCourse';
 import { CourseTable } from '../CourseTable/CourseTable';

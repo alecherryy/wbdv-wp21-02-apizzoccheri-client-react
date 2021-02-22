@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
-import { CourseManager } from './templates/components/CourseManager/CourseManager';
+import { CourseManager } from './components/CourseManager/CourseManager';
 
 function App() {
   return (

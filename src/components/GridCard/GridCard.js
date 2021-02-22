@@ -1,7 +1,7 @@
 import './styles.scss';
 
 import React from 'react';
-import courseService from '../../../services/CourseService';
+import courseService from '../../services/CourseService';
 import { Link } from 'react-router-dom';
 
 /**
