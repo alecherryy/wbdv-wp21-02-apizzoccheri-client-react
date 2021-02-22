@@ -3,22 +3,13 @@ import './styles.scss';
 import React from 'react';
 import courseService from "../../../services/CourseService";
 import { Constrain } from '../../layouts/Constrain/Constrain';
-import { SearchCourse } from '../SearchCourse/SearchCourse';
+import { AddCourse } from '../AddCourse/AddCourse';
 import { Grid } from '../../layouts/Grid/Grid';
 import GridCard from '../GridCard/GridCard';
 import TableRow from '../TableRow/TableRow';
 
 /**
  * Component for CourseTable element.
- *
- * @component
- * @param {string} modifierClasses Class modifiers of the component.
- * @param {node} content Children of the component.
- * @return {object} (
- *   <CourseTable modifierClasses={modifierClasses} />
- *      {content}
- *   </CourseTable>
- * )
  */
 
 class CourseList extends React.Component {
@@ -34,13 +25,18 @@ class CourseList extends React.Component {
         }))
     }
 
-    createCourse = () => {
+    createCourse = (e) => {
+        e.preventDefault();
+
         const date = new Date();
+        const addCourseForm = document.getElementById('courseTitle');
         const newCourse = {
-            title: 'React Js',
+            title: addCourseForm.value ? addCourseForm.value : 'New Course',
             owner: 'Me',
             last_modified: date.toLocaleDateString()
         }
+
+        addCourseForm.parentNode.reset();
 
         courseService.createCourse(newCourse)
         courseService.findAllCourses().then(courses => this.setState({
@@ -48,13 +44,14 @@ class CourseList extends React.Component {
         }))
     }
 
-    findCourseById = () => {
-        const id = document.getElementById('courseID').value;
-        courseService.findCourseById(id)
-        .then(state => this.setState(prevState => ({
-            courses: prevState.courses.filter(c => c._id === id)
-        })))
-    }
+    // NOT NEEDED FOR IMPLEMENTATION
+    // findCourseById = () => {
+    //     const id = document.getElementById('courseID').value;
+    //     courseService.findCourseById(id)
+    //     .then(state => this.setState(prevState => ({
+    //         courses: prevState.courses.filter(c => c._id === id)
+    //     })))
+    // }
 
     deleteCourse = (course) => {
         courseService.deleteCourse(course._id)
@@ -82,23 +79,29 @@ class CourseList extends React.Component {
     render() {
         return(
             <Constrain>
-                <h1>All Courses</h1>
-                <SearchCourse title="Find a course" findCourseById={this.findCourseById} />
-                <ul className="course-list__view">
-                    <li><button
-                            className="course-list__btn course-list__btn--table"
-                            disabled={this.state.display === 'table'}
-                            onClick={this.switchToTable}
-                        >Table</button>
-                    </li>
-                    <li>
-                        <button
-                            className="course-list__btn course-list__btn--grid"
-                            disabled={this.state.display === 'grid'}
-                            onClick={this.switchToGrid}
-                        >Grid</button>
-                    </li>
-                </ul>
+                <Constrain modifierClasses="constrain--small">
+                    <h1>All Courses</h1>
+                    <AddCourse
+                        modifierClasses="add-form--large"
+                        title="Add a new course"
+                        createCourse={this.createCourse}
+                    />
+                    <ul className="course-list__view">
+                        <li><button
+                                className="course-list__btn course-list__btn--table"
+                                disabled={this.state.display === 'table'}
+                                onClick={this.switchToTable}
+                            >Table</button>
+                        </li>
+                        <li>
+                            <button
+                                className="course-list__btn course-list__btn--grid"
+                                disabled={this.state.display === 'grid'}
+                                onClick={this.switchToGrid}
+                            >Grid</button>
+                        </li>
+                    </ul>
+                </Constrain>
                 <div className="course-list__content">
                     { this.state.display === 'table' &&
                         <TableDisplay courses={this.state.courses} deleteCourse={this.deleteCourse} />

@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 class GridCard extends React.Component {
     state = {
         editing: false,
-        courseTitle: 'Some Course',
+        courseTitle: '',
         course: this.props.course
     }
 
@@ -30,6 +30,8 @@ class GridCard extends React.Component {
         const newTitle = event.target.value
         const course = { ...this.state.course }
         course.title = newTitle
+        const date = new Date();
+        course.last_modified = date.toLocaleDateString()
 
         this.setState({
             course: course

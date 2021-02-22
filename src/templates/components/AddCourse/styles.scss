@@ -9,7 +9,7 @@
 
 .add-form__title {
   flex-basis: 100%;
-  margin-right: $spacing-3;
+  margin-right: $spacing-1;
 }
 
 .add-form__form {
@@ -73,5 +73,18 @@
 
   @include bp-tablet {
     background-size: rem(25px);
+  }
+}
+
+.add-form--large {
+
+  @include bp-tablet-lg {
+    .add-form__title {
+      flex-basis: 33.33%;
+    }
+
+    .add-form__form {
+      flex-basis: 66.66%;
+    }
   }
 }

@@ -24,16 +24,12 @@
 
 .btn {
     @include button-clear;
-    @include image-replace(rem(30px), rem(30px));
+    @include image-replace(rem(25px), rem(25px));
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: rem(20px);
     margin-left: $spacing-1;
-
-    @include bp-tablet {
-        background-size: rem(25px);
-    }
 }
 
 .btn-edit {
@@ -57,14 +53,16 @@
 }
 
 .nav-editor__item {
-    align-items: center;
     border: solid 1px $gray-2;
     border-radius: 10px 10px 0 0;
     display: inline-flex !important;
-    justify-content: space-between;
-    padding: $spacing-2 !important;
+    padding: $spacing-1 $spacing-2 !important;
+}
 
-    a {
-        text-decoration: none;
-    }
+.nav-editor__link {
+    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: $spacing-1 0;
+    text-decoration: none;
 }

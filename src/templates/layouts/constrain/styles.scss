@@ -12,6 +12,10 @@
   @include bp-tablet {
     padding: 0 2rem;
   }
+
+  .constrain {
+    padding: 0;
+  }
 }
 
 // wide constrain
@@ -21,5 +25,5 @@
 
 // small constrain
 .constrain--small {
-  max-width: rem(600px);
+  max-width: rem(800px);
 }
