@@ -1,11 +1,7 @@
 @import '/src/scss/variables.scss';
 
 // @file
-// Course Table
-
-.course-list {
-
-}
+// Course list
 
 .course-list__view {
     @include list-inline;
@@ -48,7 +44,7 @@
 }
 
 .course-list__content {
-    margin: $spacing-5 0 0;
+    margin: $spacing-5 0;
 }
 
 .course-list__table {

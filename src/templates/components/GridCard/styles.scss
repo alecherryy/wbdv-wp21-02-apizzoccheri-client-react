@@ -25,9 +25,7 @@
   font-size: $base-font-size;
 
   a {
-    &:hover {
-      color: $magenta;
-    }
+    text-decoration: none;
   }
 }
 

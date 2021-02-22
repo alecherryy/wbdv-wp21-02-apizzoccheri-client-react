@@ -1,12 +1,13 @@
+import './styles.scss';
+
 import React from 'react';
 
-export const Sidebar = ({ modifierClasses, asideContent, mainContent}) => {
+export const Sidebar = ({ modifierClasses, children }) => {
     return (
         <div
             className={['sidebar', `${modifierClasses}`].join(' ').trim()}
         >
-            <div className='sidebar__aside'>{asideContent}</div>
-            <div className='sidebar__main'>{mainContent}</div>
+            {children}
         </div>
     );
 };

@@ -15,9 +15,7 @@
   margin: 0;
 
   a {
-    &:hover {
-      color: $magenta;
-    }
+    text-decoration: none;
   }
 }
 
