@@ -1,21 +1,12 @@
 import './styles.scss';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /**
- * Component for constrain element.
+ * Component for Constrain element.
  *
  * @component
- * @param {string} modifierClasses Class modifiers of the component.
- * @param {node} children Children of the component.
- * @return {object} (
- *   <Constrain modifierClasses={modifierClasses} />
- *      {content}
- *   </Constrain>
- * )
  */
-
 export const Constrain = ( { modifierClasses, children }) => {
     return (
         <div
@@ -25,19 +16,3 @@ export const Constrain = ( { modifierClasses, children }) => {
         </div>
     );
 };
-
-Constrain.propTypes = {
-    /**
-   * Constrain's modifier classes
-   */
-    modifierClasses: PropTypes.string,
-    /**
-   * Constrain's children nodes
-   */
-    children: PropTypes.node,
-};
-
-Constrain.defaultProps = {
-    modifierClasses: '',
-};
-
