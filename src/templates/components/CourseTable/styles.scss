@@ -3,4 +3,38 @@
 // @file
 // Course Table
 
-// .course-table {}
+.course-table {
+    border: solid 1px $gray-1;
+    border-collapse: collapse;
+    width: 100%;
+
+    tr {
+        height: rem(44px);
+    }
+
+    th,
+    td {
+        padding: 0 $spacing-2;
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+        text-align: center;
+    }
+
+    @include bp-tablet {
+        tr {
+            height: rem(54px);
+        }
+    }
+
+    @include bp-desktop {
+        td:nth-child(3) {
+            display: block;
+        }
+    }
+}
+
+.course-table__head {
+    background-color: $pink;
+}

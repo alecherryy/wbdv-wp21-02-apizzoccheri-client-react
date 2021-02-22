@@ -20,18 +20,19 @@ import { FormItem } from '../FormItem/FormItem';
  *   />
  * )
  */
-export const Form = (
-    { title },
-) => {
+export const Form = ({ title, onClick }) => {
     return (
         <div className="form">
             <h3 className="form__title">{title}</h3>
-            <div className="form__form">
-                <FormItem type="text" label="Course label" />
-                <button class="form__btn">Add new course</button>
-            </div>
+            <form className="form__form">
+                <input id="courseTitle" className="form__input" placeholder="Add a course" type="text" />
+                <button
+                    className="form__btn"
+                    onClick={onClick}
+                >Add new course</button>
+            </form>
         </div>
-    );
+    )
 };
 
 Form.propTypes = {
@@ -42,5 +43,5 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-    title: 'Foorm title',
+    title: 'Form title',
 };
