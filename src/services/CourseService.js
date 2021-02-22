@@ -1,3 +1,6 @@
+/**
+ * GLOBAL API URL
+ */
 const url = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/courses';
 
 /**
@@ -12,7 +15,7 @@ export const findAllCourses = () => {
 /**
  * CREATE A NEW COURSE
  *
- * @param {json} course
+ * @param {object} course
  */
 export const createCourse = (course) => {
     fetch(url, {
@@ -27,7 +30,7 @@ export const createCourse = (course) => {
 /**
  * DELETE COURSE
  *
- * @param {json} course
+ * @param {string} courseId
  */
 export const deleteCourse = (courseId) => {
     fetch(`${url}/${courseId}`, {
@@ -38,7 +41,8 @@ export const deleteCourse = (courseId) => {
 /**
  * UPDATE COURSE
  *
- * @param {json} course
+ * @param {string} courseId
+ * @param {object} newCourse
  */
 export const updateCourse = (courseId, newCourse) =>
     fetch(`${url}/${courseId}`, {
@@ -52,12 +56,15 @@ export const updateCourse = (courseId, newCourse) =>
 /**
  * FIND COURSE BY ID
  *
- * @param {json} course
+ * @param {string} courseId
  */
 export const findCourseById = courseId =>
     fetch(`${url}/${courseId}`)
     .then(response => response.json())
 
+/**
+ * EXPORT FUNCTIONS
+ */
 export default {
     findAllCourses, createCourse, deleteCourse, updateCourse
 }
