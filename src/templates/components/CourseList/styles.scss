@@ -3,10 +3,33 @@
 // @file
 // Course list
 
+.course-list__top {
+    padding-left: $spacing-6;
+    position: relative;
+}
+
+.course-list__menu {
+    @include button-icon(rem(44px), icon-menu);
+
+    background-color: transparent;
+    left: 0;
+    position: absolute;
+    top: calc((100% - #{rem(44px)}) / 2);
+
+    @include bp-tablet {
+        @include button-icon(rem(54px), icon-menu);
+
+        background-color: transparent;
+        top: calc((100% - #{rem(54px)}) / 2);
+        position: absolute;
+    }
+}
+
 .course-list__view {
-    display: block;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
     margin-top: $spacing-5;
-    text-align: right;
 }
 
 .course-list__btn {
@@ -39,6 +62,20 @@
 
 .course-list__btn--grid {
     @include svg-background(icon-grid);
+}
+
+.course-list__sort {
+    @include button-icon(rem(44px), icon-sort);
+
+    background-color: transparent;
+    margin-right: $spacing-2;
+}
+
+.course-list__folder {
+    @include button-icon(rem(44px), icon-folder);
+
+    background-color: transparent;
+    margin-right: $spacing-2;
 }
 
 .course-list__content {
@@ -94,6 +131,7 @@
     @include button-icon(rem(54px), icon-add);
 
     background-color: $magenta;
+    background-size: rem(24px);
     bottom: 2rem;
     right: 2rem;
     position: fixed !important;

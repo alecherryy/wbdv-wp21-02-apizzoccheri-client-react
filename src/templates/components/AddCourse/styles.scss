@@ -5,18 +5,18 @@
 
 .add-form {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .add-form__title {
   flex-basis: 100%;
-  margin-right: $spacing-1;
+  padding-right: $spacing-1;
 }
 
 .add-form__form {
-  @include bp-tablet {
-    align-items: center;
-    display: flex;
-  }
+  align-items: center;
+  display: flex;
+  width: 100%;
 
   ::placeholder {
     color: $gray-2;
@@ -39,7 +39,7 @@
   box-shadow: 0;
   color: $blue;
   font-size: $base-font-size;
-  height: rem(44px);
+  height: rem(54px);
   padding: 0 $spacing-2;
   width: calc(100% - #{rem(64px)});
 
@@ -49,7 +49,6 @@
   }
 
   @include bp-tablet {
-    height: rem(54px);
     width: calc(100% - #{rem(54px)});
   }
 }
@@ -58,6 +57,7 @@
   @include button-icon(rem(54px), icon-add);
 
   background-color: $lilac;
+  background-size: rem(24px);
   margin-left: $spacing-1;
 
   &:hover,

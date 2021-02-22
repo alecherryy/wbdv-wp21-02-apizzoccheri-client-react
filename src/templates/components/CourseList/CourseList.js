@@ -39,7 +39,9 @@ class CourseList extends React.Component {
         }
 
         // reset form
-        e.target.parentNode.reset();
+        if (newTitle) {
+            e.target.parentNode.reset();
+        }
 
         courseService.createCourse(newCourse)
         courseService.findAllCourses().then(courses => this.setState({
@@ -77,7 +79,12 @@ class CourseList extends React.Component {
         return(
             <Constrain>
                 <Constrain modifierClasses="constrain--small">
-                    <h1>All Courses</h1>
+                    <div className="course-list__top">
+                        <button
+                            className="course-list__menu"
+                        >Menu</button>
+                        <h1>Course Manager</h1>
+                    </div>
                     <AddCourse
                         modifierClasses="add-form--large"
                         title="Add a new course"
@@ -102,6 +109,12 @@ class CourseList extends React.Component {
 const DisplayControls = ({ display, switchView }) => {
     return (
         <div className="course-list__view">
+            <button
+                className="course-list__folder"
+            >Folder</button>
+            <button
+                className="course-list__sort"
+            >Sort Results</button>
             <button
                 className="course-list__btn course-list__btn--table"
                 data-view='table'

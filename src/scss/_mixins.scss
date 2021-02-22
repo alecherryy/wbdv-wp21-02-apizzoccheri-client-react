@@ -75,6 +75,6 @@
   background-color: $lilac;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: rem(#{$size - 1});
+  background-size: calc(#{$size} - 10px);
   border-radius: 100%;
 }
