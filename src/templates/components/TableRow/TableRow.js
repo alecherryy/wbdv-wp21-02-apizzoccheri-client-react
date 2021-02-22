@@ -1,7 +1,8 @@
 import './styles.scss';
 
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import courseService from '../../../services/CourseService';
+import { Link } from 'react-router-dom';
 
 /**
  * Component for table row element.
@@ -14,29 +15,72 @@ import PropTypes from 'prop-types';
  *      lastModified={lastModified}/>
  * )
  */
-export const TableRow = ({ title, lastModified }) => {
-    return (
-        <Fragment>
-            <td>{title}</td>
-            <td>Me</td>
-            <td>{lastModified}</td>
-            <td>Edit Buttons</td>
-        </Fragment>
-    )
+class TableRow extends React.Component {
+    state = {
+        editing: false,
+        courseTitle: 'Some Course',
+        course: this.props.course
+    }
+
+    constructor(props) {
+        super(props)
+    }
+
+    updateTitle = (event) => {
+        const newTitle = event.target.value
+        const course = { ...this.state.course }
+        course.title = newTitle
+
+        this.setState({
+            course: course
+        })
+    }
+
+    updateCourse = () => {
+        this.setState({editing: false})
+
+        courseService.updateCourse(this.state.course._id, this.state.course)
+    }
+
+    render() {
+
+        return (
+            <tr className="table-row">
+                <td>
+                {
+                    this.state.editing === true &&
+                    <input
+                    onChange={this.updateTitle}
+                    value={this.state.course.title}/>
+                }
+                {
+                    this.state.editing === false &&
+                    // <Link to={`/edit/${this.state.course._id}`}>
+                    //     {this.state.course.title}
+                    // </Link>
+                    <span>{this.state.course.title}</span>
+                }
+                </td>
+                <td>{this.props.course.owner}</td>
+                <td>{this.props.course.last_modified}</td>
+                <td>
+                {
+                    this.state.editing &&
+                    <div className="table-row__edits">
+                        <button className="table-row__btn table-row__btn--delete" onClick={() => this.props.deleteCourse(this.props.course)}>Delete</button>
+                        <button className="table-row__btn table-row__btn--okay" onClick={this.updateCourse}>Ok</button>
+                    </div>
+                }
+                {
+                    !this.state.editing &&
+                    <button className="table-row__btn table-row__btn--okay" onClick={() => this.setState({editing: true})}>
+                        Edit
+                    </button>
+                }
+                </td>
+            </tr>
+        )
+    }
 };
 
-TableRow.propTypes = {
-    /**
-   * TableRow's title
-   */
-    title: PropTypes.string,
-    /**
-   * TableRow's title
-   */
-    lastModified: PropTypes.string,
-};
-
-TableRow.defaultProps = {
-    title: 'Title',
-    lastModified: '',
-};
+export default TableRow;

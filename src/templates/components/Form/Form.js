@@ -2,7 +2,6 @@ import './styles.scss';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormItem } from '../FormItem/FormItem';
 
 /**
  * Component for form item element.
@@ -20,7 +19,7 @@ import { FormItem } from '../FormItem/FormItem';
  *   />
  * )
  */
-export const Form = ({ title, onClick }) => {
+export const Form = ({ title, createCourse }) => {
     return (
         <div className="form">
             <h3 className="form__title">{title}</h3>
@@ -28,7 +27,7 @@ export const Form = ({ title, onClick }) => {
                 <input id="courseTitle" className="form__input" placeholder="Add a course" type="text" />
                 <button
                     className="form__btn"
-                    onClick={onClick}
+                    onClick={createCourse}
                 >Add new course</button>
             </form>
         </div>

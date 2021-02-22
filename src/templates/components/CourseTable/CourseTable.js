@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import courseService from "../../../services/CourseService";
 import { Constrain } from '../../layouts/constrain/Constrain';
 import { Form } from '../Form/Form';
-import { TableRow } from '../TableRow/TableRow';
+import TableRow from '../TableRow/TableRow';
 
 /**
  * Component for CourseTable element.
@@ -20,76 +20,72 @@ import { TableRow } from '../TableRow/TableRow';
  * )
  */
 
-class CourseTable extends React.Component {
+class CourseListComponent extends React.Component {
     state = {
         courses: []
     }
 
-    componentDidMount() {
-        courseService.findAllCourses().then(courses => {
-            this.setState({
-                courses: courses
-            })
-        });
+componentDidMount() {
+    courseService.findAllCourses()
+    .then(courses => this.setState({
+        courses: courses
+    }))
+}
+
+createCourse = () => {
+    const date = new Date();
+    const newCourse = {
+    title: document.getElementById('courseTitle').value,
+    owner: 'Me',
+    last_modified: date.toLocaleDateString()
     }
 
-    createCourse = (e) => {
-        e.preventDefault();
-
-        const newDate = new Date();
-        const newCourse = {
-            title: document.getElementById('courseTitle').value,
-            owner: 'me',
-            last_modified: newDate.toLocaleDateString(),
+    courseService.createCourse(newCourse)
+    .then(actualCourse => this.setState(function (prevState) {
+        return {
+            courses: [
+            ...prevState.courses, actualCourse
+            ]
         }
+        })
+    )
+    .catch(error => {})
+}
 
-        courseService.createCourse(newCourse)
+deleteCourse = (course) => {
+    courseService.deleteCourse(course._id)
+    .then(state => this.setState(prevState => ({
+        courses: prevState.courses.filter(c => c._id !== course._id)
+    })))
+}
 
-        courseService.findAllCourses().then(courses => {
-            this.setState({
-                courses: courses
-            })
-        });
-    }
+render() {
+    return(
+        <Constrain>
+            <Form title="Add a new course" createCourse={this.createCourse} />
+            <table className="course-table">
+            <thead className="course-table__head">
+                <tr>
+                    <th>Title</th>
+                    <th>Owner</th>
+                    <th>Last Modified</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody className="course-table__body">
+            {
+                this.state.courses.map(course =>
+                <TableRow
+                    key={course._id}
+                    deleteCourse={this.deleteCourse}
+                    course={course} />
+                )
+            }
+            </tbody>
+            </table>
+        </Constrain>
+    )
+}
+}
 
-    render() {
-        return (
-            <Constrain>
-                <Form title="Add a new course" onClick={this.createCourse} />
-                <table className="course-table">
-                    <thead className="course-table__head">
-                        <tr>
-                            <th>Title</th>
-                            <th>Owned By</th>
-                            <th>Last modified</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody className="course-table__body">
-                        { this.state.courses.map((course, i) => <tr>
-                            <TableRow key={i} title={course.title} lastModified={course.last_modified} />
-                            </tr>) }
-                    </tbody>
-                </table>
-            </Constrain>
-        );
-    }
-};
-
-CourseTable.propTypes = {
-    /**
-   * CourseTable's modifier classes
-   */
-    modifierClasses: PropTypes.string,
-    /**
-   * CourseTable's children nodes
-   */
-    content: PropTypes.node,
-};
-
-CourseTable.defaultProps = {
-    modifierClasses: '',
-};
-
-
-export default CourseTable;
+export default CourseListComponent

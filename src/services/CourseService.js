@@ -24,6 +24,31 @@ export const createCourse = (course) => {
     }).then(response => response.json())
 }
 
+/**
+ * DELETE COURSE
+ *
+ * @param {json} course
+ */
+export const deleteCourse = (courseId) => {
+    fetch(`${url}/${courseId}`, {
+        method: 'DELETE'
+    }).then(response => response.json())
+}
+
+/**
+ * UPDATE COURSE
+ *
+ * @param {json} course
+ */
+export const updateCourse = (courseId, newCourse) =>
+    fetch(`${url}/${courseId}`, {
+        method: 'PUT',
+        body: JSON.stringify(newCourse),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json())
+
 export default {
-    findAllCourses, createCourse
+    findAllCourses, createCourse, deleteCourse, updateCourse
 }
