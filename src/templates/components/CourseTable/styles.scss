@@ -7,12 +7,70 @@
     border: solid 1px $gray-1;
     border-collapse: collapse;
     width: 100%;
+
+    th,
+    td {
+        height: rem(54px);
+        padding: 0 $spacing-2;
+        text-align: center;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+
+    tr {
+        &:nth-child(even) {
+            background-color: $gray-1;
+        }
+    }
+
+    @include bp-max-tablet {
+        td,
+        th {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    @include bp-max-desktop {
+        td,
+        th {
+            &:nth-child(3) {
+                display: none;
+            }
+        }
+    }
 }
 
 .course-table__head {
     background-color: $pink;
+}
 
-    th {
-        padding: 0 $spacing-2;
+.course-table__search {
+    @include button-clear;
+    @include image-replace(rem(44px), rem(44px));
+    @include svg-background(icon-add);
+
+    background-color: $magenta;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: rem(20px);
+    border-radius: 100%;
+    bottom: 2rem;
+    right: 2rem;
+    position: fixed !important;
+
+    &:hover,
+    &:focus {
+        background-color: $blue;
+    }
+
+    @include bp-tablet {
+        @include image-replace(rem(54px), rem(54px));
+
+        background-size: rem(25px);
+        margin-left: $spacing-2;
     }
 }

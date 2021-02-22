@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import courseService from "../../../services/CourseService";
 import { Constrain } from '../../layouts/constrain/Constrain';
-import { Form } from '../Form/Form';
+import { SearchCourse } from '../SearchCourse/SearchCourse';
 import TableRow from '../TableRow/TableRow';
 
 /**
@@ -25,44 +25,46 @@ class CourseListComponent extends React.Component {
         courses: []
     }
 
-componentDidMount() {
-    courseService.findAllCourses()
-    .then(courses => this.setState({
-        courses: courses
-    }))
-}
-
-createCourse = () => {
-    const date = new Date();
-    const newCourse = {
-    title: document.getElementById('courseTitle').value,
-    owner: 'Me',
-    last_modified: date.toLocaleDateString()
+    componentDidMount() {
+        courseService.findAllCourses()
+        .then(courses => this.setState({
+            courses: courses
+        }))
     }
 
-    courseService.createCourse(newCourse)
-    .then(actualCourse => this.setState(function (prevState) {
-        return {
-            courses: [
-            ...prevState.courses, actualCourse
-            ]
+    createCourse = () => {
+        const date = new Date();
+        const newCourse = {
+            title: 'React Js',
+            owner: 'Me',
+            last_modified: date.toLocaleDateString()
         }
-        })
-    )
-    .catch(error => {})
-}
 
-deleteCourse = (course) => {
-    courseService.deleteCourse(course._id)
-    .then(state => this.setState(prevState => ({
-        courses: prevState.courses.filter(c => c._id !== course._id)
-    })))
-}
+        courseService.createCourse(newCourse)
+        courseService.findAllCourses().then(courses => this.setState({
+            courses: courses
+        }))
+    }
+
+    findCourseById = () => {
+        const id = document.getElementById('courseID').value;
+        courseService.findCourseById(id)
+        .then(state => this.setState(prevState => ({
+            courses: prevState.courses.filter(c => c._id === id)
+        })))
+    }
+
+    deleteCourse = (course) => {
+        courseService.deleteCourse(course._id)
+        courseService.findAllCourses().then(courses => this.setState({
+            courses: courses
+        }))
+    }
 
 render() {
     return(
         <Constrain>
-            <Form title="Add a new course" createCourse={this.createCourse} />
+            <SearchCourse title="Find a course" findCourseById={this.findCourseById} />
             <table className="course-table">
             <thead className="course-table__head">
                 <tr>
@@ -83,6 +85,7 @@ render() {
             }
             </tbody>
             </table>
+            <button className="course-table__search" onClick={this.createCourse}>Add new course</button>
         </Constrain>
     )
 }

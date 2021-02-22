@@ -1,85 +1,29 @@
 @import '/src/scss/variables.scss';
 
 // @file
-// Form
+// Table row
 
-.form {
-  margin: $spacing-5 0;
-
-  @include bp-tablet {
-    display: flex;
-    margin: $spacing-3 0;
-  }
-}
-
-.form__title {
-  flex-basis: 33.33%;
-  margin-right: $spacing-3;
-}
-
-.form__form {
-  @include bp-tablet {
-    align-items: center;
-    display: flex;
-    flex-basis: 66.66%;
-  }
-
-  ::placeholder {
-    color: $lilac;
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    font-weight: 700;
-    opacity: 1;
-  }
-}
-
-// global form input styles
-.form__input {
-  &[type='text'] {
-    appearance: none;
-  }
-
-  appearance: none;
-  background-color: transparent;
-  border: solid 1px $blue;
-  box-shadow: 0;
-  color: $blue;
-  font-size: $base-font-size;
-  height: rem(44px);
-  padding: 0 $spacing-2;
-  width: calc(100% - #{rem(64px)});
-
-  &:focus {
-    border-color: $magenta;
-    outline: none;
-  }
-
-  @include bp-tablet {
-    height: rem(54px);
-    width: calc(100% - #{rem(74px)});
-  }
-}
-
-.form__btn {
+.table-row__btn {
   @include button-clear;
-  @include image-replace(rem(44px), rem(44px));
-  @include svg-background(icon-add);
+  @include image-replace(rem(30px), rem(30px));
 
-  background-color: $magenta;
   background-position: center;
   background-repeat: no-repeat;
   background-size: rem(20px);
-  border-radius: 100%;
-
-  &:hover,
-  &:focus {
-    background-color: $blue;
-  }
 
   @include bp-tablet {
-    @include image-replace(rem(54px), rem(54px));
-
     background-size: rem(25px);
-    margin-left: $spacing-2;
   }
+}
+
+.table-row__btn--edit {
+  @include svg-background(icon-edit);
+}
+
+.table-row__btn--delete {
+  @include svg-background(icon-delete);
+}
+
+.table-row__btn--okay {
+  @include svg-background(icon-okay);
 }

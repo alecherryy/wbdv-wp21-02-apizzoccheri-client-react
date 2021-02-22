@@ -3,7 +3,7 @@
 // @file
 // Form
 
-.form {
+.search-form {
   margin: $spacing-5 0;
 
   @include bp-tablet {
@@ -12,12 +12,12 @@
   }
 }
 
-.form__title {
+.search-form__title {
   flex-basis: 33.33%;
   margin-right: $spacing-3;
 }
 
-.form__form {
+.search-form__form {
   @include bp-tablet {
     align-items: center;
     display: flex;
@@ -34,7 +34,7 @@
 }
 
 // global form input styles
-.form__input {
+.search-form__input {
   &[type='text'] {
     appearance: none;
   }
@@ -60,12 +60,12 @@
   }
 }
 
-.form__btn {
+.search-form__btn {
   @include button-clear;
   @include image-replace(rem(44px), rem(44px));
-  @include svg-background(icon-add);
+  @include svg-background(icon-search-white);
 
-  background-color: $magenta;
+  background-color: $lilac;
   background-position: center;
   background-repeat: no-repeat;
   background-size: rem(20px);

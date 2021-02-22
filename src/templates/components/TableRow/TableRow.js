@@ -73,7 +73,7 @@ class TableRow extends React.Component {
                 }
                 {
                     !this.state.editing &&
-                    <button className="table-row__btn table-row__btn--okay" onClick={() => this.setState({editing: true})}>
+                    <button className="table-row__btn table-row__btn--edit" onClick={() => this.setState({editing: true})}>
                         Edit
                     </button>
                 }
