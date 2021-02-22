@@ -1,0 +1,72 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Grid card
+
+.grid-card {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  font-size: $font-size-sm;
+  min-height: rem(300px);
+  padding: $spacing-6 $spacing-2 $spacing-2;
+  position: relative;
+
+  p {
+    margin: 0;
+  }
+
+  &[data-is-editing='true'] {
+    background-color: $lilac !important;
+    color: $white;
+  }
+}
+
+.grid-card__input {
+  border: 0;
+  border: solid 1px $lilac;
+  box-shadow: none;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: 700;
+  height: rem(52px);
+  margin-bottom: 0.5em;
+  padding-left: $spacing-1;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.grid-card__controls {
+  position: absolute;
+  right: $spacing-1;
+  text-align: right;
+  top: $spacing-1;
+  width: 60px;
+}
+
+.grid-card__btn {
+  @include button-clear;
+  @include image-replace(rem(30px), rem(30px));
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: rem(20px);
+
+  @include bp-tablet {
+    background-size: rem(25px);
+  }
+}
+
+.grid-card__btn--edit {
+  @include svg-background(icon-edit);
+}
+
+.grid-card__btn--delete {
+  @include svg-background(icon-delete);
+}
+
+.grid-card__btn--okay {
+  @include svg-background(icon-okay);
+}

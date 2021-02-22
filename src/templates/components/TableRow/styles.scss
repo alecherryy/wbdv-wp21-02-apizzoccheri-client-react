@@ -23,6 +23,18 @@
   }
 }
 
+.table-row__btn--edit {
+  @include svg-background(icon-edit);
+}
+
+.table-row__btn--delete {
+  @include svg-background(icon-delete);
+}
+
+.table-row__btn--okay {
+  @include svg-background(icon-okay);
+}
+
 .table-row__input {
   border: 0;
   border: solid 1px $lilac;
@@ -37,16 +49,4 @@
   &:focus {
     outline: none;
   }
-}
-
-.table-row__btn--edit {
-  @include svg-background(icon-edit);
-}
-
-.table-row__btn--delete {
-  @include svg-background(icon-delete);
-}
-
-.table-row__btn--okay {
-  @include svg-background(icon-okay);
 }

@@ -1,14 +1,11 @@
 import logo from './logo.svg';
 import './App.scss';
-import CourseTable from './templates/components/CourseTable/CourseTable';
-import { Constrain } from './templates/layouts/constrain/Constrain';
+import { CourseManager } from './templates/components/CourseManager/CourseManager';
 
 function App() {
   return (
     <div className="App">
-      <Constrain >
-        <CourseTable />
-      </Constrain>
+      <CourseManager />
     </div>
   );
 }

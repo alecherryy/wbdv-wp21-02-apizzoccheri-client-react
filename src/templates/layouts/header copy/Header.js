@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import { Constrain } from '../Constrain/Constrain';
 
 /**
- * Component for Footer element.
+ * Component for Header element.
  *
  * @component
  * @param {string} modifierClasses Class modifiers of the component.
  * @param {string} titleEl HTML element of the title.
  * @param {string} title of the section.
- * @param {boolean} hasConstrain whether the component has a Footer.
+ * @param {boolean} hasConstrain whether the component has a Header.
  * @param {node} content of the section.
  * @return {object} (
- *   <Footer modifierClasses={modifierClasses} />
+ *   <Header modifierClasses={modifierClasses} />
  *      {content}
- *   </Footer>
+ *   </Header>
  * )
  */
 
-export const Footer = ( {
+export const Header = ( {
     modifierClasses, hasConstrain, constrainModifierClasses, content
 }) => {
     function innerLayout() {
@@ -40,13 +40,13 @@ export const Footer = ( {
 };
 
 
-Footer.propTypes = {
+Header.propTypes = {
     /**
-   * Footer's modifier classes
+   * Header's modifier classes
    */
     modifierClasses: PropTypes.string,
     /**
-     * Footer's hasConstrain
+     * Header's hasConstrain
      */
     hasConstrain: PropTypes.bool,
     /**
@@ -54,12 +54,12 @@ Footer.propTypes = {
    */
     constrainModifierClasses: PropTypes.string,
     /**
-   * Footer's children nodes
+   * Header's children nodes
    */
     children: PropTypes.node,
 };
 
-Footer.defaultProps = {
+Header.defaultProps = {
     modifierClasses: '',
     hasConstrain: true,
     constrainModifierClasses: '',
