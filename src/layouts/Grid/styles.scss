@@ -10,13 +10,13 @@
 }
 
 .grid--2-col {
-    @include bp-tablet {
+    @include bp-mobile-lg {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 .grid--3-col {
-    @include bp-tablet {
+    @include bp-mobile-lg {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -26,11 +26,11 @@
 }
 
 .grid--4-col {
-    @include bp-tablet {
+    @include bp-mobile-lg {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @include bp-tablet-lg {
+    @include bp-tablet {
         grid-template-columns: repeat(3, 1fr);
         gap: $spacing-3;
     }

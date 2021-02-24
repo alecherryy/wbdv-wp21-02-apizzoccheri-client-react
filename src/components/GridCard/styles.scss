@@ -8,7 +8,8 @@
   border-radius: 10px;
   font-size: $font-size-sm;
   min-height: rem(300px);
-  padding: $spacing-6 $spacing-2 $spacing-2;
+  overflow: hidden;
+  padding: rem(220px) $spacing-2 $spacing-3;
   position: relative;
 
   p {
@@ -16,8 +17,19 @@
   }
 
   &[data-is-editing='true'] {
-    background-color: $lilac !important;
-    color: $white;
+    background-color: $pink !important;
+  }
+
+  &:nth-child(3n+1) {
+    .grid-card__image {
+      background-image: url('../../images/bg-2.jpeg');
+    }
+  }
+
+  &:nth-child(3n+2) {
+    .grid-card__image {
+      background-image: url('../../images/bg-3.jpeg');
+    }
   }
 }
 
@@ -26,6 +38,30 @@
 
   a {
     text-decoration: none;
+  }
+}
+
+.grid-card__image {
+  background-image: url('../../images/bg-1.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: rem(200px);
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &::after {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+    content: '';
+    display: block;
+    height: rem(200px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
 }
 
@@ -51,7 +87,7 @@
   right: $spacing-1;
   text-align: right;
   top: $spacing-1;
-  width: 60px;
+  width: rem(60px);
 }
 
 .grid-card__btn {
@@ -59,15 +95,19 @@
 }
 
 .grid-card__btn--edit {
-  @include svg-background(icon-edit);
+  @include svg-background(icon-edit-white);
 
   background-color: transparent;
 }
 
 .grid-card__btn--delete {
-  @include svg-background(icon-delete);
+  @include svg-background(icon-delete-magenta);
+
+  background-color: transparent;
 }
 
 .grid-card__btn--okay {
   @include svg-background(icon-okay);
+
+  background-color: transparent;
 }

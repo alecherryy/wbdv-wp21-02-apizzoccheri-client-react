@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import CourseList from '../CourseList/CourseList';
+import AllCourses from '../AllCourses/AllCourses';
 import { CourseEditor } from '../CourseEditor/CourseEditor';
 import { Menu } from "../Menu/Menu";
 
@@ -17,7 +17,7 @@ export const CourseManager = () => {
                 <Menu />
             </div>
 
-            <Route path="/courses" exact component={CourseList}/>
+            <Route path="/courses" exact component={AllCourses}/>
             <Route path="/course-editor" exact component={CourseEditor} />
         </Router>
     )

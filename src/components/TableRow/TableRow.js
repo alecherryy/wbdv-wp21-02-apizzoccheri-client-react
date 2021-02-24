@@ -22,8 +22,10 @@ class TableRow extends React.Component {
 
     updateTitle = (event) => {
         const newTitle = event.target.value
+        const date = new Date();
         const course = { ...this.state.course }
         course.title = newTitle
+        course.last_modified = date.toLocaleDateString()
 
         this.setState({
             course: course
@@ -57,8 +59,8 @@ class TableRow extends React.Component {
                     </h4>
                 }
                 </td>
-                <td>{this.props.course.owner}</td>
-                <td>{this.props.course.last_modified}</td>
+                <td>{this.state.course.owner}</td>
+                <td>{this.state.course.last_modified}</td>
                 <td>
                 {
                     this.state.editing &&

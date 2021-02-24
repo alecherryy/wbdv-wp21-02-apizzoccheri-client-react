@@ -20,18 +20,20 @@ class GridCard extends React.Component {
         super(props)
     }
 
+    // update course title
     updateTitle = (event) => {
         const newTitle = event.target.value
+        const date = new Date();
         const course = { ...this.state.course }
         course.title = newTitle
-        const date = new Date();
-        course.last_modified = date.toLocaleDateString()
+        course.last_modified = 'Test'
 
         this.setState({
             course: course
         })
     }
 
+    // update course
     updateCourse = () => {
         this.setState({editing: false})
 
@@ -42,6 +44,7 @@ class GridCard extends React.Component {
 
         return (
             <div className="grid-card" data-is-editing={this.state.editing}>
+                <span className="grid-card__image"></span>
                 {
                     this.state.editing === true &&
                     <input
@@ -57,8 +60,8 @@ class GridCard extends React.Component {
                         </Link>
                     </h4>
                 }
-                <p><b>Owener: </b>{this.props.course.owner}</p>
-                <p><b>Last modified: </b>{this.props.course.last_modified}</p>
+                <p><b>Owener: </b>{this.state.course.owner}</p>
+                <p><b>Last modified: </b>{this.state.course.last_modified}</p>
                 <div className="grid-card__controls">
                 {
                     this.state.editing &&
