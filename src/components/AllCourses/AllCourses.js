@@ -8,14 +8,20 @@ import { CourseTable } from '../CourseTable/CourseTable';
 import { CourseGrid } from '../CourseGrid/CourseGrid';
 
 /**
- * Component for CourseList
+ * Component for AllCourses
  *
  * @component
  */
-class CourseList extends React.Component {
+class AllCourses extends React.Component {
+
     state = {
         courses: [],
-        display: 'table'
+        // use sessionStorage to create save current display value
+        display: sessionStorage.getItem('display') || 'table'
+    }
+
+    constructor(props) {
+        super(props)
     }
 
     // Render courses
@@ -68,9 +74,13 @@ class CourseList extends React.Component {
 
     // Toggle display mode - Grid or Table
     switchView = (e) => {
+        courseService.findAllCourses().then(courses => this.setState({
+            courses: courses
+        }))
         if (this.state.display !== e.target.dataset.view ) {
+            sessionStorage.setItem('display', e.target.dataset.view);
             this.setState({
-                display: e.target.dataset.view
+                display: sessionStorage.getItem('display')
             })
         }
     }
@@ -130,4 +140,4 @@ const DisplayControls = ({ display, switchView }) => {
         </div>
     )
 }
-export default CourseList
+export default AllCourses
