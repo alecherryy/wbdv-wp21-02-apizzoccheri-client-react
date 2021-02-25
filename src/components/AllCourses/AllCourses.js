@@ -111,7 +111,7 @@ class AllCourses extends React.Component {
                         <CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse} updateCourse={this.updateCourse} />
                     }
                     { this.state.display === 'grid' &&
-                        <CourseGrid courses={this.state.courses} deleteCourse={this.deleteCourse} />
+                        <CourseGrid courses={this.state.courses} deleteCourse={this.deleteCourse} updateCourse={this.updateCourse} />
                     }
                 </div>
                 <button className="course-list__add" onClick={this.createCourse}>Add new course</button>
