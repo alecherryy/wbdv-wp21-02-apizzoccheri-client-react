@@ -16,6 +16,7 @@ export const GridCard = ({
     const [editing, setEditing] = useState(false);
     const [newTitle, setNewTitle] = useState(course.title);
 
+    // update course local function
     const updateTitle = () => {
         setEditing(false);
 
@@ -29,6 +30,7 @@ export const GridCard = ({
         updateCourse(newCourse);
     }
 
+    // delete course local function
     const deleteThisCourse = () => {
         setEditing(false);
 

@@ -64,8 +64,14 @@ class AllCourses extends React.Component {
     //     })))
     // }
 
+    // Update course
     updateCourse = (course) => {
         courseService.updateCourse(course._id, course)
+
+        // return updated courses
+        courseService.findAllCourses().then(courses => this.setState({
+            courses: courses
+        }))
     }
 
     // Delete a course from the list of courses
