@@ -1,7 +1,6 @@
 import './styles.scss';
 
-import React from 'react';
-import courseService from '../../services/CourseService';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
@@ -9,76 +8,71 @@ import { Link } from 'react-router-dom';
  *
  * @component
  */
-class TableRow extends React.Component {
-    state = {
-        editing: false,
-        courseTitle: 'Some Course',
-        course: this.props.course
-    }
+export const TableRow = ({
+    deleteCourse,
+    updateCourse,
+    course,
+}) => {
+    const [editing, setEditing] = useState(false);
+    const [newTitle, setNewTitle] = useState(course.title);
 
-    constructor(props) {
-        super(props)
-    }
+    // update course local function
+    const updateTitle = () => {
+        setEditing(false);
 
-    updateTitle = (event) => {
-        const newTitle = event.target.value
         const date = new Date();
-        const course = { ...this.state.course }
-        course.title = newTitle
-        course.last_modified = date.toLocaleDateString()
+        const newCourse = {
+            ...course,
+            title: newTitle,
+            last_modified: date.toLocaleDateString(),
+        }
 
-        this.setState({
-            course: course
-        })
+        updateCourse(newCourse);
     }
 
-    updateCourse = () => {
-        this.setState({editing: false})
+    // delete course local function
+    const deleteThisCourse = () => {
+        setEditing(false);
 
-        courseService.updateCourse(this.state.course._id, this.state.course)
+        deleteCourse(course);
     }
 
-    render() {
-
-        return (
-            <tr className="table-row" data-is-editing={this.state.editing}>
-                <td>
-                {
-                    this.state.editing === true &&
-                    <input
-                    className="table-row__input"
-                    onChange={this.updateTitle}
-                    value={this.state.course.title}/>
-                }
-                {
-                    this.state.editing === false &&
-                    <h4 className="table-row__title">
-                        <Link to='/course-editor'>
-                            {this.state.course.title}
-                        </Link>
-                    </h4>
-                }
-                </td>
-                <td>{this.state.course.owner}</td>
-                <td>{this.state.course.last_modified}</td>
-                <td>
-                {
-                    this.state.editing &&
-                    <div className="table-row__edits">
-                        <button className="table-row__btn table-row__btn--delete" onClick={() => this.props.deleteCourse(this.props.course)}>Delete</button>
-                        <button className="table-row__btn table-row__btn--okay" onClick={this.updateCourse}>Ok</button>
-                    </div>
-                }
-                {
-                    !this.state.editing &&
-                    <button className="table-row__btn table-row__btn--edit" onClick={() => this.setState({editing: true})}>
-                        Edit
-                    </button>
-                }
-                </td>
-            </tr>
-        )
-    }
-};
-
-export default TableRow;
+    return (
+        <tr className="table-row" data-is-editing={editing}>
+            <td>
+            {
+                editing &&
+                <input
+                className="table-row__input"
+                onChange={(e) => setNewTitle(e.target.value)}
+                value={newTitle} />
+            }
+            {
+                !editing &&
+                <h4 className="table-row__title">
+                    <Link to='/courses/editor'>
+                        {newTitle}
+                    </Link>
+                </h4>
+            }
+            </td>
+            <td>{course.owner}</td>
+            <td>{course.last_modified}</td>
+            <td>
+            {
+                editing &&
+                <div className="table-row__edits">
+                    <button className="table-row__btn table-row__btn--delete" onClick={() => deleteThisCourse()}>Delete</button>
+                    <button className="table-row__btn table-row__btn--okay" onClick={() => updateTitle()}>Ok</button>
+                </div>
+            }
+            {
+                !editing &&
+                <button className="table-row__btn table-row__btn--edit" onClick={() => setEditing(true)}>
+                    Edit
+                </button>
+            }
+            </td>
+        </tr>
+    )
+}
