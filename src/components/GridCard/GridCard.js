@@ -26,7 +26,7 @@ class GridCard extends React.Component {
         const date = new Date();
         const course = { ...this.state.course }
         course.title = newTitle
-        course.last_modified = 'Test'
+        course.last_modified = date.toLocaleDateString()
 
         this.setState({
             course: course
