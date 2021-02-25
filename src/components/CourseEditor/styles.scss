@@ -3,6 +3,15 @@
 // @file
 // Course editor
 
+.back {
+    background-image: url('../../images/icon-back.svg');
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-left: $spacing-3;
+    text-decoration: none;
+}
+
 .list-modules {
     @include list-clean;
 

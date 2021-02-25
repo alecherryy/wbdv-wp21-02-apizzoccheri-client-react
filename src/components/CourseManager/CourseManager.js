@@ -18,7 +18,7 @@ export const CourseManager = () => {
             </div>
 
             <Route path="/courses" exact component={AllCourses}/>
-            <Route path="/course-editor" exact component={CourseEditor} />
+            <Route path="/courses/editor" exact component={CourseEditor} />
         </Router>
     )
 }
