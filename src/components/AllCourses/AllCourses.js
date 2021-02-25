@@ -64,6 +64,10 @@ class AllCourses extends React.Component {
     //     })))
     // }
 
+    updateCourse = (course) => {
+        courseService.updateCourse(course._id, course)
+    }
+
     // Delete a course from the list of courses
     deleteCourse = (course) => {
         courseService.deleteCourse(course._id)
@@ -104,7 +108,7 @@ class AllCourses extends React.Component {
                 </Constrain>
                 <div className="course-list__content">
                     { this.state.display === 'table' &&
-                        <CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse} />
+                        <CourseTable courses={this.state.courses} deleteCourse={this.deleteCourse} updateCourse={this.updateCourse} />
                     }
                     { this.state.display === 'grid' &&
                         <CourseGrid courses={this.state.courses} deleteCourse={this.deleteCourse} />

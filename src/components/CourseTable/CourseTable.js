@@ -2,14 +2,14 @@ import './styles.scss';
 
 import React from 'react';
 
-import TableRow from '../TableRow/TableRow';
+import { TableRow } from '../TableRow/TableRow';
 
 /**
  * Component for CourseTable
  *
  * @component
  */
-export const CourseTable = ( {courses, deleteCourse} ) => {
+export const CourseTable = ( {courses, deleteCourse, updateCourse } ) => {
     return (
         <table className="course-table__table">
             <thead className="course-table__head">
@@ -25,6 +25,7 @@ export const CourseTable = ( {courses, deleteCourse} ) => {
                 <TableRow
                     key={course._id}
                     deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
                     course={course} />
                 )
             }

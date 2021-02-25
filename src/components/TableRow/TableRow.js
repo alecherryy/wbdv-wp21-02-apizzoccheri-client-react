@@ -1,7 +1,6 @@
 import './styles.scss';
 
 import React, { useState } from 'react';
-import courseService from '../../services/CourseService';
 import { Link } from 'react-router-dom';
 
 /**
@@ -12,23 +11,28 @@ import { Link } from 'react-router-dom';
 export const TableRow = ({
     deleteCourse,
     updateCourse,
-    updateTitle,
     course,
 }) => {
     const [editing, setEditing] = useState(false);
-    const [title, setTitle] = useState(course.title);
+    const [newTitle, setNewTitle] = useState(course.title);
 
-    updateTitle = (event) => {
-        const newTitle = event.target.value;
+    const updateTitle = () => {
+        setEditing(false);
+
         const date = new Date();
-        course.title = newTitle
-        course.last_modified = date.toLocaleDateString()
+        const newCourse = {
+            ...course,
+            title: newTitle,
+            last_modified: date.toLocaleDateString(),
+        }
+
+        updateCourse(newCourse);
     }
 
-    updateCourse = () => {
-        setEditing(false)
+    const deleteThisCourse = () => {
+        setEditing(false);
 
-        courseService.updateCourse(course._id, course)
+        deleteCourse(course);
     }
 
     return (
@@ -38,14 +42,14 @@ export const TableRow = ({
                 editing &&
                 <input
                 className="table-row__input"
-                onChange={this.updateTitle}
-                value={title}/>
+                onChange={(e) => setNewTitle(e.target.value)}
+                value={newTitle} />
             }
             {
-                editing === false &&
+                !editing &&
                 <h4 className="table-row__title">
                     <Link to='/courses/editor'>
-                        {course.title}
+                        {newTitle}
                     </Link>
                 </h4>
             }
@@ -56,8 +60,8 @@ export const TableRow = ({
             {
                 editing &&
                 <div className="table-row__edits">
-                    <button className="table-row__btn table-row__btn--delete" onClick={() => setEditing(true), deleteCourse(course)}>Delete</button>
-                    <button className="table-row__btn table-row__btn--okay" onClick={() => setEditing(true), this.updateCourse}>Ok</button>
+                    <button className="table-row__btn table-row__btn--delete" onClick={() => deleteThisCourse()}>Delete</button>
+                    <button className="table-row__btn table-row__btn--okay" onClick={() => updateTitle()}>Ok</button>
                 </div>
             }
             {
@@ -69,6 +73,4 @@ export const TableRow = ({
             </td>
         </tr>
     )
-};
-
-export default TableRow;
+}
