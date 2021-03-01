@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid } from '../../layouts/Grid/Grid';
-import { GridCard } from '../GridCard/GridCard';
+import { GridCard } from './GridCard/GridCard';
 
 /**
  * Component for CourseGrid
