@@ -20,7 +20,7 @@ export const EditableItem = ({
   const updateTitle = () => {
     setEditing(false);
 
-    const newTitle = {
+    const newItem = {
       ...item,
       title: newTitle,
     }

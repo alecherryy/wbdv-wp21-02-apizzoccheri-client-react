@@ -25,7 +25,7 @@ const TopicTabs = ({topics=[]}) =>
 ;
 
 const stpm = (state) => ({
-  topics: state.topics
+  topics: state.TopicReducer.topics
 });
 const dtpm = (dispatch) => ({});
 

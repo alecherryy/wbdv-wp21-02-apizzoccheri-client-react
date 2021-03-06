@@ -16,6 +16,7 @@
 .add-form__form {
   align-items: center;
   display: flex;
+  justify-content: space-between;
   width: 100%;
 
   ::placeholder {
@@ -41,7 +42,7 @@
   font-size: $base-font-size;
   height: rem(54px);
   padding: 0 $spacing-2;
-  width: calc(100% - #{rem(64px)});
+  flex-basis: calc(100% - #{rem(64px)});
 
   &:focus {
     border-color: $magenta;
@@ -54,11 +55,11 @@
 }
 
 .add-form__btn {
-  @include button-icon(rem(54px), icon-add);
+  @include button-icon(rem(44px), icon-add);
 
   background-color: $lilac;
   background-size: rem(24px);
-  margin-left: $spacing-1;
+  // margin-left: $spacing-1;
 
   &:hover,
   &:focus {
@@ -75,6 +76,12 @@
 
     .add-form__form {
       flex-basis: 66.66%;
+    }
+
+    .add-form__btn {
+      @include button-icon(rem(54px), icon-add);
+
+      background-size: rem(24px);
     }
   }
 }

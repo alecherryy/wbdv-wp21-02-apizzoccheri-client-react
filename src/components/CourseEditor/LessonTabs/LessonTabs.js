@@ -10,7 +10,14 @@ import { EditableItem } from '../../EditableItem/EditableItem';
  * @component
  */
 
-const LessonTabs = ({lessons=[]}) =>
+const LessonTabs = ({
+  lessons=[],
+  deleteLesson,
+  createLesson,
+  moduleId,
+  updateLesson,
+  saveChanges
+}) =>
   <div className="lesson-tabs">
     <ul className="lesson-tabs__list">
       { lessons.map(lesson => <li className="lesson-tabs__item">
@@ -25,7 +32,7 @@ const LessonTabs = ({lessons=[]}) =>
 ;
 
 const stpm = (state) => ({
-  lessons: state.lessons
+  lessons: state.LessonReducer.lessons
 });
 const dtpm = (dispatch) => ({});
 

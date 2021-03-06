@@ -3,9 +3,9 @@ import './styles.scss';
 import React from 'react';
 import courseService from "../../services/CourseService";
 import { Constrain } from '../../layouts/Constrain/Constrain';
-import { AddCourse } from '../AddCourse/AddCourse';
 import { CourseTable } from '../CourseTable/CourseTable';
 import { CourseGrid } from '../CourseGrid/CourseGrid';
+import { AddContent } from '../AddContent/AddContent';
 
 /**
  * Component for AllCourses
@@ -105,10 +105,11 @@ class AllCourses extends React.Component {
             >Menu</button>
             <h1>Course Manager</h1>
           </div>
-          <AddCourse
+          <AddContent
             modifierClasses="add-form--large"
             title="Add a new course"
-            createCourse={this.createCourse}
+            content="course"
+            onClick={this.createCourse}
           />
           <DisplayControls display={this.state.display} switchView={this.switchView} />
         </Constrain>

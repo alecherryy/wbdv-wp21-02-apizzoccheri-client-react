@@ -1,16 +1,21 @@
 import "./styles.scss";
 import React from "react";
 import { Link } from 'react-router-dom';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
 import LessonReducer from '../../reducers/LessonReducer';
+import TopicReducer from '../../reducers/TopicReducer';
+import ModuleReducer from "../../reducers/ModuleReducer";
+
+import LessonTabs from "./LessonTabs/LessonTabs";
+import TopicTabs from "./TopicTabs/TopicTabs";
+import ModuleList from "./ModuleList/ModuleList";
 
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
-import LessonTabs from "./LessonTabs/LessonTabs";
 import { Provider } from "react-redux";
 import { Section } from "../../layouts/Section/Section";
-import TopicTabs from "./TopicTabs/TopicTabs";
+
 
 /**
  * Component for CourseEditor
@@ -18,16 +23,21 @@ import TopicTabs from "./TopicTabs/TopicTabs";
  * @component
  */
 
-const store = createStore(LessonReducer);
+const reducer = combineReducers({
+  ModuleReducer: ModuleReducer,
+  LessonReducer: LessonReducer,
+  TopicReducer: TopicReducer,
+});
+const store = createStore(reducer);
 
 export const CourseEditor = () => {
   return(
-    <Provider store={store} >
+    <Provider store={store}>
       <Constrain>
       <Link className="back" to="/courses">Back</Link>
       <h1>Course Editor</h1>
       <Sidebar>
-        <LessonTabs />
+        <ModuleList />
         <Section modifierClasses="" hasConstrain={false}>
           <LessonTabs />
           <TopicTabs />
