@@ -5,7 +5,10 @@ const initialState = {
     },
     {
       _id: '456', title: 'Lesson title',
-    }
+    },
+    {
+      _id: '678', title: 'Lesson title',
+    },
   ]
 }
 

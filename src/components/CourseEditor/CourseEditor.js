@@ -7,8 +7,10 @@ import LessonReducer from '../../reducers/LessonReducer';
 
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
-import LessonTabs from "../LessonTabs/LessonTabs";
+import LessonTabs from "./LessonTabs/LessonTabs";
 import { Provider } from "react-redux";
+import { Section } from "../../layouts/Section/Section";
+import TopicTabs from "./TopicTabs/TopicTabs";
 
 /**
  * Component for CourseEditor
@@ -26,6 +28,10 @@ export const CourseEditor = () => {
       <h1>Course Editor</h1>
       <Sidebar>
         <LessonTabs />
+        <Section modifierClasses="" hasConstrain={false}>
+          <LessonTabs />
+          <TopicTabs />
+        </Section>
       </Sidebar>
     </Constrain>
     </Provider>
