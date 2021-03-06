@@ -1,17 +1,15 @@
 import './styles.scss';
 
-import React, { useState } from 'react';
-import LessonReducer from '../../reducer/LessonReducer';
-import { createStore } from 'redux';
+import React from 'react';
+import { connect } from 'react-redux';
 
 /**
  * Component for LessonTabs
  *
  * @component
  */
-const store = createStore(LessonReducer);
 
-export const LessonTabs = ({lessons=[]}) =>
+const LessonTabs = ({lessons=[]}) =>
   <div className="tabs">
     <h3>Lessons</h3>
     <ul className="tabs__list">
@@ -19,3 +17,10 @@ export const LessonTabs = ({lessons=[]}) =>
     </ul>
   </div>
 ;
+
+const stpm = (state) => ({
+  lessons: state.lessons
+});
+const dtpm = (dispatch) => ({});
+
+export default connect(stpm, dtpm)(LessonTabs);
