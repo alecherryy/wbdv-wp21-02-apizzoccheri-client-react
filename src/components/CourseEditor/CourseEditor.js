@@ -22,7 +22,7 @@ export const CourseEditor = () => {
   return(
     <Provider store={store} >
       <Constrain>
-      <Link className="back" to="/courses">Back to All Courses</Link>
+      <Link className="back" to="/courses">Back</Link>
       <h1>Course Editor</h1>
       <Sidebar>
         <LessonTabs />
