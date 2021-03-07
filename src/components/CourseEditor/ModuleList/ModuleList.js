@@ -74,9 +74,9 @@ const dtpm = (dispatch) => {
 
       moduleService.createModule(courseId, {
         title: title
-      }).then(theActualModule => dispatch({
+      }).then(newModule => dispatch({
         type: 'CREATE_MODULE',
-        module: theActualModule
+        module: newModule
     }))},
     updateModule: (module) =>
       moduleService.updateModule(module._id, module).then(status => dispatch({
