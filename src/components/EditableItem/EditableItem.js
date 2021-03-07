@@ -15,48 +15,34 @@ export const EditableItem = ({
   updateItem,
 }) => {
   const [editing, setEditing] = useState(false);
-  const [newTitle, setNewTitle] = useState(item.title);
-
-  // update item course local function
-  const updateTitle = () => {
-    setEditing(false);
-
-    const newItem = {
-      ...item,
-      title: newTitle,
-    }
-
-    // updateCourse(newCourse);
-  }
-
-  // delete course local function
-  const deleteThisItem = () => {
-    setEditing(false);
-  }
+  const [cachedItem, setCahedItem] = useState(item);
 
   return (
     <div className="editable-item" data-is-editing={editing}>
       { editing &&
         <input className="editable-item__input"
-        onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
+          onChange={(e) => setCahedItem({
+              ...cachedItem,
+              title: e.target.value
+          })} value={cachedItem.title} />
       }
       { !editing &&
         <h4 className="editable-item__title">
-          {path ?
-            <Link to={path}>{newTitle}</Link> :
-            <>{newTitle}</>
-          }
+          <Link to={path}>{cachedItem.title}</Link>
         </h4>
       }
       <div className="editable-item__controls">
       { editing &&
         <div className="editable-item__edits">
           <button className="editable-item__btn editable-item__btn--delete"
-            onClick={
-              () => deleteThisItem(),
-              deleteItem}>Delete</button>
+            onClick={() => {
+              setEditing(false)
+              deleteItem(item)}
+            }>Delete</button>
           <button className="editable-item__btn editable-item__btn--okay"
-            onClick={() => updateTitle()}>Ok</button>
+            onClick={() => {
+              setEditing(false)
+              updateItem(cachedItem)}}>Ok</button>
         </div>
       }
       { !editing &&

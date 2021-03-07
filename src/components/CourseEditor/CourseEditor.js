@@ -1,6 +1,6 @@
 import "./styles.scss";
-import React, { useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import React from "react";
+import { Link } from 'react-router-dom';
 import { combineReducers, createStore } from 'redux';
 
 import LessonReducer from '../../reducers/LessonReducer';
@@ -31,8 +31,6 @@ const reducer = combineReducers({
 const store = createStore(reducer);
 
 export const CourseEditor = () => {
-  const {courseId, moduleId} = useParams();
-
   return(
     <Provider store={store}>
       <Constrain>

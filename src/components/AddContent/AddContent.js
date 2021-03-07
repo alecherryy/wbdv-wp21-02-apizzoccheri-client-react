@@ -8,6 +8,7 @@ import React from 'react';
  * @component
  */
 export const AddContent = ({ modifierClasses, title, content, onClick }) => {
+
   return (
     <div
       className={['add-form', `${modifierClasses}`].join(' ').trim()}
@@ -16,8 +17,8 @@ export const AddContent = ({ modifierClasses, title, content, onClick }) => {
       <form className="add-form__form">
         <input className="add-form__input" placeholder={`Add new ${content}`} type="text" />
         <input type="submit"
-          className="add-form__btn"
           onClick={onClick}
+          className="add-form__btn"
           value={`Add new ${content}`}
         />
       </form>

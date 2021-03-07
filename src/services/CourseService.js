@@ -1,13 +1,13 @@
 /**
  * GLOBAL API URL
  */
-const url = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/courses';
+const URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/courses';
 
 /**
  * FIND ALL COURSES
  */
 export const findAllCourses = () => {
-  return fetch(url).then(response => {
+  return fetch(URL).then(response => {
     return response.json()
   })
 }
@@ -18,7 +18,7 @@ export const findAllCourses = () => {
  * @param {object} course
  */
 export const createCourse = (course) => {
-  fetch(url, {
+  fetch(URL, {
     method: 'POST',
     body: JSON.stringify(course),
     headers: {
@@ -33,7 +33,7 @@ export const createCourse = (course) => {
  * @param {string} courseId
  */
 export const deleteCourse = (courseId) => {
-  fetch(`${url}/${courseId}`, {
+  fetch(`${URL}/${courseId}`, {
     method: 'DELETE'
   }).then(response => response.json())
 }
@@ -45,7 +45,7 @@ export const deleteCourse = (courseId) => {
  * @param {object} newCourse
  */
 export const updateCourse = (courseId, newCourse) =>
-  fetch(`${url}/${courseId}`, {
+  fetch(`${URL}/${courseId}`, {
     method: 'PUT',
     body: JSON.stringify(newCourse),
     headers: {
@@ -59,7 +59,7 @@ export const updateCourse = (courseId, newCourse) =>
  * @param {string} courseId
  */
 export const findCourseById = courseId =>
-  fetch(`${url}/${courseId}`)
+  fetch(`${URL}/${courseId}`)
   .then(response => response.json())
 
 /**

@@ -14,6 +14,10 @@
 .module-list__item {
   border-bottom: solid 1px $gray-2;
 
+  &.is-active {
+    background-color: $pink;
+  }
+
   &:last-child {
     border-bottom: 0;
     padding: $spacing-2 !important;
@@ -35,5 +39,6 @@
 
   .editable-item__btn {
     top: $spacing-1;
+    right: $spacing-2;
   }
 }
