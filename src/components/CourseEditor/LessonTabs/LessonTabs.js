@@ -1,8 +1,11 @@
 import './styles.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { EditableItem } from '../../EditableItem/EditableItem';
+import lessonService from '../../../services/LessonService';
 
 /**
  * Component for LessonTabs
@@ -12,29 +15,58 @@ import { EditableItem } from '../../EditableItem/EditableItem';
 
 const LessonTabs = ({
   lessons=[],
-  deleteLesson,
+  findLessons,
   createLesson,
-  moduleId,
-  updateLesson,
-  saveChanges
-}) =>
-  <div className="lesson-tabs">
-    <ul className="lesson-tabs__list">
-      { lessons.map(lesson => <li className="lesson-tabs__item">
-        <EditableItem item={lesson} /></li>
-      )}
-      <li className="lesson-tabs__item">
-        Add Lesson
-        <button className="lesson-tabs__btn" role="button">Add</button>
-      </li>
-    </ul>
-  </div>
-;
+}) => {
+  const {courseId, moduleId, lessonId} = useParams();
+
+  useEffect(() => {
+    if (moduleId !== 'undefined' && typeof moduleId !== 'undefined') {
+      findLessons(moduleId)
+    }
+  }, [moduleId])
+
+  return (
+    <div className="lesson-tabs">
+      <ul className="lesson-tabs__list">
+        { lessons.map((lesson, i) =>
+          <li key={i} className={`lesson-tabs__item ${lesson._id === lessonId ? 'is-active' : ''}`}>
+            <EditableItem item={lesson}
+              path={`/courses/editor/${courseId}/${moduleId}/${lesson._id}`} />
+          </li>
+        )}
+        <li className="lesson-tabs__item">
+          Add Lesson
+          <button className="lesson-tabs__btn" role="button"
+            onClick={() => createLesson(moduleId)}
+          >Add</button>
+        </li>
+      </ul>
+    </div>
+  );
+};
 
 const stpm = (state) => ({
   lessons: state.LessonReducer.lessons
 });
 
-const dtpm = (dispatch) => ({});
+const dtpm = (dispatch) => ({
+  findLessons: (moduleId) => {
+    lessonService.findLessons(moduleId)
+      .then(lessons => dispatch({
+        type: 'FIND_LESSONS',
+        lessons: lessons
+      })
+    )
+  },
+  createLesson: (moduleId) => {
+    lessonService.createLesson(moduleId, {
+      title: 'New Lesson'
+    }).then(lesson => dispatch({
+      type: 'CREATE_LESSON',
+      lesson
+    }))
+  },
+})
 
 export default connect(stpm, dtpm)(LessonTabs);
