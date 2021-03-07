@@ -13,7 +13,7 @@ import { EditableItem } from '../../EditableItem/EditableItem';
  * @component
  */
 export const ModuleList = ({
-  allModules=[],
+  modules=[],
   createModule,
   deleteModule,
   updateModule,
@@ -22,9 +22,9 @@ export const ModuleList = ({
   return (
     <div className="module-list">
       <ul className="module-list__list">
-        { allModules.map(module =>
+        { modules.map((module, i) =>
           <li className={`module-list__item ${module._id === moduleId ? 'is-active' : ''}`}>
-            <EditableItem item={module} path={`/edit/${courseId}/modules/${module._id}`}
+            <EditableItem key={i} item={module} path={`/courses/edit/${courseId}/modules/${module._id}`}
               deleteItem={deleteModule}/>
           </li>
         )}
@@ -44,17 +44,6 @@ export const ModuleList = ({
 const stpm = (state) => ({
   modules: state.ModuleReducer.modules
 });
-const dtpm = (dispatch) => {
-  // return {
-  //   createModule: (id) => {
-  //     moduleService.createCourseModule(id, {
-  //       title: 'Test module'
-  //     }).then(newModule => dispatch({
-  //           type: 'CREATE_MODULE',
-  //           module: newModule
-  //       }))
-  //   },
-  // }
-};
+const dtpm = (dispatch) => ({});
 
 export default connect(stpm, dtpm)(ModuleList);

@@ -15,7 +15,6 @@ import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
 import { Provider } from "react-redux";
 import { Section } from "../../layouts/Section/Section";
-import { findCourseById } from "../../services/CourseService";
 
 
 /**

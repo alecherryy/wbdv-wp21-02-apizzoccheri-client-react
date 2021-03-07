@@ -34,6 +34,7 @@ const LessonTabs = ({
 const stpm = (state) => ({
   lessons: state.LessonReducer.lessons
 });
+
 const dtpm = (dispatch) => ({});
 
 export default connect(stpm, dtpm)(LessonTabs);

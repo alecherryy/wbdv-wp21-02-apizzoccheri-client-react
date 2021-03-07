@@ -23,14 +23,10 @@ const ModuleReducer = (state=initialState, action) => {
         modules: action.modules
       }
     case 'CREATE_MODULE':
-      // console.log(action.module);
-      const newModules = {
-      modules: [
-          ...state.modules,
-          action.module
-        ]
+      return {
+        ...state,
+        modules: action.modules
       }
-      return newModules;
     case 'UPDATE_MODULE':
     case 'DELETE_MODULE':
     default:
