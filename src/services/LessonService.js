@@ -29,10 +29,10 @@ export const createLesson = (moduleId, lesson) =>
  * UPDATE LESSON
  *
  * @param {string} moduleId
- * @param {object} module
+ * @param {object} lesson
  */
 export const updateLesson = (moduleId, lesson) => {
-  fetch(`${MODULES_URL}/${moduleId}/lessons/${lesson._id}`, {
+  fetch(`${MODULES_URL}/${moduleId}/lessons`, {
     method: 'PUT',
     body: JSON.stringify(lesson),
     headers: {
@@ -41,6 +41,17 @@ export const updateLesson = (moduleId, lesson) => {
   }).then(response => response.json())
 }
 
+/**
+ * DELETE LESSON
+ *
+ * @param {string} moduleId
+ * @param {object} lesson
+ */
+export const deleteLesson = (moduleId, lessonId) => {
+  fetch(`${MODULES_URL}/${moduleId}/lessons/${lessonId}`, {
+    method: 'DELETE'
+  }).then(response => response.json())
+}
 export default {
-  findLessons, createLesson
+  findLessons, createLesson, deleteLesson
 }

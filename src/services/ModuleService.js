@@ -47,11 +47,11 @@ export const updateModule = (moduleId, module) => {
  *
  * @param {string} moduleId
  */
-export const deleteModule = (moduleId) =>
+export const deleteModule = (moduleId) => {
   fetch(`${MODULES_URL}/${moduleId}`, {
     method: 'DELETE'
-  })
-    .then(response => response.json())
+  }).then(response => response.json())
+}
 
 /**
  * EXPORT FUNCTIONS

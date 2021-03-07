@@ -17,6 +17,7 @@ const LessonTabs = ({
   lessons=[],
   findLessons,
   createLesson,
+  deleteLesson,
 }) => {
   const {courseId, moduleId, lessonId} = useParams();
 
@@ -32,7 +33,10 @@ const LessonTabs = ({
         { lessons.map((lesson, i) =>
           <li key={i} className={`lesson-tabs__item ${lesson._id === lessonId ? 'is-active' : ''}`}>
             <EditableItem item={lesson}
-              path={`/courses/editor/${courseId}/${moduleId}/${lesson._id}`} />
+              path={
+                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`
+              }
+              deleteItem={() => deleteLesson(moduleId, lesson)} />
           </li>
         )}
         <li className="lesson-tabs__item">
@@ -67,6 +71,13 @@ const dtpm = (dispatch) => ({
       lesson
     }))
   },
+  deleteLesson: (moduleId, lesson) => {
+    lessonService.deleteLesson(moduleId, lesson._id)
+    .then(status => dispatch({
+        type: 'DELETE_LESSON',
+        lessonToDelete: lesson
+    }))
+  }
 })
 
 export default connect(stpm, dtpm)(LessonTabs);

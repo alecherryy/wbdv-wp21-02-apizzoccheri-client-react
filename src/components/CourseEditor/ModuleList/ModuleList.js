@@ -31,7 +31,8 @@ export const ModuleList = ({
       <ul className="module-list__list">
         { modules.map((module, i) =>
           <li key={i} className={`module-list__item ${module._id === moduleId ? 'is-active' : ''}`}>
-            <EditableItem item={module} path={`/courses/edit/${courseId}/modules/${module._id}`}
+            <EditableItem item={module}
+              path={`/courses/edit/${courseId}/modules/${module._id}`}
               updateItem={updateModule}
               deleteItem={deleteModule} />
           </li>
