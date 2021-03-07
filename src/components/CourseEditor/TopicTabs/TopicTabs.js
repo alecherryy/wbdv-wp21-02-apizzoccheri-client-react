@@ -16,9 +16,7 @@ import topicService from '../../../services/TopicService';
 const TopicTabs = ({
   topics=[],
   findTopics,
-  findLessons,
-  createLesson,
-  deleteLesson,
+  createTopic,
 }) => {
   const {courseId, moduleId, lessonId, topicId} = useParams();
 
@@ -28,7 +26,7 @@ const TopicTabs = ({
         findTopics(moduleId, lessonId)
       }
     }
-  }, [moduleId])
+  }, [moduleId, topicId])
   return (
     <div className="topic-tabs">
       <ul className="topic-tabs__list">
@@ -43,7 +41,9 @@ const TopicTabs = ({
         )}
         <li className="topic-tabs__item">
           Add Topic
-          <button className="topic-tabs__btn" role="button">Add</button>
+          <button className="topic-tabs__btn" role="button"
+            onClick={() => createTopic(moduleId, lessonId)}
+          >Add</button>
         </li>
       </ul>
     </div>
@@ -57,10 +57,18 @@ const dtpm = (dispatch) => ({
   findTopics: (moduleId, lessonId) => {
     topicService.findTopics(moduleId, lessonId)
       .then(topics => dispatch({
-        type: 'FIND_LESSONS',
+        type: 'FIND_TOPIC',
         topics: topics
       })
     )
+  },
+  createTopic: (moduleId, lessonId) => {
+    topicService.createTopic(moduleId, lessonId, {
+      title: 'New Topic'
+    }).then(topic => dispatch({
+      type: 'CREATE_TOPIC',
+      topic
+    }))
   },
 });
 
