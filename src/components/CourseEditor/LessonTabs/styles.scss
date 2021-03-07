@@ -21,6 +21,10 @@
     padding-right: $spacing-5 !important;
     position: relative;
   }
+
+  &.is-active {
+    background-color: $pink;
+  }
 }
 
 .lesson-tabs__btn {

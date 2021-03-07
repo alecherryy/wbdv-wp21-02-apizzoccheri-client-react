@@ -33,7 +33,6 @@ export const createModule = (courseId, module) =>
  * @param {object} module
  */
 export const updateModule = (moduleId, module) => {
-  console.log(module)
   fetch(`${MODULES_URL}/${moduleId}`, {
     method: 'PUT',
     body: JSON.stringify(module),
