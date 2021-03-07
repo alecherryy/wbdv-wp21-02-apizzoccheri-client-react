@@ -8,23 +8,32 @@
 
   border: solid 1px $gray-2;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .module-list__item {
   border-bottom: solid 1px $gray-2;
-  padding: $spacing-1 $spacing-2 !important;
 
   &:last-child {
-    padding-bottom: $spacing-2 !important;
-    padding-top: $spacing-2 !important;
     border-bottom: 0;
+    padding: $spacing-2 !important;
   }
 
   .editable-item {
+    padding: $spacing-1 $spacing-2 !important;
     width: 100%;
   }
 
   .editable-item__title {
     font-size: $base-font-size;
+  }
+
+  .editable-item__input {
+    font-size: $base-font-size;
+    width: calc(100% - 60px);
+  }
+
+  .editable-item__btn {
+    top: $spacing-1;
   }
 }

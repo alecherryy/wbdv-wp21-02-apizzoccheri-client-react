@@ -17,7 +17,7 @@ const TopicTabs = ({topics=[]}) =>
         <EditableItem item={topic} /></li>
       )}
       <li className="topic-tabs__item">
-        New topic
+        Add Topic
         <button className="topic-tabs__btn" role="button">Add</button>
       </li>
     </ul>

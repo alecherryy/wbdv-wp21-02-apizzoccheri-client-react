@@ -1,6 +1,6 @@
 import "./styles.scss";
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useParams } from 'react-router-dom';
 import { combineReducers, createStore } from 'redux';
 
 import LessonReducer from '../../reducers/LessonReducer';
@@ -15,6 +15,7 @@ import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
 import { Provider } from "react-redux";
 import { Section } from "../../layouts/Section/Section";
+import { findCourseById } from "../../services/CourseService";
 
 
 /**
@@ -31,6 +32,8 @@ const reducer = combineReducers({
 const store = createStore(reducer);
 
 export const CourseEditor = () => {
+  const {courseId, moduleId} = useParams();
+
   return(
     <Provider store={store}>
       <Constrain>

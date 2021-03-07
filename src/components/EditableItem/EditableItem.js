@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom';
  * @component
  */
 export const EditableItem = ({
+  item,
+  path,
   deleteItem,
   updateItem,
-  item,
 }) => {
   const [editing, setEditing] = useState(false);
   const [newTitle, setNewTitle] = useState(item.title);
@@ -31,8 +32,6 @@ export const EditableItem = ({
   // delete course local function
   const deleteThisItem = () => {
     setEditing(false);
-
-    // deleteCourse(item);
   }
 
   return (
@@ -43,14 +42,19 @@ export const EditableItem = ({
       }
       { !editing &&
         <h4 className="editable-item__title">
-          <Link to={`/courses/edit/item/${item._id}`}>{newTitle}</Link>
+          {path ?
+            <Link to={path}>{newTitle}</Link> :
+            <>{newTitle}</>
+          }
         </h4>
       }
       <div className="editable-item__controls">
       { editing &&
         <div className="editable-item__edits">
           <button className="editable-item__btn editable-item__btn--delete"
-            onClick={() => deleteThisItem()}>Delete</button>
+            onClick={
+              () => deleteThisItem(),
+              deleteItem}>Delete</button>
           <button className="editable-item__btn editable-item__btn--okay"
             onClick={() => updateTitle()}>Ok</button>
         </div>

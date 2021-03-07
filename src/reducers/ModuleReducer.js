@@ -16,7 +16,26 @@ const initialState = {
 }
 
 const ModuleReducer = (state=initialState, action) => {
-  return state;
+  switch (action.type) {
+    case 'FIND_COURSE_MODULES':
+      return {
+        ...state,
+        modules: action.modules
+      }
+    case 'CREATE_MODULE':
+      // console.log(action.module);
+      const newModules = {
+      modules: [
+          ...state.modules,
+          action.module
+        ]
+      }
+      return newModules;
+    case 'UPDATE_MODULE':
+    case 'DELETE_MODULE':
+    default:
+      return state;
+  }
 }
 
 export default ModuleReducer;

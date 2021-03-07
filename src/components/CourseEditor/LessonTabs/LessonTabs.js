@@ -24,7 +24,7 @@ const LessonTabs = ({
         <EditableItem item={lesson} /></li>
       )}
       <li className="lesson-tabs__item">
-        New Lesson
+        Add Lesson
         <button className="lesson-tabs__btn" role="button">Add</button>
       </li>
     </ul>
