@@ -1,19 +1,17 @@
 const initialState = {
-  topics: [
-    {
-      _id: '123', title: 'Topic title',
-    },
-    {
-      _id: '456', title: 'Topic title',
-    },
-    {
-      _id: '678', title: 'Topic title',
-    },
-  ]
+  topics: []
 }
 
 const TopicReducer = (state=initialState, action) => {
-  return state;
+  switch (action.type) {
+    case 'FIND_LESSONS':
+      return {
+        ...state,
+        topics: action.topics
+      }
+    default:
+      return state;
+  }
 }
 
 export default TopicReducer;

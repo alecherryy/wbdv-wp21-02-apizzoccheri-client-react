@@ -21,7 +21,8 @@ export const CourseManager = () => {
       <Route path={[
           '/courses/edit/:courseId',
           '/courses/edit/:courseId/modules/:moduleId',
-          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId'
+          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId',
+          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics'
         ]}
         exact={true}
         render={(props) => <CourseEditor {...props}/>}>
