@@ -75,7 +75,7 @@ const dtpm = (dispatch) => ({
     lessonService.deleteLesson(moduleId, lesson._id)
     .then(status => dispatch({
         type: 'DELETE_LESSON',
-        lessonToDelete: lesson
+        lessonToDeleteId: lesson
     }))
   }
 })

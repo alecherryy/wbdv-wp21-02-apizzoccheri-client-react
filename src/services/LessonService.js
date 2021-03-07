@@ -26,26 +26,10 @@ export const createLesson = (moduleId, lesson) =>
   }).then(response => response.json())
 
 /**
- * UPDATE LESSON
- *
- * @param {string} moduleId
- * @param {object} lesson
- */
-export const updateLesson = (moduleId, lesson) => {
-  fetch(`${MODULES_URL}/${moduleId}/lessons`, {
-    method: 'PUT',
-    body: JSON.stringify(lesson),
-    headers: {
-      'content-type': 'application/json'
-    }
-  }).then(response => response.json())
-}
-
-/**
  * DELETE LESSON
  *
  * @param {string} moduleId
- * @param {object} lesson
+ * @param {string} lessonId
  */
 export const deleteLesson = (moduleId, lessonId) => {
   fetch(`${MODULES_URL}/${moduleId}/lessons/${lessonId}`, {
