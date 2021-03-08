@@ -29,7 +29,6 @@ const TopicTabs = ({
       findTopics(lessonId)
     }
   }, [lessonId])
-
   return (
     <div className="topic-tabs">
       <ul className="topic-tabs__list">
@@ -37,7 +36,7 @@ const TopicTabs = ({
           <li key={i} className={`topic-tabs__item ${topic._id === topicId ? 'is-active' : ''}`}>
             <EditableItem item={topic}
               path={
-                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`
+                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}`
               }
               updateItem={updateTopic}
               deleteItem={deleteTopic} />
@@ -46,7 +45,7 @@ const TopicTabs = ({
         <li className="topic-tabs__item">
           Add Topic
           <button className="topic-tabs__btn" role="button"
-            onClick={() => createTopic(topicId)}
+            onClick={() => createTopic(lessonId)}
           >Add</button>
         </li>
       </ul>
@@ -76,7 +75,7 @@ const dtpm = (dispatch) => ({
     }))
   },
   updateTopic: (topic) => {
-    topicService.updadteLessonTopic(topic._id, topic)
+    topicService.updateLessonTopic(topic._id, topic)
       .then(status => dispatch({
         type: 'UPDATE_TOPIC',
         topic

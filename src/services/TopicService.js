@@ -6,13 +6,9 @@ const TOPIC_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/to
  *
  * @param {string} lessonId
  */
-export const findLessonTopics = (lessonId) => {
-  return fetch(`${LESSONS_URL}/${lessonId}/topics`)
-    .then(response => {
-      console.log(response.json())
-      // response.json();
-    })
-}
+export const findLessonTopics = (lessonId) =>
+  fetch(`${LESSONS_URL}/${lessonId}/topics`)
+  .then(response => response.json())
 
 /**
  * CREATE A NEW TOPIC
@@ -28,8 +24,8 @@ export const createLessonTopic = (lessonId, topic) => {
       'content-type': 'application/json'
     }
   }).then(response => {
-    // console.log(response.json())
-    response.json()
+    console.log(response.json())
+    // response.json()
   })
 }
 
@@ -39,7 +35,7 @@ export const createLessonTopic = (lessonId, topic) => {
  * @param {string} topicId
  * @param {object} topic
  */
-export const updadteLessonTopic = (topicId, topic) => {
+export const updateLessonTopic = (topicId, topic) => {
   return fetch(`${TOPIC_URL}/${topicId}`, {
     method: 'PUT',
     body: JSON.stringify(topic),
@@ -61,5 +57,5 @@ export const deleteLessonTopic = (topicId) => {
 }
 
 export default {
-  findLessonTopics, createLessonTopic, updadteLessonTopic, deleteLessonTopic
+  findLessonTopics, createLessonTopic, updateLessonTopic, deleteLessonTopic
 }
