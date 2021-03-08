@@ -8,7 +8,10 @@ const TOPIC_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/to
  */
 export const findLessonTopics = (lessonId) => {
   return fetch(`${LESSONS_URL}/${lessonId}/topics`)
-    .then(response => response.json())
+    .then(response => {
+      console.log(response.json())
+      // response.json();
+    })
 }
 
 /**
@@ -24,7 +27,10 @@ export const createLessonTopic = (lessonId, topic) => {
     headers: {
       'content-type': 'application/json'
     }
-  }).then(response => response.json())
+  }).then(response => {
+    // console.log(response.json())
+    response.json()
+  })
 }
 
 /**
