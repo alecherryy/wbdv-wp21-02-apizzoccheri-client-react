@@ -1,11 +1,13 @@
 import './styles.scss';
 
+import '../../services/LessonService';
+
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { EditableItem } from '../../EditableItem/EditableItem';
-import lessonService from '../../../services/LessonService';
+import EditableItem from '../EditableItem/EditableItem';
+import lessonService from '../../services/LessonService';
 
 /**
  * Component for LessonTabs
@@ -17,6 +19,7 @@ const LessonTabs = ({
   lessons=[],
   findLessons,
   createLesson,
+  updateLesson,
   deleteLesson,
 }) => {
   const {courseId, moduleId, lessonId} = useParams();
@@ -36,7 +39,8 @@ const LessonTabs = ({
               path={
                 `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`
               }
-              deleteItem={() => deleteLesson(moduleId, lesson)} />
+              updateItem={updateLesson}
+              deleteItem={deleteLesson} />
           </li>
         )}
         <li className="lesson-tabs__item">
@@ -56,7 +60,7 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
   findLessons: (moduleId) => {
-    lessonService.findLessons(moduleId)
+    lessonService.findModuleLessons(moduleId)
       .then(lessons => dispatch({
         type: 'FIND_LESSONS',
         lessons: lessons
@@ -64,18 +68,18 @@ const dtpm = (dispatch) => ({
     )
   },
   createLesson: (moduleId) => {
-    lessonService.createLesson(moduleId, {
+    lessonService.createModuleLesson(moduleId, {
       title: 'New Lesson'
     }).then(lesson => dispatch({
       type: 'CREATE_LESSON',
       lesson
     }))
   },
-  deleteLesson: (moduleId, lesson) => {
-    lessonService.deleteLesson(moduleId, lesson._id)
+  deleteLesson: (lesson) => {
+    lessonService.deleteModuleLesson(lesson._id)
     .then(status => dispatch({
-        type: 'DELETE_LESSON',
-        lessonToDeleteId: lesson
+      type: 'DELETE_LESSON',
+      lessonToDelete: lesson
     }))
   }
 })

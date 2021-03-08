@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
  *
  * @component
  */
-export const EditableItem = ({
+const EditableItem = ({
   item,
   path,
   deleteItem,
@@ -28,7 +28,7 @@ export const EditableItem = ({
       }
       { !editing &&
         <h4 className="editable-item__title">
-          <Link to={path}>{cachedItem.title}</Link>
+          <Link to={path}>{item.title}</Link>
         </h4>
       }
       <div className="editable-item__controls">
@@ -46,7 +46,8 @@ export const EditableItem = ({
         </div>
       }
       { !editing &&
-        <button className="editable-item__btn editable-item__btn--edit" onClick={() => setEditing(true)}>
+        <button className="editable-item__btn editable-item__btn--edit"
+          onClick={() => setEditing(true)}>
           Edit
         </button>
       }
@@ -54,3 +55,5 @@ export const EditableItem = ({
     </div>
   )
 };
+
+export default EditableItem;

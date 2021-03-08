@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { EditableItem } from '../../EditableItem/EditableItem';
-import topicService from '../../../services/TopicService';
+import EditableItem from '../EditableItem/EditableItem';
+import topicService from '../../services/TopicService';
 
 /**
  * Component for TopicTabs

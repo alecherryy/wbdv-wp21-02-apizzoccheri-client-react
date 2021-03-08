@@ -4,24 +4,24 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { AddContent } from '../../AddContent/AddContent';
-import { EditableItem } from '../../EditableItem/EditableItem';
-import moduleService from '../../../services/ModuleService';
+import { AddContent } from '../AddContent/AddContent';
+import EditableItem from '../EditableItem/EditableItem';
+import moduleService from '../../services/ModuleService';
 
 /**
  * Component for ModuleList
  *
  * @component
  */
-export const ModuleList = ({
+const ModuleList = ({
   modules=[],
   createModule,
   deleteModule,
   updateModule,
-  findModules,
+  findModules
 }) => {
-  const {courseId, moduleId} = useParams();
 
+  const {courseId, moduleId} = useParams();
   useEffect(() => {
     findModules(courseId)
   }, [])
@@ -53,10 +53,11 @@ export const ModuleList = ({
 const stpm = (state) => ({
   modules: state.ModuleReducer.modules
 });
+
 const dtpm = (dispatch) => {
   return {
     findModules: (courseId) => {
-      moduleService.findModules(courseId)
+      moduleService.findCourseModules(courseId)
         .then(modules => dispatch({
           type: 'FIND_MODULES',
           modules: modules
@@ -72,22 +73,22 @@ const dtpm = (dispatch) => {
         e.target.parentNode.reset();
       }
 
-      moduleService.createModule(courseId, {
+      moduleService.createCourseModule(courseId, {
         title: title
       }).then(newModule => dispatch({
         type: 'CREATE_MODULE',
         module: newModule
     }))},
     updateModule: (module) =>
-      moduleService.updateModule(module._id, module).then(status => dispatch({
+      moduleService.updateCourseModule(module._id, module).then(status => dispatch({
         type: 'UPDATE_MODULE',
         module
       })),
     deleteModule: (module) =>
-      moduleService.deleteModule(module._id)
+      moduleService.deleteCourseModule(module._id)
       .then(status => dispatch({
-          type: 'DELETE_MODULE',
-          moduleToDelete: module
+        type: 'DELETE_MODULE',
+        moduleToDelete: module
       })),
   }
 };

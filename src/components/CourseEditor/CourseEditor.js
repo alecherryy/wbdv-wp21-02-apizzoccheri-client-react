@@ -7,9 +7,9 @@ import LessonReducer from '../../reducers/LessonReducer';
 import TopicReducer from '../../reducers/TopicReducer';
 import ModuleReducer from "../../reducers/ModuleReducer";
 
-import LessonTabs from "./LessonTabs/LessonTabs";
-import TopicTabs from "./TopicTabs/TopicTabs";
-import ModuleList from "./ModuleList/ModuleList";
+import LessonTabs from '../LessonTabs/LessonTabs';
+import TopicTabs from "../TopicTabs/TopicTabs";
+import ModuleList from '../ModuleList/ModuleList';
 
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";

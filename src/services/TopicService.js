@@ -1,3 +1,4 @@
+const COURSES_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/courses';
 const MODULES_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/modules';
 
 /**
@@ -6,9 +7,9 @@ const MODULES_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/
  * @param {string} moduleId
  * @param {string} lessonId
  */
-export const findTopics = (moduleId, lessonId) =>
+export const findTopics = (lessonId) =>
   fetch(
-    `${MODULES_URL}/${moduleId}/lessons/${lessonId}/topics`
+    `${MODULES_URL}/${lessonId}/topics`
   ).then(response => response.json())
 
   /**
@@ -18,14 +19,18 @@ export const findTopics = (moduleId, lessonId) =>
  * @param {string} lessonId
  * @param {object} topic
  */
-export const createTopic = (moduleId, lessonId, topic) =>
-fetch(`${MODULES_URL}/${moduleId}/lessons/${lessonId}/topics`, {
-  method: 'POST',
-  body: JSON.stringify(topic),
-  headers: {
-    'content-type': 'application/json'
-  }
-}).then(response => response.json())
+export const createTopic = (moduleId, lessonId, topic) => {
+  fetch(`${MODULES_URL}/${moduleId}/lessons/${lessonId}/topics`, {
+    method: 'POST',
+    body: JSON.stringify(topic),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response =>  {
+    console.log(response.data);
+    response.json();
+  })
+}
 
 export default {
   findTopics, createTopic
