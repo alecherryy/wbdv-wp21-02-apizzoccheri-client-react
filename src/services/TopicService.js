@@ -6,9 +6,10 @@ const TOPIC_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/to
  *
  * @param {string} lessonId
  */
-export const findLessonTopics = (lessonId) =>
-  fetch(`${LESSONS_URL}/${lessonId}/topics`)
-  .then(response => response.json())
+export const findLessonTopics = (lessonId) => {
+  return fetch(`${LESSONS_URL}/${lessonId}/topics`)
+    .then(response => response.json())
+}
 
 /**
  * CREATE A NEW TOPIC
@@ -23,10 +24,7 @@ export const createLessonTopic = (lessonId, topic) => {
     headers: {
       'content-type': 'application/json'
     }
-  }).then(response => {
-    console.log(response.json())
-    // response.json()
-  })
+  }).then(response => response.json())
 }
 
 /**

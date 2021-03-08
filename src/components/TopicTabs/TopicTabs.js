@@ -34,9 +34,10 @@ const TopicTabs = ({
       <ul className="topic-tabs__list">
         { topics.map((topic, i) =>
           <li key={i} className={`topic-tabs__item ${topic._id === topicId ? 'is-active' : ''}`}>
+            { console.log(topic)}
             <EditableItem item={topic}
               path={
-                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}`
+                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`
               }
               updateItem={updateTopic}
               deleteItem={deleteTopic} />
