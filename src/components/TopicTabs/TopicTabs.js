@@ -1,5 +1,7 @@
 import './styles.scss';
 
+import '../../services/TopicService';
+
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -17,59 +19,76 @@ const TopicTabs = ({
   topics=[],
   findTopics,
   createTopic,
+  updateTopic,
+  deleteTopic,
 }) => {
-  const {courseId, moduleId, lessonId, topicId} = useParams();
+  const {courseId, moduleId, topicId, lessonId} = useParams();
 
   useEffect(() => {
-    if (moduleId !== 'undefined' && typeof moduleId !== 'undefined') {
-      if (lessonId !== 'undefined' && typeof lessonId !== 'undefined') {
-        findTopics(moduleId, lessonId)
-      }
+    if (lessonId !== 'undefined' && typeof lessonId !== 'undefined') {
+      findTopics(lessonId)
     }
-  }, [moduleId, topicId])
+  }, [lessonId])
+
   return (
     <div className="topic-tabs">
       <ul className="topic-tabs__list">
         { topics.map((topic, i) =>
           <li key={i} className={`topic-tabs__item ${topic._id === topicId ? 'is-active' : ''}`}>
-            <EditableItem
+            <EditableItem item={topic}
               path={
-                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`
+                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topicId}`
               }
-              item={topic} />
+              updateItem={updateTopic}
+              deleteItem={deleteTopic} />
           </li>
         )}
         <li className="topic-tabs__item">
           Add Topic
           <button className="topic-tabs__btn" role="button"
-            onClick={() => createTopic(moduleId, lessonId)}
+            onClick={() => createTopic(topicId)}
           >Add</button>
         </li>
       </ul>
     </div>
-  )
+  );
 };
 
 const stpm = (state) => ({
   topics: state.TopicReducer.topics
 });
+
 const dtpm = (dispatch) => ({
-  findTopics: (moduleId, lessonId) => {
-    topicService.findTopics(moduleId, lessonId)
+  findTopics: (lessonId) => {
+    topicService.findLessonTopics(lessonId)
       .then(topics => dispatch({
-        type: 'FIND_TOPIC',
+        type: 'FIND_TOPICS',
         topics: topics
       })
     )
   },
-  createTopic: (moduleId, lessonId) => {
-    topicService.createTopic(moduleId, lessonId, {
+  createTopic: (lessonId) => {
+    topicService.createLessonTopic(lessonId, {
       title: 'New Topic'
     }).then(topic => dispatch({
       type: 'CREATE_TOPIC',
       topic
     }))
   },
-});
+  updateTopic: (topic) => {
+    topicService.updadteLessonTopic(topic._id, topic)
+      .then(status => dispatch({
+        type: 'UPDATE_TOPIC',
+        topic
+    }))
+  },
+  deleteTopic: (topic) => {
+    topicService.deleteLessonTopic(topic._id)
+    .then(status => dispatch({
+      type: 'DELETE_TOPIC',
+      topicToDelete: topic
+    }))
+  }
+})
 
 export default connect(stpm, dtpm)(TopicTabs);

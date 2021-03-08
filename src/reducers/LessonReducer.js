@@ -33,7 +33,6 @@ const LessonReducer = (state=initialState, action) => {
           if(lesson._id === action.lessonToDelete._id) {
             return false
           } else {
-            console.log(lesson)
             return true
           }
         })

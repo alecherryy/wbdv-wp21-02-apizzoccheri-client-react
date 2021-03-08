@@ -1,5 +1,5 @@
 const MODULES_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/modules';
-const LESSON_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/lessons/';
+const LESSON_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/lessons';
 
 /**
  * FIND ALL LESSONS
@@ -17,14 +17,31 @@ export const findModuleLessons = (moduleId) =>
  * @param {string} courseId
  * @param {object} module
  */
-export const createModuleLesson = (moduleId, lesson) =>
-  fetch(`${MODULES_URL}/${moduleId}/lessons`, {
+export const createModuleLesson = (moduleId, lesson) => {
+  return fetch(`${MODULES_URL}/${moduleId}/lessons`, {
     method: 'POST',
     body: JSON.stringify(lesson),
     headers: {
       'content-type': 'application/json'
     }
   }).then(response => response.json())
+}
+
+/**
+ * UPDATE LESSON
+ *
+ * @param {string} lessonId
+ * @param {object} lesson
+ */
+export const updadteModuleLesson = (lessonId, lesson) => {
+  return fetch(`${LESSON_URL}/${lessonId}`, {
+    method: 'PUT',
+    body: JSON.stringify(lesson),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response => response.json())
+}
 
 /**
  * DELETE LESSON
@@ -38,5 +55,5 @@ export const deleteModuleLesson = (lessonId) => {
 }
 
 export default {
-  findModuleLessons, createModuleLesson, deleteModuleLesson
+  findModuleLessons, createModuleLesson, updadteModuleLesson, deleteModuleLesson
 }

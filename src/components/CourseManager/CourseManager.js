@@ -22,7 +22,7 @@ export const CourseManager = () => {
           '/courses/edit/:courseId',
           '/courses/edit/:courseId/modules/:moduleId',
           '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId',
-          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics'
+          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId'
         ]}
         exact={true}
         render={(props) => <CourseEditor {...props}/>}>

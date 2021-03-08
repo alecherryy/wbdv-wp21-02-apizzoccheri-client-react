@@ -75,6 +75,13 @@ const dtpm = (dispatch) => ({
       lesson
     }))
   },
+  updateLesson: (lesson) => {
+    lessonService.updadteModuleLesson(lesson._id, lesson)
+      .then(status => dispatch({
+        type: 'UPDATE_LESSON',
+        lesson
+    }))
+  },
   deleteLesson: (lesson) => {
     lessonService.deleteModuleLesson(lesson._id)
     .then(status => dispatch({
