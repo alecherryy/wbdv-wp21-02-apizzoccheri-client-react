@@ -23,34 +23,41 @@ const LessonTabs = ({
   deleteLesson,
 }) => {
   const {courseId, moduleId, lessonId} = useParams();
+  const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
+  const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
+  const showLessons = hasCourse && hasModule;
 
   useEffect(() => {
-    if (moduleId !== 'undefined' && typeof moduleId !== 'undefined') {
+    if (showLessons) {
       findLessons(moduleId)
     }
   }, [moduleId])
 
   return (
-    <div className="lesson-tabs">
-      <ul className="lesson-tabs__list">
-        { lessons.map((lesson, i) =>
-          <li key={i} className={`lesson-tabs__item ${lesson._id === lessonId ? 'is-active' : ''}`}>
-            <EditableItem item={lesson}
-              path={
-                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`
-              }
-              updateItem={updateLesson}
-              deleteItem={deleteLesson} />
-          </li>
-        )}
-        <li className="lesson-tabs__item">
-          Add Lesson
-          <button className="lesson-tabs__btn" role="button"
-            onClick={() => createLesson(moduleId)}
-          >Add</button>
-        </li>
-      </ul>
-    </div>
+    <>
+      { showLessons &&
+        <div className="lesson-tabs">
+          <ul className="lesson-tabs__list">
+            { lessons.map((lesson, i) =>
+              <li key={i} className={`lesson-tabs__item ${lesson._id === lessonId ? 'is-active' : ''}`}>
+                <EditableItem item={lesson}
+                  path={
+                    `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`
+                  }
+                  updateItem={updateLesson}
+                  deleteItem={deleteLesson} />
+              </li>
+            )}
+            <li className="lesson-tabs__item">
+              Add Lesson
+              <button className="lesson-tabs__btn" role="button"
+                onClick={() => createLesson(moduleId)}
+              >Add</button>
+            </li>
+          </ul>
+        </div>
+      }
+    </>
   );
 };
 

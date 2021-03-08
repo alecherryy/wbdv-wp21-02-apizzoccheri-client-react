@@ -23,34 +23,41 @@ const TopicTabs = ({
   deleteTopic,
 }) => {
   const {courseId, moduleId, topicId, lessonId} = useParams();
+  const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
+  const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
+  const hasLesson = lessonId !== 'undefined' && typeof lessonId !== 'undefined';
+  const showTopics = hasCourse && hasModule && hasLesson;
 
   useEffect(() => {
-    if (lessonId !== 'undefined' && typeof lessonId !== 'undefined') {
+    if (showTopics) {
       findTopics(lessonId)
     }
   }, [lessonId])
   return (
-    <div className="topic-tabs">
-      <ul className="topic-tabs__list">
-        { topics.map((topic, i) =>
-          <li key={i} className={`topic-tabs__item ${topic._id === topicId ? 'is-active' : ''}`}>
-            { console.log(topic)}
-            <EditableItem item={topic}
-              path={
-                `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`
-              }
-              updateItem={updateTopic}
-              deleteItem={deleteTopic} />
-          </li>
-        )}
-        <li className="topic-tabs__item">
-          Add Topic
-          <button className="topic-tabs__btn" role="button"
-            onClick={() => createTopic(lessonId)}
-          >Add</button>
-        </li>
-      </ul>
-    </div>
+    <>
+      { showTopics &&
+        <div className="topic-tabs">
+          <ul className="topic-tabs__list">
+            { topics.map((topic, i) =>
+              <li key={i} className={`topic-tabs__item ${topic._id === topicId ? 'is-active' : ''}`}>
+                <EditableItem item={topic}
+                  path={
+                    `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`
+                  }
+                  updateItem={updateTopic}
+                  deleteItem={deleteTopic} />
+              </li>
+            )}
+            <li className="topic-tabs__item">
+              Add Topic
+              <button className="topic-tabs__btn" role="button"
+                onClick={() => createTopic(lessonId)}
+              >Add</button>
+            </li>
+          </ul>
+        </div>
+      }
+    </>
   );
 };
 

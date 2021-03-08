@@ -22,8 +22,14 @@ const ModuleList = ({
 }) => {
 
   const {courseId, moduleId} = useParams();
+  const showModules = courseId !== 'undefined' && typeof courseId !== 'undefined';
+
   useEffect(() => {
-    findModules(courseId)
+    if (showModules) {
+      findModules(courseId)
+    } else {
+      modules = [];
+    }
   }, [])
 
   return (
