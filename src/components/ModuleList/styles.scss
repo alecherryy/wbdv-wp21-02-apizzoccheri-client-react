@@ -1,0 +1,44 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Course editor
+
+.module-list__list {
+  @include list-clean();
+
+  border: solid 1px $gray-2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.module-list__item {
+  border-bottom: solid 1px $gray-2;
+
+  &.is-active {
+    background-color: $pink;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+    padding: $spacing-2 !important;
+  }
+
+  .editable-item {
+    padding: $spacing-1 $spacing-2 !important;
+    width: 100%;
+  }
+
+  .editable-item__title {
+    font-size: $base-font-size;
+  }
+
+  .editable-item__input {
+    font-size: $base-font-size;
+    width: calc(100% - 60px);
+  }
+
+  .editable-item__btn {
+    top: $spacing-1;
+    right: $spacing-2;
+  }
+}

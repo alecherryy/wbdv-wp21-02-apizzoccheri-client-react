@@ -1,15 +1,15 @@
 /**
  * GLOBAL API URL
  */
-const url = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/courses';
+const URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/courses';
 
 /**
  * FIND ALL COURSES
  */
 export const findAllCourses = () => {
-    return fetch(url).then(response => {
-        return response.json()
-    })
+  return fetch(URL).then(response => {
+    return response.json()
+  })
 }
 
 /**
@@ -18,13 +18,13 @@ export const findAllCourses = () => {
  * @param {object} course
  */
 export const createCourse = (course) => {
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(course),
-        headers: {
-            'content-type': 'application/json'
-        }
-    }).then(response => response.json())
+  fetch(URL, {
+    method: 'POST',
+    body: JSON.stringify(course),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response => response.json())
 }
 
 /**
@@ -33,9 +33,9 @@ export const createCourse = (course) => {
  * @param {string} courseId
  */
 export const deleteCourse = (courseId) => {
-    fetch(`${url}/${courseId}`, {
-        method: 'DELETE'
-    }).then(response => response.json())
+  fetch(`${URL}/${courseId}`, {
+    method: 'DELETE'
+  }).then(response => response.json())
 }
 
 /**
@@ -44,14 +44,14 @@ export const deleteCourse = (courseId) => {
  * @param {string} courseId
  * @param {object} newCourse
  */
-export const updateCourse = (courseId, newCourse) =>
-    fetch(`${url}/${courseId}`, {
-        method: 'PUT',
-        body: JSON.stringify(newCourse),
-        headers: {
-            'content-type': 'application/json'
-        }
-    }).then(response => response.json())
+export const updateCourse = (courseId, course) =>
+  fetch(`${URL}/${courseId}`, {
+    method: 'PUT',
+    body: JSON.stringify(course),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response => response.json())
 
 /**
  * FIND COURSE BY ID
@@ -59,12 +59,12 @@ export const updateCourse = (courseId, newCourse) =>
  * @param {string} courseId
  */
 export const findCourseById = courseId =>
-    fetch(`${url}/${courseId}`)
-    .then(response => response.json())
+  fetch(`${URL}/${courseId}`)
+  .then(response => response.json())
 
 /**
  * EXPORT FUNCTIONS
  */
 export default {
-    findAllCourses, createCourse, deleteCourse, updateCourse
+  findAllCourses, createCourse, deleteCourse, updateCourse
 }

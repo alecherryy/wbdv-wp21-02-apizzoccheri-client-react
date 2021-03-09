@@ -1,0 +1,40 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Lesson Tabs
+
+.topic-tabs__list {
+  @include list-inline();
+}
+
+.topic-tabs__item {
+  border: solid 1px $gray-2;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+
+  &:last-child {
+    font-family: $font-size-sm;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    line-height: 1;
+    padding: $spacing-2 !important;
+    padding-right: $spacing-5 !important;
+    position: relative;
+  }
+
+  &.is-active {
+    background-color: $gray-1;
+  }
+}
+
+.topic-tabs__btn {
+  @include button-clear();
+  @include button-icon(rem(27px), icon-add);
+
+  background-color: $magenta;
+  background-size: rem(17px);
+  border-radius: 100%;
+  position: absolute;
+  right: $spacing-1;
+  top: calc(#{$spacing-1} * 1.25);
+}

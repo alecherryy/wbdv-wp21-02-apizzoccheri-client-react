@@ -2,7 +2,7 @@ import './styles.scss';
 
 import React from 'react';
 
-import { TableRow } from '../TableRow/TableRow';
+import { TableRow } from './TableRow/TableRow';
 
 /**
  * Component for CourseTable

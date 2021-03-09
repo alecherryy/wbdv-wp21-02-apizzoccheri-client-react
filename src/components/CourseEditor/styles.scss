@@ -4,70 +4,70 @@
 // Course editor
 
 .back {
-    background-image: url('../../images/icon-back.svg');
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 20px;
-    padding-left: $spacing-3;
-    text-decoration: none;
+  background-image: url('../../images/icon-back.svg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-left: $spacing-3;
+  text-decoration: none;
 }
 
 .list-modules {
-    @include list-clean;
+  @include list-clean;
 
-    border: solid 1px $gray-2;
-    border-radius: 5px;
+  border: solid 1px $gray-2;
+  border-radius: 5px;
 }
 
 .list-modules__item {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding: $spacing-2 !important;
-    font-weight: 700;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $spacing-2 !important;
+  font-weight: 700;
 
-    &:not(:last-child) {
-        border-bottom: solid 1px $gray-2;
-    }
+  &:not(:last-child) {
+    border-bottom: solid 1px $gray-2;
+  }
 }
 
 .list-modules__btn {
-    @include button-icon(rem(25px), icon-add);
-    margin-left: $spacing-1;
+  @include button-icon(rem(25px), icon-add);
+  margin-left: $spacing-1;
 }
 
 .list-modules__list-modules__btn--edit {
-    @include svg-background(icon-edit);
+  @include svg-background(icon-edit);
 
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .list-modules__list-modules__btn--add {
-    @include button-icon(rem(27px), icon-add);
+  @include button-icon(rem(27px), icon-add);
 
-    background-color: $magenta;
-    background-size: rem(17px);
-    border-radius: 100%;
+  background-color: $magenta;
+  background-size: rem(17px);
+  border-radius: 100%;
 }
 
 .nav-editor {
-    @include list-inline;
+  @include list-inline;
 
-    font-size: $font-size-sm;
-    margin: 0 0 $spacing-1;
+  font-size: $font-size-sm;
+  margin: 0 0 $spacing-1;
 }
 
 .nav-editor__item {
-    border: solid 1px $gray-2;
-    border-radius: 10px 10px 0 0;
-    display: inline-flex !important;
-    padding: $spacing-1 $spacing-2 !important;
+  border: solid 1px $gray-2;
+  border-radius: 10px 10px 0 0;
+  display: inline-flex !important;
+  padding: $spacing-1 $spacing-2 !important;
 }
 
 .nav-editor__link {
-    align-items: center;
-    display: inline-flex;
-    justify-content: space-between;
-    padding: $spacing-1 0;
-    text-decoration: none;
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: $spacing-1 0;
+  text-decoration: none;
 }

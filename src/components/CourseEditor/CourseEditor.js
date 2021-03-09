@@ -1,78 +1,50 @@
 import "./styles.scss";
 import React from "react";
 import { Link } from 'react-router-dom';
+import { combineReducers, createStore } from 'redux';
+
+import LessonReducer from '../../reducers/LessonReducer';
+import TopicReducer from '../../reducers/TopicReducer';
+import ModuleReducer from "../../reducers/ModuleReducer";
+
+import LessonTabs from '../LessonTabs/LessonTabs';
+import TopicTabs from "../TopicTabs/TopicTabs";
+import ModuleList from '../ModuleList/ModuleList';
 
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
-import { AddCourse } from "../../components/AddCourse/AddCourse";
+import { Provider } from "react-redux";
+import { Section } from "../../layouts/Section/Section";
+
 
 /**
  * Component for CourseEditor
  *
  * @component
  */
+
+// combine reducers
+const reducer = combineReducers({
+  ModuleReducer: ModuleReducer,
+  LessonReducer: LessonReducer,
+  TopicReducer: TopicReducer,
+});
+const store = createStore(reducer);
+
 export const CourseEditor = () => {
-    return(
-        <Constrain>
-            <Link className="back" to="/courses">Back to All Courses</Link>
-            <h1>Course Editor</h1>
-            <Sidebar>
-            <div classNameName="sidebar__aside">
-                    <h4>Modules</h4>
-                    <ul className="list-modules">
-                        <li className="list-modules__item">
-                        Module 1 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
-                        </li>
-                        <li className="list-modules__item is-selected">
-                        Module 2 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
-                        </li>
-                        <li className="list-modules__item">
-                        Module 3 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
-                        </li>
-                        <li className="list-modules__item">
-                        Module 4 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
-                        </li>
-                        <li className="list-modules__item">
-                        Module 5 <button className="list-modules__btn list-modules__list-modules__btn--edit">Edit</button>
-                        </li>
-                        <li className="list-modules__item">
-                            <AddCourse  />
-                        </li>
-                    </ul>
-                </div>
-                <div className="sidebar__main">
-                    <ul className="nav-editor">
-                        <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">Module Section<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                        <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">Module Section<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                        <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">Selected Section<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                        <li className="nav-editor__item">
-                        <a className="nav-editor__link" href="#">
-                            Add section <button className="list-modules__btn list-modules__list-modules__btn--add" type="submit">Add</button>
-                        </a>
-                        </li>
-                    </ul>
-                    <ul className="nav-editor">
-                        <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                        <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                        <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                        <li className="nav-editor__item">
-                            <a className="nav-editor__link" href="#">Module Topic<button className="list-modules__btn list-modules__list-modules__btn--edit ml-2">Edit</button></a>
-                        </li>
-                    </ul>
-                </div>
-            </Sidebar>
-        </Constrain>
-    )
+  return(
+    <Provider store={store}>
+      <Constrain>
+      <Link className="back" to="/courses">Back</Link>
+      <h1>Course Editor</h1>
+      <Sidebar>
+        <ModuleList />
+        <Section modifierClasses="" hasConstrain={false}>
+          <LessonTabs />
+          <TopicTabs />
+        </Section>
+      </Sidebar>
+    </Constrain>
+    </Provider>
+  )
 }

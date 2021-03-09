@@ -22,13 +22,13 @@
 
   &:nth-child(3n+1) {
     .grid-card__image {
-      background-image: url('../../images/bg-2.jpeg');
+      background-image: url('../../../images/bg-2.jpeg');
     }
   }
 
   &:nth-child(3n+2) {
     .grid-card__image {
-      background-image: url('../../images/bg-3.jpeg');
+      background-image: url('../../../images/bg-3.jpeg');
     }
   }
 }
@@ -42,7 +42,7 @@
 }
 
 .grid-card__image {
-  background-image: url('../../images/bg-1.jpeg');
+  background-image: url('../../../images/bg-1.jpeg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -11,14 +11,22 @@ import { Menu } from "../Menu/Menu";
  * @component
  */
 export const CourseManager = () => {
-    return(
-        <Router>
-            <div className="constrain constrain--wide">
-                <Menu />
-            </div>
+  return(
+    <Router>
+      <div className="constrain constrain--wide">
+        <Menu />
+      </div>
 
-            <Route path="/courses" exact component={AllCourses}/>
-            <Route path="/courses/editor" exact component={CourseEditor} />
-        </Router>
-    )
+      <Route path="/courses" exact component={AllCourses}/>
+      <Route path={[
+          '/courses/edit/:courseId',
+          '/courses/edit/:courseId/modules/:moduleId',
+          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId',
+          '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId'
+        ]}
+        exact={true}
+        render={(props) => <CourseEditor {...props}/>}>
+      </Route>
+    </Router>
+  )
 }
