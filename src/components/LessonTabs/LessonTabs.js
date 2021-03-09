@@ -22,9 +22,11 @@ const LessonTabs = ({
   updateLesson,
   deleteLesson,
 }) => {
-  const {courseId, moduleId, lessonId} = useParams();
+  const { courseId, moduleId, lessonId } = useParams();
+  // establish conditions before finding lessons
   const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
   const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
+  // render condition
   const showLessons = hasCourse && hasModule;
 
   useEffect(() => {
@@ -35,6 +37,7 @@ const LessonTabs = ({
 
   return (
     <>
+      {/* render component if path is correct */}
       { showLessons &&
         <div className="lesson-tabs">
           <ul className="lesson-tabs__list">

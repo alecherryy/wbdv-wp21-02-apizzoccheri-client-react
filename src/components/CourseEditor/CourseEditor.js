@@ -23,6 +23,7 @@ import { Section } from "../../layouts/Section/Section";
  * @component
  */
 
+// combine reducers
 const reducer = combineReducers({
   ModuleReducer: ModuleReducer,
   LessonReducer: LessonReducer,

@@ -44,10 +44,10 @@ export const deleteCourse = (courseId) => {
  * @param {string} courseId
  * @param {object} newCourse
  */
-export const updateCourse = (courseId, newCourse) =>
+export const updateCourse = (courseId, course) =>
   fetch(`${URL}/${courseId}`, {
     method: 'PUT',
-    body: JSON.stringify(newCourse),
+    body: JSON.stringify(course),
     headers: {
       'content-type': 'application/json'
     }

@@ -2,6 +2,9 @@ const initialState = {
   topics: []
 }
 
+/**
+ * Define reducer
+ */
 const TopicReducer = (state=initialState, action) => {
   switch (action.type) {
     case 'FIND_TOPICS':

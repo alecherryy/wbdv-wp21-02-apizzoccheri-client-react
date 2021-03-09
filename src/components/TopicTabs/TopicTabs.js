@@ -22,10 +22,12 @@ const TopicTabs = ({
   updateTopic,
   deleteTopic,
 }) => {
-  const {courseId, moduleId, topicId, lessonId} = useParams();
+  const { courseId, moduleId, topicId, lessonId } = useParams();
+  // establish conditions before finding topcis
   const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
   const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
   const hasLesson = lessonId !== 'undefined' && typeof lessonId !== 'undefined';
+  // render condition
   const showTopics = hasCourse && hasModule && hasLesson;
 
   useEffect(() => {
@@ -35,6 +37,7 @@ const TopicTabs = ({
   }, [lessonId])
   return (
     <>
+      {/* render component if path is correct */}
       { showTopics &&
         <div className="topic-tabs">
           <ul className="topic-tabs__list">

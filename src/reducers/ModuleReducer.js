@@ -2,6 +2,9 @@ const initialState = {
   modules: []
 }
 
+/**
+ * Define reducer
+ */
 const ModuleReducer = (state=initialState, action) => {
   switch (action.type) {
     case 'FIND_MODULES':

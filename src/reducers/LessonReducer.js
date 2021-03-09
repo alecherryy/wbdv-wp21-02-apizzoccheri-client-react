@@ -2,6 +2,10 @@ const initialState = {
   lessons: []
 }
 
+/**
+ * Define reducer
+ */
+
 const LessonReducer = (state=initialState, action) => {
   switch (action.type) {
     case 'FIND_LESSONS':

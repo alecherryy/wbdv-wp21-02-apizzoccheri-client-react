@@ -4,7 +4,7 @@ const LESSON_URL = 'https://wbdv-generic-server.herokuapp.com/api/apizzoccheri/l
 /**
  * FIND ALL LESSONS
  *
- * @param {string} courseId
+ * @param {string} moduleId
  */
 export const findModuleLessons = (moduleId) =>
   fetch(
@@ -14,7 +14,7 @@ export const findModuleLessons = (moduleId) =>
 /**
  * CREATE A NEW LESSON
  *
- * @param {string} courseId
+ * @param {string} moduleId
  * @param {object} module
  */
 export const createModuleLesson = (moduleId, lesson) => {
