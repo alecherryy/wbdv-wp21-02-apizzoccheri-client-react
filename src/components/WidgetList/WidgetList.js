@@ -23,7 +23,7 @@ const WidgetList = ({
   updateWidget,
   deleteWidget,
 }) => {
-  const { courseId, moduleId, topicId, lessonId } = useParams();
+  const { courseId, moduleId, lessonId, topicId } = useParams();
   // establish conditions before finding topcis
   const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
   const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
@@ -114,7 +114,7 @@ const dtpm = (dispatch) => ({
     }))
   },
   deleteWidget: (widget) => {
-    widgetService.deleteTopicWidget(widget._id)
+    widgetService.deleteTopicWidget(widget.id)
     .then(status => dispatch({
       type: 'DELETE_WIDGET',
       widgetToDelete: widget

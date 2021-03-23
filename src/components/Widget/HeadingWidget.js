@@ -17,8 +17,8 @@ const Widget = ({
 
   return (
     <div className="widget" data-is-editing={editing}>
-      <span className="widget__eyebrow">{cachedItem.name} - {cachedItem.type} {cachedItem.size}</span>
-      <h3 className="widget__title">{cachedItem.text}</h3>
+      <span className="widget__eyebrow">{item.name} - {item.type} {item.size}</span>
+      <h3 className="widget__title">{item.text}</h3>
       { editing &&
         <EditingItem cachedItem={cachedItem}
           onTextChange={(e) => setCahedItem({
