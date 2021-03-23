@@ -1,4 +1,4 @@
-const WIDGET_URL = 'https://wbdv-sp21-apizzo-server-java.herokuapp.com/api/';
+const WIDGET_URL = 'https://wbdv-sp21-apizzo-server-java.herokuapp.com/api';
 
 /**
  * FIND ALL TOPICS
@@ -10,11 +10,49 @@ export const findTopicWidgets = (topicId) => {
     .then(response => response.json())
 }
 
-// export const findWidgets = () => {
-//   return fetch(`${WIDGET_URL}`)
-//     .then(response => response.json())
-// }
+/**
+ * CREATE A NEW WIDGET
+ *
+ * @param {string} topicId
+ * @param {object} widget
+ */
+export const createTopicWidget = (topicId, widget) => {
+  return fetch(`${WIDGET_URL}/topics/${topicId}/widgets`, {
+    method: 'POST',
+    body: JSON.stringify(widget),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response => response.json())
+}
+
+/**
+ * UPDATE TOPIC
+ *
+ * @param {string} widgetId
+ * @param {object} widget
+ */
+export const updateTopicWidget = (widgetId, widget) => {
+  return fetch(`${WIDGET_URL}/widgets/${widgetId}`, {
+    method: 'PUT',
+    body: JSON.stringify(widget),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then(response => response.json())
+}
+
+/**
+ * DELETE WIDGET
+ *
+ * @param {string} topicId
+ */
+export const deleteTopicWidget = (topicId) => {
+  return fetch(`${TOPIC_URL}/${topicId}`, {
+    method: 'DELETE'
+  }).then(response => response.json())
+}
 
 export default {
-  findTopicWidgets
+  findTopicWidgets, createTopicWidget, updateTopicWidget, deleteTopicWidget
 }

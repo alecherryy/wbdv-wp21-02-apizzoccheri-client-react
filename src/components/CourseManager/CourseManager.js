@@ -19,7 +19,6 @@ export const CourseManager = () => {
 
       <Route path="/courses" exact component={AllCourses}/>
       <Route path={[
-          '/courses', // DELETE THIS
           '/courses/edit/:courseId',
           '/courses/edit/:courseId/modules/:moduleId',
           '/courses/edit/:courseId/modules/:moduleId/lessons/:lessonId',

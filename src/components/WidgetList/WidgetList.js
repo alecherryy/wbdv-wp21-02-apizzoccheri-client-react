@@ -31,8 +31,7 @@ const WidgetList = ({
   const hasTopic = topicId !== 'undefined' && typeof topicId !== 'undefined';
 
   // render condition
-  // const showWidgets = hasCourse && hasModule && hasLesson && hasTopic;
-  const showWidgets = true;
+  const showWidgets = hasCourse && hasModule && hasLesson && hasTopic;
 
   useEffect(() => {
     if (showWidgets) {
@@ -53,18 +52,13 @@ const WidgetList = ({
               </li>
             { widgets.map((widget, i) =>
               <li key={i} className="widget-list__item">
+                {console.log(widget)}
                 { widget.type === 'HEADING' ?
                   <HeadingWidget item={widget}
-                    path={
-                      `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/widgets/${widget._id}`
-                    }
                     updateItem={updateWidget}
                     deleteItem={deleteWidget} />
                   :
                   <ParagraphWidget item={widget}
-                    path={
-                      `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/widgets/${widget._id}`
-                    }
                     updateItem={updateWidget}
                     deleteItem={deleteWidget} />
                 }
@@ -83,7 +77,7 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
   findWidgets: (topicId) => {
-    widgetService.findTopicWidgets('604691acb2d531001729e262')
+    widgetService.findTopicWidgets(topicId)
       .then(widgets => dispatch({
         type: 'FIND_WIDGETS',
         widgets: widgets
@@ -92,14 +86,27 @@ const dtpm = (dispatch) => ({
   },
   createWidget: (topicId) => {
     widgetService.createTopicWidget(topicId, {
-      title: 'New Widget'
+      name: 'Widget N',
+      topicID: topicId,
+      widgetOrder: 4,
+      type: 'HEADING',
+      url: '#',
+      size: 3,
+      text: 'My new Widget',
+      width: 0,
+      height: 0,
+      src: 'source',
+      ordered: true,
+      cssClass: '',
+      style: '',
+      value: 'Some value'
     }).then(widget => dispatch({
       type: 'CREATE_WIDGET',
       widget
     }))
   },
   updateWidget: (widget) => {
-    widgetService.updateTopicWidget(widget._id, widget)
+    widgetService.updateTopicWidget(widget.id, widget)
       .then(status => dispatch({
         type: 'UPDATE_WIDGET',
         widget

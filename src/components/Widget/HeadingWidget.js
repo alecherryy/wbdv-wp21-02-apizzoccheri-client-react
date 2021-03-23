@@ -17,13 +17,21 @@ const Widget = ({
 
   return (
     <div className="widget" data-is-editing={editing}>
-      <span className="widget__eyebrow">{item.name} - {item.type} {item.size}</span>
-      <h3 className="widget__title">{item.text}</h3>
+      <span className="widget__eyebrow">{cachedItem.name} - {cachedItem.type} {cachedItem.size}</span>
+      <h3 className="widget__title">{cachedItem.text}</h3>
       { editing &&
         <EditingItem cachedItem={cachedItem}
           onTextChange={(e) => setCahedItem({
             ...cachedItem,
             text: e.target.value
+          })}
+          onSizeChange={(e) => setCahedItem({
+            ...cachedItem,
+            size: e.target.value
+          })}
+          onTypeChange={(e) => setCahedItem({
+            ...cachedItem,
+            type: e.target.value
           })}
       />
       }
@@ -52,10 +60,11 @@ const Widget = ({
   )
 };
 
-const EditingItem = ({ cachedItem, onTextChange, onSizeChange }) => {
+const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) => {
   return (
     <div className="widget__edit">
       <select
+        onChange={onTypeChange}
         defaultValue={cachedItem.type}
         className={[
           'widget__input',
@@ -67,7 +76,7 @@ const EditingItem = ({ cachedItem, onTextChange, onSizeChange }) => {
       <input className="widget__input"
         onChange={onTextChange} value={cachedItem.text} />
       <select
-        onSelect={onSizeChange}
+        onChange={onSizeChange}
         defaultValue={cachedItem.size}
         className={[
           'widget__input',
