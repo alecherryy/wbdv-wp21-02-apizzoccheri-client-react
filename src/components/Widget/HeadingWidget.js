@@ -14,8 +14,7 @@ const Widget = ({
 }) => {
   const [editing, setEditing] = useState(false);
   const [cachedItem, setCahedItem] = useState(item);
-  console.log(item.size.toString() === '1');
-  const TitleTag = `${item.size.toString()}`;
+
   return (
     <div className="widget" data-is-editing={editing}>
       <span className="widget-eyebrow">{item.name}</span>
