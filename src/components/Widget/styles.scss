@@ -1,0 +1,112 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Widget
+
+.widget {
+  align-items: center;
+  padding: $spacing-4;
+  position: relative;
+
+  &[data-is-editing='true'] {
+    background-color: $lilac !important;
+    color: $white;
+  }
+
+  p {
+    margin-top: $spacing-2;
+  }
+}
+
+.widget__eyebrow {
+  color: $gray-4;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  [data-is-editing='true'] & {
+    color: $white;
+  }
+}
+
+.widget__title {
+  line-height: 1;
+  margin: 0;
+  padding: $spacing-2 0;
+}
+
+.widget__edit {
+  border-top: solid 1px $gray-2;
+  margin-top: $spacing-2;
+  padding-top: $spacing-3;
+}
+
+.widget__input {
+  border: 0;
+  box-shadow: none;
+  display: block;
+  font-family: $base-font-family;
+  font-size: $font-size-md;
+  font-weight: 700;
+  height: rem(60px);
+  margin: 13px 0;
+  padding-left: $spacing-1;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.widget__input--select {
+  @include svg-background(icon-arrow-down);
+
+  background-position: center right 20px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.widget__input--textarea {
+  font-weight: 400;
+  line-height: $line-height-loose;
+  height: rem(300px);
+  padding: $spacing-2;
+}
+
+.widget__input--select,
+.widget__input--textarea {
+  appearance: none;
+  font-family: $base-font-family;
+}
+
+.widget__controls {
+  position: absolute;
+  right: $spacing-2;
+  text-align: right;
+  top: $spacing-2;
+  width: rem(60px);
+}
+
+.widget__btn {
+  @include button-icon(rem(30px), icon-add);
+}
+
+.widget__btn--edit {
+  @include svg-background(icon-edit);
+
+  background-color: transparent;
+}
+
+.widget__btn--delete {
+  @include svg-background(icon-delete);
+
+  background-color: transparent;
+}
+
+.widget__btn--okay {
+  @include svg-background(icon-okay);
+
+  background-color: transparent;
+}
+
