@@ -10,6 +10,7 @@ import ModuleReducer from "../../reducers/ModuleReducer";
 import LessonTabs from '../LessonTabs/LessonTabs';
 import TopicTabs from "../TopicTabs/TopicTabs";
 import ModuleList from '../ModuleList/ModuleList';
+import Widget from '../Widget/Widget';
 
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
@@ -42,6 +43,7 @@ export const CourseEditor = () => {
         <Section modifierClasses="" hasConstrain={false}>
           <LessonTabs />
           <TopicTabs />
+          <Widget />
         </Section>
       </Sidebar>
     </Constrain>

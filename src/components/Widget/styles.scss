@@ -1,0 +1,74 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Editable Item
+
+.editable-item {
+  align-items: center;
+  display: inline-flex;
+  padding: 0 $spacing-7 0 $spacing-2;
+  position: relative;
+
+  &[data-is-editing='true'] {
+    background-color: $magenta !important;
+    color: $white;
+  }
+}
+
+.editable-item__title {
+  font-size: $font-size-sm;
+  line-height: 1;
+  margin: 0;
+  padding: $spacing-2 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.editable-item__input {
+  border: 0;
+  box-shadow: none;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  height: rem(30px);
+  margin: 13px 0;
+  padding-left: $spacing-1;
+  width: 120px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.editable-item__controls {
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: rem(7px);
+  width: rem(60px);
+}
+
+.editable-item__btn {
+  @include button-icon(rem(30px), icon-add);
+}
+
+.editable-item__btn--edit {
+  @include svg-background(icon-edit);
+
+  background-color: transparent;
+}
+
+.editable-item__btn--delete {
+  @include svg-background(icon-delete);
+
+  background-color: transparent;
+}
+
+.editable-item__btn--okay {
+  @include svg-background(icon-okay);
+
+  background-color: transparent;
+}
