@@ -17,6 +17,7 @@ export const findTopicWidgets = (topicId) => {
  * @param {object} widget
  */
 export const createTopicWidget = (topicId, widget) => {
+  console.log(topicId);
   return fetch(`${WIDGET_URL}/topics/${topicId}/widgets`, {
     method: 'POST',
     body: JSON.stringify(widget),
@@ -45,10 +46,10 @@ export const updateTopicWidget = (widgetId, widget) => {
 /**
  * DELETE WIDGET
  *
- * @param {string} topicId
+ * @param {string} widgetId
  */
-export const deleteTopicWidget = (topicId) => {
-  return fetch(`${TOPIC_URL}/${topicId}`, {
+export const deleteTopicWidget = (widgetId) => {
+  return fetch(`${WIDGET_URL}/widgets/${widgetId}`, {
     method: 'DELETE'
   }).then(response => response.json())
 }

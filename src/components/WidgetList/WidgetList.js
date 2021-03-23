@@ -23,7 +23,7 @@ const WidgetList = ({
   updateWidget,
   deleteWidget,
 }) => {
-  const { courseId, moduleId, topicId, lessonId, widgetId } = useParams();
+  const { courseId, moduleId, topicId, lessonId } = useParams();
   // establish conditions before finding topcis
   const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
   const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
@@ -47,12 +47,13 @@ const WidgetList = ({
             <li className="widget-list__item">
                 Add a New Widget
                 <button className="widget-list__btn" role="button"
-                  onClick={() => createWidget(lessonId)}
+                  onClick={() => {
+                    createWidget(topicId)
+                  }}
                 >Add</button>
               </li>
             { widgets.map((widget, i) =>
               <li key={i} className="widget-list__item">
-                {console.log(widget)}
                 { widget.type === 'HEADING' ?
                   <HeadingWidget item={widget}
                     updateItem={updateWidget}
@@ -86,8 +87,8 @@ const dtpm = (dispatch) => ({
   },
   createWidget: (topicId) => {
     widgetService.createTopicWidget(topicId, {
-      name: 'Widget N',
-      topicID: topicId,
+      name: 'New Widget',
+      topicId: topicId,
       widgetOrder: 4,
       type: 'HEADING',
       url: '#',
