@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 /**
  * Component for Widget
@@ -17,7 +17,7 @@ const Widget = ({
 
   return (
     <div className="widget" data-is-editing={editing}>
-      <span className="widget-eyebrow">{item.name}</span>
+      <span className="widget__eyebrow">{item.name} - {item.type}</span>
       <p>{item.text}</p>
       { editing &&
         <EditingItem cachedItem={cachedItem}
@@ -58,7 +58,7 @@ const Widget = ({
 
 const EditingItem = ({ cachedItem, onTextChange, onTypeChange }) => {
   return (
-    <Fragment>
+    <div className="widget__edit">
       <select
         onSelect={onTypeChange}
         defaultValue={cachedItem.type}
@@ -69,9 +69,9 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange }) => {
         <option value="HEADING">Heading</option>
         <option value="PARAGRAPH">Paragraph</option>
       </select>
-      <textarea className="widget__textarea"
+      <textarea className="widget__input widget__input--textarea"
         onChange={onTextChange}>{cachedItem.text}</textarea>
-    </Fragment>
+    </div>
   )
 }
 export default Widget;

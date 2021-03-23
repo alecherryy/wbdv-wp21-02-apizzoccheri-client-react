@@ -28,10 +28,11 @@ const WidgetList = ({
   const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
   const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
   const hasLesson = lessonId !== 'undefined' && typeof lessonId !== 'undefined';
-  const hasTopic = hasTopic !== 'undefined' && typeof topicId !== 'undefined';
+  const hasTopic = topicId !== 'undefined' && typeof topicId !== 'undefined';
 
   // render condition
-  const showWidgets = hasCourse && hasModule && hasLesson && hasTopic;
+  // const showWidgets = hasCourse && hasModule && hasLesson && hasTopic;
+  const showWidgets = true;
 
   useEffect(() => {
     if (showWidgets) {
@@ -82,7 +83,7 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => ({
   findWidgets: (topicId) => {
-    widgetService.findTopicWidgets(topicId)
+    widgetService.findTopicWidgets('604691acb2d531001729e262')
       .then(widgets => dispatch({
         type: 'FIND_WIDGETS',
         widgets: widgets
