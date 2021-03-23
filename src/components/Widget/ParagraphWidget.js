@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 /**
  * Component for Widget
@@ -18,15 +18,18 @@ const Widget = ({
   return (
     <div className="widget" data-is-editing={editing}>
       <span className="widget-eyebrow">{item.name}</span>
+      <p>{item.text}</p>
       { editing &&
-        <input className="widget__input"
-          onChange={(e) => setCahedItem({
-              ...cachedItem,
-              title: e.target.value
-          })} value={cachedItem.text} />
-      }
-      { !editing &&
-        <h4 className="widget__title">{item.text}</h4>
+        <EditingItem cachedItem={cachedItem}
+          onTextChange={(e) => setCahedItem({
+            ...cachedItem,
+            text: e.target.value
+          })}
+          onTypeChange={(e) => setCahedItem({
+            ...cachedItem,
+            type: e.target.value
+          })}
+        />
       }
       <div className="widget__controls">
       { editing &&
@@ -53,4 +56,22 @@ const Widget = ({
   )
 };
 
+const EditingItem = ({ cachedItem, onTextChange, onTypeChange }) => {
+  return (
+    <Fragment>
+      <select
+        onSelect={onTypeChange}
+        defaultValue={cachedItem.type}
+        className={[
+          'widget__input',
+          'widget__input--select'].join(' ').trim()}
+      >
+        <option value="HEADING">Heading</option>
+        <option value="PARAGRAPH">Paragraph</option>
+      </select>
+      <textarea className="widget__textarea"
+        onChange={onTextChange}>{cachedItem.text}</textarea>
+    </Fragment>
+  )
+}
 export default Widget;

@@ -14,7 +14,7 @@
   }
 }
 
-.widget-eyebrow {
+.widget__eyebrow {
   color: $gray-4;
   font-size: $font-size-xs;
   font-weight: 700;
@@ -22,10 +22,13 @@
   text-transform: uppercase;
 }
 .widget__title {
-  font-size: $font-size-sm;
   line-height: 1;
   margin: 0;
   padding: $spacing-2 0;
+}
+
+.widget__edit {
+  border-top: solid 1px $gray-2;
 }
 
 .widget__input {

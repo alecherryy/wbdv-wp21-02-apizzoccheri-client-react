@@ -6,7 +6,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Widget from '../HeadingWidget/HeadingWidget';
+import HeadingWidget from '../Widget/HeadingWidget';
+import ParagraphWidget from '../Widget/ParagraphWidget';
 import widgetService from '../../services/WidgetService';
 
 /**
@@ -49,12 +50,21 @@ const WidgetList = ({
               </li>
             { widgets.map((widget, i) =>
               <li key={i} className="widget-list__item">
-                <Widget item={widget}
-                  path={
-                    `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/widgets/${widget._id}`
-                  }
-                  updateItem={updateWidget}
-                  deleteItem={deleteWidget} />
+                { widget.type === 'HEADING' ?
+                  <HeadingWidget item={widget}
+                    path={
+                      `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/widgets/${widget._id}`
+                    }
+                    updateItem={updateWidget}
+                    deleteItem={deleteWidget} />
+                  :
+                  <ParagraphWidget item={widget}
+                    path={
+                      `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/widgets/${widget._id}`
+                    }
+                    updateItem={updateWidget}
+                    deleteItem={deleteWidget} />
+                }
               </li>
             )}
           </ul>
