@@ -4,37 +4,42 @@
 // Lesson Tabs
 
 .widget-list__list {
-  @include list-inline();
+  @include list-clean();
 }
 
 .widget-list__item {
   border: solid 1px $gray-2;
-  border-radius: 10px 10px 0 0;
+  border-radius: 20px;
+  padding: $spacing-2 !important;
   overflow: hidden;
 
-  &:last-child {
-    font-family: $font-size-sm;
-    font-size: $font-size-sm;
+  &:not(:first-child) {
+    margin: $spacing-2 0;
+  }
+
+  &:first-child {
+    border: 0;
+    font-family: $font-size-md;
     font-weight: 700;
     line-height: 1;
-    padding: $spacing-2 !important;
+    padding: $spacing-3 !important;
     padding-right: $spacing-5 !important;
     position: relative;
   }
 
   &.is-active {
-    background-color: $gray-1;
+    background-color: $pink;
   }
 }
 
 .widget-list__btn {
   @include button-clear();
-  @include button-icon(rem(27px), icon-add);
+  @include button-icon(rem(44px), icon-add);
 
   background-color: $magenta;
-  background-size: rem(17px);
+  background-size: rem(24px);
   border-radius: 100%;
   position: absolute;
   right: $spacing-1;
-  top: calc(#{$spacing-1} * 1.25);
+  top: calc(#{$spacing-1} * 1.45);
 }

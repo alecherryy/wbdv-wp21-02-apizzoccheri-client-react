@@ -1,11 +1,10 @@
 @import '/src/scss/variables.scss';
 
 // @file
-// Editable Item
+// Widget
 
-.editable-item {
+.widget {
   align-items: center;
-  display: inline-flex;
   padding: 0 $spacing-7 0 $spacing-2;
   position: relative;
 
@@ -15,18 +14,21 @@
   }
 }
 
-.editable-item__title {
+.widget-eyebrow {
+  color: $gray-4;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.widget__title {
   font-size: $font-size-sm;
   line-height: 1;
   margin: 0;
   padding: $spacing-2 0;
-
-  a {
-    text-decoration: none;
-  }
 }
 
-.editable-item__input {
+.widget__input {
   border: 0;
   box-shadow: none;
   display: inline-block;
@@ -43,7 +45,7 @@
   }
 }
 
-.editable-item__controls {
+.widget__controls {
   position: absolute;
   right: 0;
   text-align: right;
@@ -51,23 +53,23 @@
   width: rem(60px);
 }
 
-.editable-item__btn {
+.widget__btn {
   @include button-icon(rem(30px), icon-add);
 }
 
-.editable-item__btn--edit {
+.widget__btn--edit {
   @include svg-background(icon-edit);
 
   background-color: transparent;
 }
 
-.editable-item__btn--delete {
+.widget__btn--delete {
   @include svg-background(icon-delete);
 
   background-color: transparent;
 }
 
-.editable-item__btn--okay {
+.widget__btn--okay {
   @include svg-background(icon-okay);
 
   background-color: transparent;

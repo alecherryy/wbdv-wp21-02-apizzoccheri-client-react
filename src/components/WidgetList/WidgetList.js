@@ -1,12 +1,12 @@
 import './styles.scss';
 
-import '../../services/TopicService';
+import '../../services/WidgetService';
 
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Widget from '../Widget/Widget';
+import Widget from '../HeadingWidget/HeadingWidget';
 import widgetService from '../../services/WidgetService';
 
 /**
@@ -17,11 +17,12 @@ import widgetService from '../../services/WidgetService';
 
 const WidgetList = ({
   widgets=[],
+  createWidget,
   findWidgets,
   updateWidget,
   deleteWidget,
 }) => {
-  const { courseId, moduleId, widgetId, lessonId, widgetId } = useParams();
+  const { courseId, moduleId, topicId, lessonId, widgetId } = useParams();
   // establish conditions before finding topcis
   const hasCourse = courseId !== 'undefined' && typeof courseId !== 'undefined';
   const hasModule = moduleId !== 'undefined' && typeof moduleId !== 'undefined';
@@ -40,8 +41,14 @@ const WidgetList = ({
       { showWidgets &&
         <div className="widget-list">
           <ul className="widget-list__list">
-            { widget.map((widget, i) =>
-              <li key={i} className={`widget-list__item ${widget._id === widgetId ? 'is-active' : ''}`}>
+            <li className="widget-list__item">
+                Add a New Widget
+                <button className="widget-list__btn" role="button"
+                  onClick={() => createWidget(lessonId)}
+                >Add</button>
+              </li>
+            { widgets.map((widget, i) =>
+              <li key={i} className="widget-list__item">
                 <Widget item={widget}
                   path={
                     `/courses/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/widgets/${widget._id}`
@@ -50,12 +57,6 @@ const WidgetList = ({
                   deleteItem={deleteWidget} />
               </li>
             )}
-            <li className="widget-list__item">
-              Add Widget
-              <button className="widget-list__btn" role="button"
-                onClick={() => createTopic(lessonId)}
-              >Add</button>
-            </li>
           </ul>
         </div>
       }
@@ -64,19 +65,19 @@ const WidgetList = ({
 };
 
 const stpm = (state) => ({
-  widgets: state.TopicReducer.widgets
+  widgets: state.WidgetReducer.widgets
 });
 
 const dtpm = (dispatch) => ({
-  findTopics: (topicId) => {
-    widgetService.findTopicWidgets(topicId)
+  findWidgets: (topicId) => {
+    widgetService.findWidgets(topicId)
       .then(widgets => dispatch({
         type: 'FIND_WIDGETS',
         widgets: widgets
       })
     )
   },
-  createTopic: (topicId) => {
+  createWidget: (topicId) => {
     widgetService.createTopicWidget(topicId, {
       title: 'New Widget'
     }).then(widget => dispatch({

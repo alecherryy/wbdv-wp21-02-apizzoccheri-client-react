@@ -6,11 +6,12 @@ import { combineReducers, createStore } from 'redux';
 import LessonReducer from '../../reducers/LessonReducer';
 import TopicReducer from '../../reducers/TopicReducer';
 import ModuleReducer from "../../reducers/ModuleReducer";
+import WidgetReducer from "../../reducers/WidgetReducer";
 
 import LessonTabs from '../LessonTabs/LessonTabs';
 import TopicTabs from "../TopicTabs/TopicTabs";
 import ModuleList from '../ModuleList/ModuleList';
-import Widget from '../Widget/Widget';
+import WidgetList from "../WidgetList/WidgetList";
 
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   ModuleReducer: ModuleReducer,
   LessonReducer: LessonReducer,
   TopicReducer: TopicReducer,
+  WidgetReducer: WidgetReducer,
 });
 const store = createStore(reducer);
 
@@ -43,7 +45,7 @@ export const CourseEditor = () => {
         <Section modifierClasses="" hasConstrain={false}>
           <LessonTabs />
           <TopicTabs />
-          <Widget />
+          <WidgetList />
         </Section>
       </Sidebar>
     </Constrain>

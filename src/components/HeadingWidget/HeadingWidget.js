@@ -1,16 +1,14 @@
 import './styles.scss';
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 /**
- * Component for EditableItem
+ * Component for Widget
  *
  * @component
  */
-const EditableItem = ({
+const Widget = ({
   item,
-  path,
   deleteItem,
   updateItem,
 }) => {
@@ -18,33 +16,34 @@ const EditableItem = ({
   const [cachedItem, setCahedItem] = useState(item);
 
   return (
-    <div className="editable-item" data-is-editing={editing}>
+    <div className="widget" data-is-editing={editing}>
+      <span className="widget-eyebrow">{item.name}</span>
       { editing &&
-        <input className="editable-item__input"
+        <input className="widget__input"
           onChange={(e) => setCahedItem({
               ...cachedItem,
               title: e.target.value
-          })} value={cachedItem.title} />
+          })} value={cachedItem.text} />
       }
       { !editing &&
-        <h4 className="editable-item__title">{item.title}</h4>
+        <h4 className="widget__title">{item.text}</h4>
       }
-      <div className="editable-item__controls">
+      <div className="widget__controls">
       { editing &&
-        <div className="editable-item__edits">
-          <button className="editable-item__btn editable-item__btn--delete"
+        <div className="widget__edits">
+          <button className="widget__btn widget__btn--delete"
             onClick={() => {
               setEditing(false)
               deleteItem(item)}
             }>Delete</button>
-          <button className="editable-item__btn editable-item__btn--okay"
+          <button className="widget__btn widget__btn--okay"
             onClick={() => {
               setEditing(false)
               updateItem(cachedItem)}}>Ok</button>
         </div>
       }
       { !editing &&
-        <button className="editable-item__btn editable-item__btn--edit"
+        <button className="widget__btn widget__btn--edit"
           onClick={() => setEditing(true)}>
           Edit
         </button>
@@ -54,4 +53,4 @@ const EditableItem = ({
   )
 };
 
-export default EditableItem;
+export default Widget;
