@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import HeadingWidget from '../Widget/HeadingWidget';
 import ParagraphWidget from '../Widget/ParagraphWidget';
 import widgetService from '../../services/WidgetService';
+import ImageWidget from '../Widget/ImageWidget';
 
 /**
  * Component for WidgetList
@@ -38,6 +39,25 @@ const WidgetList = ({
       findWidgets(topicId)
     }
   }, [topicId])
+
+  const getWidget = (widget) => {
+    switch(widget.type) {
+      case 'HEADING':
+        return <HeadingWidget item={widget}
+          updateItem={updateWidget}
+          deleteItem={deleteWidget} />
+      case 'PARAGRAPH':
+        return <ParagraphWidget item={widget}
+          updateItem={updateWidget}
+          deleteItem={deleteWidget} />
+      case 'IMAGE':
+        return <ImageWidget item={widget}
+          updateItem={updateWidget}
+          deleteItem={deleteWidget} />
+      default:
+        return;
+    }
+  }
   return (
     <>
       {/* render component if path is correct */}
@@ -54,15 +74,7 @@ const WidgetList = ({
               </li>
             { widgets.map((widget, i) =>
               <li key={i} className="widget-list__item">
-                { widget.type === 'HEADING' ?
-                  <HeadingWidget item={widget}
-                    updateItem={updateWidget}
-                    deleteItem={deleteWidget} />
-                  :
-                  <ParagraphWidget item={widget}
-                    updateItem={updateWidget}
-                    deleteItem={deleteWidget} />
-                }
+                {getWidget(widget)}
               </li>
             )}
           </ul>
@@ -89,18 +101,18 @@ const dtpm = (dispatch) => ({
     widgetService.createTopicWidget(topicId, {
       name: 'New Widget',
       topicId: topicId,
-      widgetOrder: 4,
+      widgetOrder: 0,
       type: 'HEADING',
       url: '#',
-      size: 3,
+      size: 1,
       text: 'My new Widget',
       width: 0,
       height: 0,
-      src: 'source',
-      ordered: true,
+      src: '',
+      ordered: false,
       cssClass: '',
       style: '',
-      value: 'Some value'
+      value: ''
     }).then(widget => dispatch({
       type: 'CREATE_WIDGET',
       widget

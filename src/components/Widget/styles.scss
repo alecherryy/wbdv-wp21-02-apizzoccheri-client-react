@@ -36,6 +36,11 @@
   padding: $spacing-2 0;
 }
 
+.widget__image {
+  display: block;
+  margin-top: $spacing-2;
+}
+
 .widget__edit {
   border-top: solid 1px $gray-2;
   margin-top: $spacing-2;

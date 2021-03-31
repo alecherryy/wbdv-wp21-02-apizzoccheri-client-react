@@ -7,7 +7,7 @@ import React, { useState } from 'react';
  *
  * @component
  */
-const ParagraphWidget = ({
+const ImageWidget = ({
   item,
   deleteItem,
   updateItem,
@@ -18,12 +18,21 @@ const ParagraphWidget = ({
   return (
     <div className="widget" data-is-editing={editing}>
       <span className="widget__eyebrow">{cachedItem.name} - {cachedItem.type}</span>
-      <p>{cachedItem.text}</p>
+      <img className="widget__image" src={cachedItem.src} alt={cachedItem.name}
+        width={cachedItem.width} height={cachedItem.height} />
       { editing &&
         <EditingItem cachedItem={cachedItem}
-          onTextChange={(e) => setCahedItem({
+          onSourceChange={(e) => setCahedItem({
             ...cachedItem,
-            text: e.target.value
+            src: e.target.value
+          })}
+          onWidthChange={(e) => setCahedItem({
+            ...cachedItem,
+            width: e.target.value
+          })}
+          onHeightChange={(e) => setCahedItem({
+            ...cachedItem,
+            height: e.target.value
           })}
           onTypeChange={(e) => setCahedItem({
             ...cachedItem,
@@ -56,7 +65,7 @@ const ParagraphWidget = ({
   )
 };
 
-const EditingItem = ({ cachedItem, onTextChange, onTypeChange }) => {
+const EditingItem = ({ cachedItem, onTypeChange, onSourceChange, onWidthChange, onHeightChange }) => {
   return (
     <div className="widget__edit">
       <select
@@ -70,9 +79,22 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange }) => {
         <option value="PARAGRAPH">Paragraph</option>
         <option value="IMAGE">Image</option>
       </select>
-      <textarea className="widget__input widget__input--textarea"
-        onChange={onTextChange}>{cachedItem.text}</textarea>
+      <label>
+        Source
+        <input className="widget__input" type="text"
+          onChange={onSourceChange} value={cachedItem.src} />
+      </label>
+      <label>
+        Width
+        <input className="widget__input" type="number"
+          onChange={onWidthChange} value={cachedItem.width} />
+      </label>
+      <label>
+        Height
+        <input className="widget__input" type="number"
+          onChange={onHeightChange} value={cachedItem.height} />
+      </label>
     </div>
   )
 }
-export default ParagraphWidget;
+export default ImageWidget;

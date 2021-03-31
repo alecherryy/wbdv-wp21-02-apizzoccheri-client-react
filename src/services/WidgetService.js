@@ -1,4 +1,5 @@
-const WIDGET_URL = 'https://wbdv-sp21-apizzo-server-java.herokuapp.com/api';
+// const WIDGET_URL = 'https://wbdv-sp21-apizzo-server-java.herokuapp.com/api';
+const WIDGET_URL = 'http://localhost:8080/api';
 
 /**
  * FIND ALL TOPICS

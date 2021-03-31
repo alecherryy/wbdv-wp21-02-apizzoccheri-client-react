@@ -29,7 +29,7 @@ const ModuleList = ({
     if (showModules) {
       findModules(courseId)
     }
-  }, [])
+  }, [courseId])
 
   return (
     <div className="module-list">

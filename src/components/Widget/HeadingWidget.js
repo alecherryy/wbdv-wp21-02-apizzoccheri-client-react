@@ -7,18 +7,19 @@ import React, { Fragment, useState } from 'react';
  *
  * @component
  */
-const Widget = ({
+const HeadingWidget = ({
   item,
   deleteItem,
   updateItem,
 }) => {
   const [editing, setEditing] = useState(false);
   const [cachedItem, setCahedItem] = useState(item);
+  const CustomTitleTag = `h${item.size.toString()}`;
 
   return (
     <div className="widget" data-is-editing={editing}>
       <span className="widget__eyebrow">{item.name} - {item.type} {item.size}</span>
-      <h3 className="widget__title">{item.text}</h3>
+      <CustomTitleTag className="widget__title">{item.text}</CustomTitleTag>
       { editing &&
         <EditingItem cachedItem={cachedItem}
           onTextChange={(e) => setCahedItem({
@@ -72,6 +73,7 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) =
       >
         <option value="HEADING">Heading</option>
         <option value="PARAGRAPH">Paragraph</option>
+        <option value="IMAGE">Image</option>
       </select>
       <input className="widget__input"
         onChange={onTextChange} value={cachedItem.text} />
@@ -92,4 +94,4 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) =
     </div>
   )
 }
-export default Widget;
+export default HeadingWidget;
