@@ -8,7 +8,10 @@ const WIDGET_URL = 'http://localhost:8080/api';
  */
 export const findTopicWidgets = (topicId) => {
   return fetch(`${WIDGET_URL}/topics/${topicId}/widgets`)
-    .then(response => response.json())
+    .then(response => {
+      console.log(response)
+      return response.json()
+    })
 }
 
 /**
@@ -40,9 +43,7 @@ export const updateTopicWidget = (widgetId, widget) => {
     headers: {
       'content-type': 'application/json'
     }
-  }).then(response => {
-    console.log(response.json())
-  })
+  }).then(response => response.json())
 }
 
 /**
@@ -51,7 +52,6 @@ export const updateTopicWidget = (widgetId, widget) => {
  * @param {string} widgetId
  */
 export const deleteTopicWidget = (widgetId) => {
-  console.log(widgetId);
   return fetch(`${WIDGET_URL}/widgets/${widgetId}`, {
     method: 'DELETE'
   }).then(response => response.json())

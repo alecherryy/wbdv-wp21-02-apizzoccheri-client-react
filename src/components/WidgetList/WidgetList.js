@@ -48,9 +48,7 @@ const WidgetList = ({
           updateItem={updateWidget}
           deleteItem={deleteWidget} />
       case 'PARAGRAPH':
-        return <ParagraphWidget item={widget}
-          updateItem={updateWidget}
-          deleteItem={deleteWidget} />
+        return <ParagraphWidget item={widget} />
       case 'IMAGE':
         return <ImageWidget item={widget}
           updateItem={updateWidget}
@@ -77,10 +75,11 @@ const WidgetList = ({
                   }}
                 >Add</button>
               </li>
-            { widgets.map((widget, i) =>
-              <li key={i} className="widget-list__item">
+            { widgets.map((widget, i) => {
+              return <li key={i} className="widget-list__item">
                 {getWidget(widget)}
               </li>
+            }
             )}
           </ul>
         </div>
