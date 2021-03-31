@@ -1,40 +1,44 @@
 import './styles.scss';
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 /**
  * Component for Widget
  *
  * @component
  */
-const HeadingWidget = ({
+const ImageWidget = ({
   item,
   deleteItem,
   updateItem,
 }) => {
   const [editing, setEditing] = useState(false);
   const [cachedItem, setCahedItem] = useState(item);
-  const CustomTitleTag = `h${item.size.toString()}`;
 
   return (
     <div className="widget" data-is-editing={editing}>
-      <span className="widget__eyebrow">{item.name} - {item.type} {item.size}</span>
-      <CustomTitleTag className="widget__title">{item.text}</CustomTitleTag>
+      <span className="widget__eyebrow">{cachedItem.name} - {cachedItem.type}</span>
+      <img className="widget__image" src={cachedItem.src} alt={cachedItem.name}
+        width={cachedItem.width} height={cachedItem.height} />
       { editing &&
         <EditingItem cachedItem={cachedItem}
-          onTextChange={(e) => setCahedItem({
+          onSourceChange={(e) => setCahedItem({
             ...cachedItem,
-            text: e.target.value
+            src: e.target.value
           })}
-          onSizeChange={(e) => setCahedItem({
+          onWidthChange={(e) => setCahedItem({
             ...cachedItem,
-            size: e.target.value
+            width: e.target.value
+          })}
+          onHeightChange={(e) => setCahedItem({
+            ...cachedItem,
+            height: e.target.value
           })}
           onTypeChange={(e) => setCahedItem({
             ...cachedItem,
             type: e.target.value
           })}
-      />
+        />
       }
       <div className="widget__controls">
       { editing &&
@@ -61,7 +65,7 @@ const HeadingWidget = ({
   )
 };
 
-const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) => {
+const EditingItem = ({ cachedItem, onTypeChange, onSourceChange, onWidthChange, onHeightChange }) => {
   return (
     <div className="widget__edit">
       <select
@@ -76,23 +80,22 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) =
         <option value="IMAGE">Image</option>
         <option value="LIST">List</option>
       </select>
-      <input className="widget__input"
-        onChange={onTextChange} value={cachedItem.text} />
-      <select
-        onChange={onSizeChange}
-        defaultValue={cachedItem.size}
-        className={[
-          'widget__input',
-          'widget__input--select'].join(' ').trim()}
-      >
-        <option value="1">Heading 1</option>
-        <option value="2">Heading 2</option>
-        <option value="3">Heading 3</option>
-        <option value="4">Heading 4</option>
-        <option value="5">Heading 5</option>
-        <option value="6">Heading 6</option>
-      </select>
+      <label>
+        Image URL
+        <input className="widget__input" type="text"
+          onChange={onSourceChange} value={cachedItem.src} />
+      </label>
+      <label>
+        Image Width
+        <input className="widget__input" type="number"
+          onChange={onWidthChange} value={cachedItem.width} />
+      </label>
+      <label>
+        Image Height
+        <input className="widget__input" type="number"
+          onChange={onHeightChange} value={cachedItem.height} />
+      </label>
     </div>
   )
 }
-export default HeadingWidget;
+export default ImageWidget;

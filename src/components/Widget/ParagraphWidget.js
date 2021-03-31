@@ -7,7 +7,7 @@ import React, { useState } from 'react';
  *
  * @component
  */
-const Widget = ({
+const ParagraphWidget = ({
   item,
   deleteItem,
   updateItem,
@@ -68,10 +68,12 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange }) => {
       >
         <option value="HEADING">Heading</option>
         <option value="PARAGRAPH">Paragraph</option>
+        <option value="IMAGE">Image</option>
+        <option value="LIST">List</option>
       </select>
       <textarea className="widget__input widget__input--textarea"
         onChange={onTextChange}>{cachedItem.text}</textarea>
     </div>
   )
 }
-export default Widget;
+export default ParagraphWidget;
