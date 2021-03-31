@@ -1,40 +1,42 @@
 import './styles.scss';
 
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 /**
  * Component for Widget
  *
  * @component
  */
-const HeadingWidget = ({
+const ListWidget = ({
   item,
   deleteItem,
   updateItem,
 }) => {
   const [editing, setEditing] = useState(false);
   const [cachedItem, setCahedItem] = useState(item);
-  const CustomTitleTag = `h${item.size.toString()}`;
+  const ListTag = cachedItem.ordered ? 'ol' : 'ul';
 
   return (
     <div className="widget" data-is-editing={editing}>
-      <span className="widget__eyebrow">{item.name} - {item.type} {item.size}</span>
-      <CustomTitleTag className="widget__title">{item.text}</CustomTitleTag>
+      <span className="widget__eyebrow">{cachedItem.name} - {cachedItem.type}</span>
+      <ListTag className="widget__list">{cachedItem.text.split('\n').map((item, i) => {
+        return <li key={i}>{item}</li>
+      })}</ListTag>
       { editing &&
         <EditingItem cachedItem={cachedItem}
+          onCheckChange={(e) => setCahedItem({
+            ...cachedItem,
+            ordered: !cachedItem.ordered
+          })}
           onTextChange={(e) => setCahedItem({
             ...cachedItem,
             text: e.target.value
-          })}
-          onSizeChange={(e) => setCahedItem({
-            ...cachedItem,
-            size: e.target.value
           })}
           onTypeChange={(e) => setCahedItem({
             ...cachedItem,
             type: e.target.value
           })}
-      />
+        />
       }
       <div className="widget__controls">
       { editing &&
@@ -61,7 +63,7 @@ const HeadingWidget = ({
   )
 };
 
-const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) => {
+const EditingItem = ({ cachedItem, onCheckChange, onTextChange, onTypeChange }) => {
   return (
     <div className="widget__edit">
       <select
@@ -76,23 +78,13 @@ const EditingItem = ({ cachedItem, onTextChange, onTypeChange, onSizeChange }) =
         <option value="IMAGE">Image</option>
         <option value="LIST">List</option>
       </select>
-      <input className="widget__input"
-        onChange={onTextChange} value={cachedItem.text} />
-      <select
-        onChange={onSizeChange}
-        defaultValue={cachedItem.size}
-        className={[
-          'widget__input',
-          'widget__input--select'].join(' ').trim()}
-      >
-        <option value="1">Heading 1</option>
-        <option value="2">Heading 2</option>
-        <option value="3">Heading 3</option>
-        <option value="4">Heading 4</option>
-        <option value="5">Heading 5</option>
-        <option value="6">Heading 6</option>
-      </select>
+      <input className="widget__checkbox" type="checkbox"
+        onChange={onCheckChange} checked={cachedItem.ordered} />
+      <label>Ordered</label>
+
+      <textarea className="widget__input widget__input--textarea"
+        onChange={onTextChange}>{cachedItem.text}</textarea>
     </div>
   )
 }
-export default HeadingWidget;
+export default ListWidget;

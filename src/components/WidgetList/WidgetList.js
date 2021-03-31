@@ -10,6 +10,7 @@ import HeadingWidget from '../Widget/HeadingWidget';
 import ParagraphWidget from '../Widget/ParagraphWidget';
 import widgetService from '../../services/WidgetService';
 import ImageWidget from '../Widget/ImageWidget';
+import ListWidget from '../Widget/ListWidget';
 
 /**
  * Component for WidgetList
@@ -52,6 +53,10 @@ const WidgetList = ({
           deleteItem={deleteWidget} />
       case 'IMAGE':
         return <ImageWidget item={widget}
+          updateItem={updateWidget}
+          deleteItem={deleteWidget} />
+      case 'LIST':
+        return <ListWidget item={widget}
           updateItem={updateWidget}
           deleteItem={deleteWidget} />
       default:

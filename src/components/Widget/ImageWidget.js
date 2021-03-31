@@ -78,19 +78,20 @@ const EditingItem = ({ cachedItem, onTypeChange, onSourceChange, onWidthChange, 
         <option value="HEADING">Heading</option>
         <option value="PARAGRAPH">Paragraph</option>
         <option value="IMAGE">Image</option>
+        <option value="LIST">List</option>
       </select>
       <label>
-        Source
+        Image URL
         <input className="widget__input" type="text"
           onChange={onSourceChange} value={cachedItem.src} />
       </label>
       <label>
-        Width
+        Image Width
         <input className="widget__input" type="number"
           onChange={onWidthChange} value={cachedItem.width} />
       </label>
       <label>
-        Height
+        Image Height
         <input className="widget__input" type="number"
           onChange={onHeightChange} value={cachedItem.height} />
       </label>
