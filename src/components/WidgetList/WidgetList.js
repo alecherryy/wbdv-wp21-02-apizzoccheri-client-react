@@ -48,7 +48,9 @@ const WidgetList = ({
           updateItem={updateWidget}
           deleteItem={deleteWidget} />
       case 'PARAGRAPH':
-        return <ParagraphWidget item={widget} />
+        return <ParagraphWidget item={widget}
+          updateItem={updateWidget}
+          deleteItem={deleteWidget} />
       case 'IMAGE':
         return <ImageWidget item={widget}
           updateItem={updateWidget}
