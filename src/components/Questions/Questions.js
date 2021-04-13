@@ -19,7 +19,7 @@ export const Questions = ({
 const {quizId} = useParams()
   useEffect(() => {
     findQuizQuestions(quizId)
-  }, [])
+  }, [quizId])
 
   return (
     <div className="questions">
