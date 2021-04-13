@@ -7,6 +7,7 @@ import LessonReducer from '../../reducers/LessonReducer';
 import TopicReducer from '../../reducers/TopicReducer';
 import ModuleReducer from "../../reducers/ModuleReducer";
 import WidgetReducer from "../../reducers/WidgetReducer";
+import QuizReducer from "../../reducers/QuizReducer";
 
 import LessonTabs from '../LessonTabs/LessonTabs';
 import TopicTabs from "../TopicTabs/TopicTabs";
@@ -17,6 +18,7 @@ import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Sidebar } from "../../layouts/Sidebar/Sidebar";
 import { Provider } from "react-redux";
 import { Section } from "../../layouts/Section/Section";
+import QuizList from "../QuizList/QuizList";
 
 
 /**
@@ -31,6 +33,7 @@ const reducer = combineReducers({
   LessonReducer: LessonReducer,
   TopicReducer: TopicReducer,
   WidgetReducer: WidgetReducer,
+  QuizReducer: QuizReducer,
 });
 const store = createStore(reducer);
 
@@ -48,6 +51,9 @@ export const CourseEditor = () => {
           <WidgetList />
         </Section>
       </Sidebar>
+    </Constrain>
+    <Constrain modifierClasses="constrain--narrow">
+      <QuizList />
     </Constrain>
     </Provider>
   )

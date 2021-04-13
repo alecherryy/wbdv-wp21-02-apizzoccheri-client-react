@@ -3,10 +3,6 @@
 // @file
 // Lesson Tabs
 
-.quiz-list {
-  margin-top: $spacing-5;
-}
-
 .quiz-list__list {
   @include list-clean();
 }

@@ -1,0 +1,63 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// True/False
+
+.question {
+  margin: $spacing-5 0 0;
+}
+
+.question__item {
+  border: solid 1px $gray-2;
+  display: block;
+  padding: $spacing-2 $spacing-3;
+  position: relative;
+
+  &:first-child {
+    border-bottom: 0;
+  }
+
+  input {
+    &.is-correct {
+      &:checked ~ .question__label {
+        background-color: green;
+      }
+    }
+
+    &.is-incorrect {
+      ~ .question__label {
+        background-color: green;
+      }
+
+      &:checked ~ .question__label {
+        background-color: red;
+      }
+    }
+  }
+}
+
+
+.question__btn {
+  @include button-clear();
+
+  background-color: $magenta;
+  border-radius: 5px;
+  color: $white;
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  margin: $spacing-3 0 0;
+  padding: $spacing-1 $spacing-3;
+  text-align: center;
+  text-decoration: none;
+
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $pink;
+    color: $blue;
+  }
+}

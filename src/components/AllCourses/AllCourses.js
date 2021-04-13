@@ -98,7 +98,7 @@ class AllCourses extends React.Component {
   render() {
     return(
       <Constrain>
-        <Constrain modifierClasses="constrain--small">
+        <Constrain modifierClasses="constrain--narrow">
           <div className="course-list__top">
             <button
               className="course-list__menu"
