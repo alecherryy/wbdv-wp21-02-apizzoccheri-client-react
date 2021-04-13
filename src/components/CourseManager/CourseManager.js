@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import AllCourses from '../AllCourses/AllCourses';
+import { QuizList } from '../QuizList/QuizList';
 import { CourseEditor } from '../CourseEditor/CourseEditor';
 import { Menu } from "../Menu/Menu";
 
@@ -17,6 +18,7 @@ export const CourseManager = () => {
         <Menu />
       </div>
 
+      <Route path="/quizzes" exact component={QuizList}/>
       <Route path="/courses" exact component={AllCourses}/>
       <Route path={[
           '/courses/edit/:courseId',
