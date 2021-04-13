@@ -4,20 +4,11 @@
 // True/False
 
 .question {
-  margin: $spacing-5 0 0;
+  margin: $spacing-3 0 0;
   width: 100%;
 }
 
-.question__item {
-  border: solid 1px $gray-2;
-  display: block;
-  padding: $spacing-2 $spacing-3;
-  position: relative;
-
-  &:first-child {
-    border-bottom: 0;
-  }
-
+.question--true-false {
   .is-correct {
     &:checked ~ .question__label {
       @include svg-background(icon-okay-green);
@@ -47,6 +38,19 @@
       background-repeat: no-repeat;
       background-size: 26px;
     }
+  }
+}
+
+.question__item {
+  border-color: $gray-2;
+  border-style: solid;
+  border-width: 1px 1px 0;
+  display: block;
+  padding: $spacing-2 $spacing-3;
+  position: relative;
+
+  &:last-child {
+    border-bottom-width: 1px;
   }
 }
 

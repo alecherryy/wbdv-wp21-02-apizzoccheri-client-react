@@ -15,7 +15,6 @@ export const TrueFalse = ({item}) => {
     e.preventDefault();
 
     if (answer === item.correct) {
-      console.log('here');
       setCorrect('is-correct');
     } else {
       setCorrect('is-incorrect');
@@ -23,7 +22,7 @@ export const TrueFalse = ({item}) => {
   }
 
   return (
-    <div className="question">
+    <div className="question question--true-false">
       <p>{item.question}</p>
       <div className="question__answers">
         <form>
@@ -37,9 +36,9 @@ export const TrueFalse = ({item}) => {
               onChange={(e) => setAnswer(e.target.value)} disabled={correct && 'true'} />
             <label className="question__label" for="false">False</label>
           </div>
-          {correct && <p className="question__answer">Your answer: <i>{answer}</i></p>}
-          <input className="question__btn" type="submit" onClick={(e) => checkAnswer(e)} value="Grade" />
         </form>
+        {correct && <p className="question__answer">Your answer: <i>{answer}</i></p>}
+        <input className="question__btn" type="submit" onClick={(e) => checkAnswer(e)} value="Grade" />
       </div>
     </div>
   )

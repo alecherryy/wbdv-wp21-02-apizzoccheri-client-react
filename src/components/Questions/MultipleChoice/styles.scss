@@ -1,45 +1,28 @@
 @import '/src/scss/variables.scss';
 
 // @file
-// Lesson Tabs
+// Multiple Choice Tabs
 
-.quiz-list__list {
-  @include list-clean();
-}
+.question--multiple {
+  .is-correct {
+    ~ .question__label {
+      @include svg-background(icon-okay-green);
 
-.quiz-list__item {
-  align-items: center;
-  display: flex;
-  border-bottom: solid 1px $gray-2;
-  font-family: $font-size-md;
-  font-weight: 700;
-  justify-content: space-between;
-  overflow: hidden;
-  padding: $spacing-2 !important;
-
-  &:not(:first-child) {
-    margin: $spacing-2 0;
-  }
-}
-
-.quiz-list__link {
-  background-color: $magenta;
-  border-radius: 10px;
-  color: $white;
-  display: inline-block;
-  flex-basis: 120px;
-  font-size: $font-size-sm;
-  padding: $spacing-1 0;
-  text-align: center;
-  text-decoration: none;
-
-  &:visited {
-    color: $white;
+      background-color: #C1E1C1;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
   }
 
-  &:hover,
-  &:focus {
-    background-color: $pink;
-    color: $blue;
+  .is-incorrect {
+      &:checked ~ .question__label {
+      @include svg-background(icon-delete-magenta);
+
+      background-color: #ffb2ae;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
   }
 }

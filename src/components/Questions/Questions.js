@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import QuestionService from '../../services/QuestionService';
 import { TrueFalse } from './TrueFalse/TrueFalse';
+import { MultipleChoice } from './MultipleChoice/MultipleChoice';
 import { useParams } from 'react-router';
 
 /**
@@ -26,11 +27,8 @@ const {quizId} = useParams()
       <ul className="questions__list">
         { questions.map((question, i) =>
           <li key={i} className="questions__item">
-            { question.type === 'TRUE_FALSE' ?
-
-              <TrueFalse item={question} /> : ''
-
-            }
+            { question.type === 'TRUE_FALSE' && <TrueFalse item={question} />}
+            { question.type === 'MULTIPLE_CHOICE' && <MultipleChoice item={question} />}
           </li>
         )}
       </ul>
