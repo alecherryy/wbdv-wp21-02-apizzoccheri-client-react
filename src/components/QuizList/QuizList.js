@@ -14,7 +14,7 @@ const QuizList = ({
   quizzes = [],
   findAllQuizzes
 }) => {
-  const {courseId, quizId} = useParams();
+  const {courseId} = useParams();
 
   useEffect(() => {
     findAllQuizzes()
@@ -31,7 +31,7 @@ const QuizList = ({
           { quizzes.map((quiz, i) =>
             <li key={i} className="quiz-list__item">
               <h4>{quiz.title}</h4>
-              <Link to={`/courses/${courseId}/quizzes/${quizId}`} className="quiz-list__link">Start</Link>
+              <Link to={`/courses/${courseId}/quizzes/${quiz._id}`} className="quiz-list__link">Start</Link>
             </li>
           )}
         </ul>

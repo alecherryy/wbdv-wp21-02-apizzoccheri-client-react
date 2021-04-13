@@ -7,6 +7,9 @@ import QuizReducer from "../../reducers/QuizReducer";
 import { Constrain } from "../../layouts/Constrain/Constrain";
 import { Provider } from "react-redux";
 import QuizList from "../QuizList/QuizList";
+import Questions from "../Questions/Questions";
+import QuestionReducer from "../../reducers/QuestionReducer";
+import { Grid } from "../../layouts/Grid/Grid";
 
 
 /**
@@ -18,14 +21,18 @@ import QuizList from "../QuizList/QuizList";
 // combine reducers
 const reducer = combineReducers({
   QuizReducer: QuizReducer,
+  QuestionReducer: QuestionReducer,
 });
 const store = createStore(reducer);
 
 export const AllQuizzes = () => {
   return(
     <Provider store={store}>
-      <Constrain modifierClasses="constrain--narrow">
-        <QuizList />
+      <Constrain>
+        <Grid noOfCols={2}>
+          <QuizList />
+          <Questions />
+        </Grid>
       </Constrain>
     </Provider>
   )

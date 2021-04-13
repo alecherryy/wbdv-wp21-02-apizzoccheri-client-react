@@ -1,11 +1,9 @@
 @import '/src/scss/variables.scss';
 
 // @file
-// Lesson Tabs
+// Quizzes
 
-.quiz-list {
-  margin-top: $spacing-5;
-}
+// .quiz-list {}
 
 .quiz-list__list {
   @include list-clean();

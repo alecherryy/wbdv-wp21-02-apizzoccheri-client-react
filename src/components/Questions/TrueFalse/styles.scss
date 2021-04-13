@@ -5,6 +5,7 @@
 
 .question {
   margin: $spacing-5 0 0;
+  width: 100%;
 }
 
 .question__item {
@@ -17,30 +18,55 @@
     border-bottom: 0;
   }
 
-  input {
-    &.is-correct {
-      &:checked ~ .question__label {
-        background-color: green;
-      }
-    }
+  .is-correct {
+    &:checked ~ .question__label {
+      @include svg-background(icon-okay-green);
 
-    &.is-incorrect {
-      ~ .question__label {
-        background-color: green;
-      }
-
-      &:checked ~ .question__label {
-        background-color: red;
-      }
+      background-color: #C1E1C1;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
     }
   }
+
+  .is-incorrect {
+    ~ .question__label {
+      @include svg-background(icon-okay-green);
+
+      background-color: #C1E1C1;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+
+    &:checked ~ .question__label {
+      @include svg-background(icon-delete-magenta);
+
+      background-color: #ffb2ae;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+  }
+}
+
+.question__label {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  left: 0;
+  padding-left: $spacing-7;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 
 .question__btn {
   @include button-clear();
 
-  background-color: $magenta;
+  background-color: $lilac;
   border-radius: 5px;
   color: $white;
   display: block;
@@ -57,7 +83,10 @@
 
   &:hover,
   &:focus {
-    background-color: $pink;
-    color: $blue;
+    background-color: $magenta;
   }
+}
+
+.question__answer {
+  margin-top: $spacing-1;
 }

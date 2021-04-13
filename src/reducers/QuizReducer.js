@@ -5,7 +5,7 @@ const initialState = {
 /**
  * Define reducer
  */
-const quizzesReducer = (state = initialState, action) => {
+const QuizReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FIND_ALL_QUIZZES':
       return {
@@ -17,4 +17,4 @@ const quizzesReducer = (state = initialState, action) => {
   }
 }
 
-export default quizzesReducer;
+export default QuizReducer;

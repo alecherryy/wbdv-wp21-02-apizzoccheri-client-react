@@ -19,7 +19,10 @@ export const CourseManager = () => {
         <Menu />
       </div>
 
-      <Route path="/courses/:courseId/quizzes" exact={true}
+      <Route path={[
+        '/courses/:courseId/quizzes',
+        '/courses/:courseId/quizzes/:quizId',
+      ]} exact={true}
         render={(props) => <AllQuizzes {...props}/>} />
       <Route path="/courses" exact component={AllCourses}/>
       <Route path={[
