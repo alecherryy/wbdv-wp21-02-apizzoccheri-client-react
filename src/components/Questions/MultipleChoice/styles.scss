@@ -1,0 +1,28 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// Multiple Choice Tabs
+
+.question--multiple {
+  .is-correct {
+    ~ .question__label {
+      @include svg-background(icon-okay-green);
+
+      background-color: #C1E1C1;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+  }
+
+  .is-incorrect {
+      &:checked ~ .question__label {
+      @include svg-background(icon-delete-magenta);
+
+      background-color: #ffb2ae;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+  }
+}

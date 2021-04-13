@@ -74,6 +74,7 @@ export const TableRow = ({
         </button>
       }
       </td>
+      <td className="table-row__quiz"><Link to={`/courses/${course._id}/quizzes`}>View Quizzes</Link></td>
     </tr>
   )
 }

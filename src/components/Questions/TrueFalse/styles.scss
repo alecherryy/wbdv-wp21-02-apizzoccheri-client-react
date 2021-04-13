@@ -1,0 +1,96 @@
+@import '/src/scss/variables.scss';
+
+// @file
+// True/False
+
+.question {
+  margin: $spacing-3 0 0;
+  width: 100%;
+}
+
+.question--true-false {
+  .is-correct {
+    &:checked ~ .question__label {
+      @include svg-background(icon-okay-green);
+
+      background-color: #C1E1C1;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+  }
+
+  .is-incorrect {
+    ~ .question__label {
+      @include svg-background(icon-okay-green);
+
+      background-color: #C1E1C1;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+
+    &:checked ~ .question__label {
+      @include svg-background(icon-delete-magenta);
+
+      background-color: #ffb2ae;
+      background-position: center right 20px;
+      background-repeat: no-repeat;
+      background-size: 26px;
+    }
+  }
+}
+
+.question__item {
+  border-color: $gray-2;
+  border-style: solid;
+  border-width: 1px 1px 0;
+  display: block;
+  padding: $spacing-2 $spacing-3;
+  position: relative;
+
+  &:last-child {
+    border-bottom-width: 1px;
+  }
+}
+
+.question__label {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  left: 0;
+  padding-left: $spacing-7;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+
+.question__btn {
+  @include button-clear();
+
+  background-color: $lilac;
+  border-radius: 5px;
+  color: $white;
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  margin: $spacing-3 0 0;
+  padding: $spacing-1 $spacing-3;
+  text-align: center;
+  text-decoration: none;
+
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $magenta;
+  }
+}
+
+.question__answer {
+  margin-top: $spacing-1;
+}
